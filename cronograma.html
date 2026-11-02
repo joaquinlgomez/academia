@@ -32,9 +32,8 @@
 
     .content-grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
     
-    
-    .panel-iframe{background:rgba(255,253,249,.97);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:6px;overflow:hidden; height: 85vh; min-height: 700px; display: flex; flex-direction: column;}
-    .iframe-container{flex-grow: 1; width: 100%; border: none;}
+    /* Panel optimizado para el Iframe sin bordes internos */
+    .panel-iframe{background:rgba(255,253,249,.97);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:6px;overflow:hidden; display: flex; flex-direction: column;}
 
     @media(max-width:620px){
         .topbar-inner{padding:10px 15px}
@@ -45,7 +44,6 @@
         .back-link::after{content:"Volver";font-size:.78rem}
         .page{padding:18px 13px 40px}
         .hero{padding:25px 20px}
-        .panel-iframe{height: 90vh;}
     }
   </style>
 </head>
@@ -65,21 +63,22 @@
 
     <div class="content-grid">
       
-      <!-- BANNER DE padelrank -->
+      <!-- BANNER DE PADELRANK -->
       <div style="display: flex; align-items: center; justify-content: center; gap: 15px; background: rgba(255,253,249,.03); border: 1px solid #ffffff1a; padding: 12px 20px; border-radius: 6px; margin-bottom: -5px;">
         <span style="color: var(--muted); font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em;">Tecnología impulsada por</span>
-        <img src="logo-400x182.png" alt="Logo Padelrank" style="height: 35px; object-fit: contain;">
+        <img src="image_14ac00.png" alt="Logo Padelrank" style="height: 35px; object-fit: contain;">
       </div>
 
-      <!-- CONTENEDOR DEL SISTEMA EXTERNO (PADELRANK) -->
+      
       <section class="panel-iframe">
         
         
         <iframe 
-          class="iframe-container" 
-          src="https://www.padelrank.club/" 
-          title="Sistema de Liga Padelrank"
-          allowfullscreen>
+          src="https://www.padelrank.club/torneo/96" 
+          style="width:100%; height:90vh; border:0; border-radius:8px;" 
+          allow="fullscreen" 
+          loading="lazy" 
+          title="Liga Royal 2026 — PadelRank">
         </iframe>
 
       </section>
