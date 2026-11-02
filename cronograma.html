@@ -220,11 +220,11 @@
               ];
             } else {
               // --- CÓDIGO REAL PARA LEER LOS GOOGLE SHEETS ---
-              const resPos = await fetch(urlGoogleSheetPosiciones);
+              const resPos = await fetch(https://docs.google.com/spreadsheets/d/e/2PACX-1vT38jtawJG0CRy9UmrIk__oOG4AjBXQYTrweo7qaUjWBZHPBCbfgu4wcFJWkk_h0C4f63YA04OOBGN9/pubhtml?gid=0&single=true);
               const textPos = await resPos.text();
               posiciones.value = parseTSV(textPos);
 
-              const resPart = await fetch(urlGoogleSheetPartidos);
+              const resPart = await fetch(https://docs.google.com/spreadsheets/d/e/2PACX-1vS96YHBwkU8G0DaPFlgVSkvR4m4PoPj8HpLbs4YXDPt627IbJteJ1nZZVTvKkyT-bBgOoHjPqMDVk0H/pubhtml?gid=0&single=true);
               const textPart = await resPart.text();
               partidos.value = parseTSV(textPart);
             }
