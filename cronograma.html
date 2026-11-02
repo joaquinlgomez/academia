@@ -47,7 +47,7 @@
     .standings tr:nth-child(even){background:#fbf9f5}
     .standings .pts{color:var(--orange);font-weight:900;font-size:1.1rem}
 
-    /* Estilos Tarjetas de Partidos */
+    
     .match-list{display:grid;gap:12px}
     .match-card{background:#fff;border:1px solid #e8e2d9;padding:18px;border-radius:4px;box-shadow:0 5px 15px #0817290a}
     .match-header{display:flex;justify-content:space-between;font-size:.75rem;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
@@ -69,10 +69,10 @@
   <main id="cronogramaApp" class="page">
     <section class="hero">
       <h1>Cronograma y Posiciones</h1>
-      <p>Actualización automática post-fecha</p>
+      <p>Se actualiza automáticamente todos los lunes de acuerdo a los resultados de la fecha.</p>
     </section>
 
-    <!-- Pestañas de Categorías -->
+    
     <div class="category-buttons" role="tablist">
       <button v-for="cat in categorias" :key="cat" :class="{active: categoriaActiva === cat}" @click="categoriaActiva = cat">
         {{ cat }}
@@ -153,17 +153,17 @@
         const cargando = ref(true);
         const categoriaActiva = ref('8va Masculino');
         
-        // Categorías que aparecerán en los botones
+        
         const categorias = ['Iniciados Masc', '8va Masculino', '7ma Masculino', '6ta Masculino', 'Damas Iniciadas', '8va Damas'];
         
         const posiciones = ref([]);
         const partidos = ref([]);
 
-        // REEMPLAZAR ESTOS ENLACES POR LOS DE TUS GOOGLE SHEETS (Exportados como TSV)
+        
         const urlGoogleSheetPosiciones = 'URL_TSV_POSICIONES_AQUI'; 
         const urlGoogleSheetPartidos = 'URL_TSV_PARTIDOS_AQUI';
 
-        // Filtros dinámicos basados en la categoría seleccionada
+        
         const posicionesFiltradas = computed(() => {
           return posiciones.value
             .filter(p => p.Categoria === categoriaActiva.value)
@@ -174,7 +174,7 @@
           return partidos.value.filter(p => p.Categoria === categoriaActiva.value);
         });
 
-        // Función para leer y formatear los datos de Google Sheets
+        
         const parseTSV = (tsv) => {
           const lineas = tsv.split('\n');
           const encabezados = lineas[0].split('\t').map(h => h.trim());
@@ -191,14 +191,13 @@
           return resultado;
         };
 
-        // Función que descarga los datos al iniciar la página
+        
         const cargarDatos = async () => {
           try {
-            // Nota: Mientras no pongas los enlaces reales de Google Sheets, usaremos datos de prueba.
-            // Para usar el Sheets real, borra el bloque "if (true)" y descomenta los "fetch".
+            
             
             if (true) {
-              // --- DATOS DE PRUEBA SIMULANDO EL EXCEL ---
+              // --- AQUI TENGO QUE PONER LOS DATOS DEL EXCEL EN EL MISMO FORMATO QUE ESTA ABAJO. RESPETAR ESO ---
               posiciones.value = [
                 { Categoria: '8va Masculino', Pareja: 'Gómez / Pérez', Puntos: '600', PJ: '2', G: '2', P: '0' },
                 { Categoria: '8va Masculino', Pareja: 'López / Martínez', Puntos: '340', PJ: '2', G: '1', P: '1' }
@@ -208,7 +207,7 @@
                 { Categoria: '8va Masculino', Grupo: 'Zona B - Fecha 3', Cancha: '2', Pareja1: 'Díaz / Ruiz', Pareja2: 'Sosa / Vega', Dia: 'Sábado 14/11', Hora: '18:00' }
               ];
             } else {
-              // --- CÓDIGO REAL PARA LEER GOOGLE SHEETS ---
+              // --- CÓDIGO REAL PARA LEER GOOGLE SHEETS ORDENADO DE ACUERDO AL EXCEL ANTERIOR ---
               const resPos = await fetch(urlGoogleSheetPosiciones);
               const textPos = await resPos.text();
               posiciones.value = parseTSV(textPos);
