@@ -1,0 +1,26 @@
+ROYAL STAR’S CLUB — SITIO ACTUALIZADO
+
+Archivos principales:
+- index.html: página principal con menú desplegable de tres rayas, Blog, Liga, horarios, calendario y contacto.
+- liga.html: página independiente de “Liga de Royal”, desarrollada con Vue 3 mediante CDN. Usa Vue 3 con v-model, v-for, v-if, :class y @click para filtrar categorías y abrir preguntas frecuentes con reactividad.
+- fondo-royal.png: nuevo fondo general del sitio.
+- logo-royal.png: nuevo escudo del club, preparado para usarse sobre fondos oscuros.
+- favicon-royal.png: icono que aparece en la pestaña del navegador.
+- sponsor-sch.png y sponsor-anthos-gym.png: imágenes de sponsors que enviaste.
+
+CÓMO PROBAR:
+1. Extraé todo el ZIP en una carpeta normal.
+2. Abrí index.html con Chrome, Edge o Firefox.
+3. Hacé clic en el cartel “Liga de Royal” que está debajo del menú. Se abre liga.html en otra pestaña.
+
+IMPORTANTE:
+- No necesitás Node.js, npm ni instalar Django para esta versión estática.
+- Bootstrap, Font Awesome y Vue 3 se cargan desde CDN, por lo que necesitás conexión a Internet al abrir la web.
+- El botón de inscripción abre WhatsApp al número de contacto que ya estaba publicado en el sitio.
+- La Liga figura con inicio el 6 de noviembre de 2026, según la fecha ya cargada en el calendario del sitio.
+
+
+CAMBIO DE ESTA VERSION
+- Se quitó de la página principal el bloque detallado de Liga.
+- Se mantiene el banner "Liga de Royal" debajo del menú.
+- El banner y los enlaces Liga del menú/pie abren liga.html, una página independiente hecha con Vue 3.
