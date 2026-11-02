@@ -14,7 +14,7 @@
     body::before{content:"";position:fixed;inset:0;z-index:-2;background:url('fondo-royal.png') center/cover no-repeat}
     body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(4,13,25,.72),rgba(5,16,29,.58))}
     a{color:inherit}
-    
+
     /* Heredado del diseño original */
     .topbar{background:rgba(8,20,35,.94);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff20;color:#fff}
     .topbar-inner{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
@@ -25,7 +25,7 @@
     .back-link{display:inline-flex;align-items:center;gap:8px;color:#e5edf7;text-decoration:none;border:1px solid #ffffff4d;padding:10px 14px;border-radius:5px;font-size:.82rem;font-weight:800}
     .back-link:hover{background:#ffffff16;color:#fff}
     .page{max-width:1180px;margin:0 auto;padding:32px 22px 58px}
-    
+
     .hero{padding:clamp(26px,5vw,40px);background:linear-gradient(115deg,rgba(24,61,101,.97),rgba(9,25,44,.96));border:1px solid #ffffff2c;box-shadow:0 24px 60px #0004;color:#fff;text-align:center;margin-bottom:20px}
     .hero h1{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.05em;line-height:1;margin:0;font-weight:1000;text-transform:uppercase}
     .hero p{color:#ffb76e;font-weight:900;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;margin:10px 0 0}
@@ -34,26 +34,28 @@
     .category-buttons button{border:1px solid #d9dfe6;background:#fff;padding:11px 16px;font:inherit;font-size:.85rem;font-weight:900;color:#536174;cursor:pointer;border-radius:3px}
     .category-buttons button.active{background:var(--orange);border-color:var(--orange);color:#111c2c}
 
-    .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+    .content-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;align-items:start}
     .panel{background:rgba(255,253,249,.97);padding:clamp(20px,3vw,32px);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:4px}
     .kicker{font-size:.7rem;letter-spacing:.19em;text-transform:uppercase;color:#a35f1d;font-weight:900}
     .panel h2{font-size:clamp(1.5rem,2.5vw,2rem);font-weight:1000;letter-spacing:-.05em;color:var(--navy);margin:8px 0 18px}
 
     /* Estilos Tabla de Posiciones */
     .table-wrapper{overflow-x:auto}
-    .standings{width:100%;border-collapse:collapse;text-align:left;min-width:400px}
-    .standings th{background:var(--navy);color:white;padding:12px;font-weight:900;font-size:.8rem;text-transform:uppercase}
-    .standings td{padding:12px;border-bottom:1px solid #e5e0d8;font-size:.9rem;color:var(--navy);font-weight:600}
+    .standings{width:100%;border-collapse:collapse;text-align:left;min-width:550px}
+    .standings th{background:var(--navy);color:white;padding:12px 8px;font-weight:900;font-size:.75rem;text-transform:uppercase;text-align:center}
+    .standings th:first-child{text-align:left}
+    .standings td{padding:12px 8px;border-bottom:1px solid #e5e0d8;font-size:.85rem;color:var(--navy);font-weight:600;text-align:center}
+    .standings td:first-child{text-align:left}
     .standings tr:nth-child(even){background:#fbf9f5}
-    .standings .pts{color:var(--orange);font-weight:900;font-size:1.1rem}
+    .standings .pts{color:var(--orange);font-weight:900;font-size:1.05rem}
 
-    
     .match-list{display:grid;gap:12px}
     .match-card{background:#fff;border:1px solid #e8e2d9;padding:18px;border-radius:4px;box-shadow:0 5px 15px #0817290a}
     .match-header{display:flex;justify-content:space-between;font-size:.75rem;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
     .match-teams{font-size:1.1rem;font-weight:900;color:var(--navy);text-align:center;margin:5px 0}
     .match-vs{display:block;color:var(--muted);font-size:.75rem;margin:5px 0}
     .match-footer{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);font-weight:800;background:#f8fafc;padding:10px;border-radius:4px;margin-top:12px;border:1px solid #eef2f6}
+    .match-result{display:block;text-align:center;font-weight:900;color:var(--blue);font-size:0.9rem;margin-top:8px;}
 
     @media(max-width:820px){.content-grid{grid-template-columns:1fr}}
   </style>
@@ -72,7 +74,6 @@
       <p>Se actualiza automáticamente todos los lunes de acuerdo a los resultados de la fecha.</p>
     </section>
 
-    
     <div class="category-buttons" role="tablist">
       <button v-for="cat in categorias" :key="cat" :class="{active: categoriaActiva === cat}" @click="categoriaActiva = cat">
         {{ cat }}
@@ -94,22 +95,32 @@
             <thead>
               <tr>
                 <th>Pareja</th>
-                <th>Pts</th>
-                <th>PJ</th>
-                <th>G</th>
-                <th>P</th>
+                <th title="Puntos">Pts</th>
+                <th title="Partidos Jugados">PJ</th>
+                <th title="Ganados">G</th>
+                <th title="Perdidos">P</th>
+                <th title="Sets a Favor">SF</th>
+                <th title="Sets en Contra">SC</th>
+                <th title="Games a Favor">GF</th>
+                <th title="Games en Contra">GC</th>
+                <th title="Diferencia de Games">DG</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="equipo in posicionesFiltradas" :key="equipo.Pareja">
                 <td>{{ equipo.Pareja }}</td>
-                <td class="pts">{{ equipo.Puntos }}</td>
-                <td>{{ equipo.PJ }}</td>
-                <td>{{ equipo.G }}</td>
-                <td>{{ equipo.P }}</td>
+                <td class="pts">{{ equipo.Puntos || 0 }}</td>
+                <td>{{ equipo.PJ || 0 }}</td>
+                <td>{{ equipo.G || 0 }}</td>
+                <td>{{ equipo.P || 0 }}</td>
+                <td>{{ equipo.SF || 0 }}</td>
+                <td>{{ equipo.SC || 0 }}</td>
+                <td>{{ equipo.GF || 0 }}</td>
+                <td>{{ equipo.GC || 0 }}</td>
+                <td>{{ equipo.DG || 0 }}</td>
               </tr>
               <tr v-if="posicionesFiltradas.length === 0">
-                <td colspan="5" style="text-align:center; color:#888;">No hay datos para esta categoría.</td>
+                <td colspan="10" style="text-align:center; color:#888; padding: 20px;">No hay datos para esta categoría.</td>
               </tr>
             </tbody>
           </table>
@@ -131,12 +142,15 @@
               <span class="match-vs">VS</span>
               {{ partido.Pareja2 }}
             </div>
+            <div v-if="partido.Resultado" class="match-result">
+              Final: {{ partido.Resultado }}
+            </div>
             <div class="match-footer">
               <span>📅 {{ partido.Dia }}</span>
               <span>⏰ {{ partido.Hora }} hs</span>
             </div>
           </article>
-          <div v-if="partidosFiltrados.length === 0" style="text-align:center; color:#888; font-weight:600;">
+          <div v-if="partidosFiltrados.length === 0" style="text-align:center; color:#888; font-weight:600; padding: 20px;">
             No hay partidos programados.
           </div>
         </div>
@@ -152,18 +166,20 @@
       setup() {
         const cargando = ref(true);
         const categoriaActiva = ref('8va Masculino');
-        
-        
-        const categorias = ['Iniciados Masc', '8va Masculino', '7ma Masculino', '6ta Masculino', 'Damas Iniciadas', '8va Damas'];
-        
+
+        // 10 Categorías oficiales
+        const categorias = [
+          'Iniciados Masc', '8va Masculino', '7ma Masculino', '6ta Masculino', '5ta Masculino', 'Suma 6', 
+          'Damas Iniciadas', '8va Damas', '7ma Damas', 'Suma 11 Damas'
+        ];
+
         const posiciones = ref([]);
         const partidos = ref([]);
 
-        
-        const urlGoogleSheetPosiciones = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT38jtawJG0CRy9UmrIk__oOG4AjBXQYTrweo7qaUjWBZHPBCbfgu4wcFJWkk_h0C4f63YA04OOBGN9/pub?gid=0&single=true&output=tsv'; 
-        const urlGoogleSheetPartidos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS96YHBwkU8G0DaPFlgVSkvR4m4PoPj8HpLbs4YXDPt627IbJteJ1nZZVTvKkyT-bBgOoHjPqMDVk0H/pub?gid=0&single=true&output=tsv';
+        // --- PEGA TUS ENLACES TSV PUBLICADOS AQUÍ ---
+        const urlGoogleSheetPosiciones = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT38jtawJG0CRy9UmrIk__oOG4AjBXQYTrweo7qaUjWBZHPBCbfgu4wcFJWkk_h0C4f63YA04OOBGN9/pubhtml?gid=0&single=true'; 
+        const urlGoogleSheetPartidos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS96YHBwkU8G0DaPFlgVSkvR4m4PoPj8HpLbs4YXDPt627IbJteJ1nZZVTvKkyT-bBgOoHjPqMDVk0H/pubhtml?gid=0&single=true';
 
-        
         const posicionesFiltradas = computed(() => {
           return posiciones.value
             .filter(p => p.Categoria === categoriaActiva.value)
@@ -174,7 +190,6 @@
           return partidos.value.filter(p => p.Categoria === categoriaActiva.value);
         });
 
-        
         const parseTSV = (tsv) => {
           const lineas = tsv.split('\n');
           const encabezados = lineas[0].split('\t').map(h => h.trim());
@@ -191,23 +206,20 @@
           return resultado;
         };
 
-        
         const cargarDatos = async () => {
           try {
             
-            
-            if (true) {
-              // --- AQUI TENGO QUE PONER LOS DATOS DEL EXCEL EN EL MISMO FORMATO QUE ESTA ABAJO. RESPETAR ESO ---
+            if (urlGoogleSheetPosiciones.includes('https://docs.google.com/spreadsheets/d/e/2PACX-1vT38jtawJG0CRy9UmrIk__oOG4AjBXQYTrweo7qaUjWBZHPBCbfgu4wcFJWkk_h0C4f63YA04OOBGN9/pubhtml?gid=0&single=true')) {
+              // --- DATOS DE EJEMPLO SI NO HAY ENLACE TSV ---
               posiciones.value = [
-                { Categoria: '8va Masculino', Pareja: 'Gómez / Pérez', Puntos: '600', PJ: '2', G: '2', P: '0' },
-                { Categoria: '8va Masculino', Pareja: 'López / Martínez', Puntos: '340', PJ: '2', G: '1', P: '1' }
+                { Categoria: '8va Masculino', Pareja: 'Gómez / Pérez', Puntos: '600', PJ: '2', G: '2', P: '0', SF: '4', SC: '0', GF: '24', GC: '10', DG: '14' },
+                { Categoria: '8va Masculino', Pareja: 'López / Martínez', Puntos: '340', PJ: '2', G: '1', P: '1', SF: '2', SC: '2', GF: '18', GC: '20', DG: '-2' }
               ];
               partidos.value = [
-                { Categoria: '8va Masculino', Grupo: 'Zona A - Fecha 3', Cancha: '1', Pareja1: 'Gómez / Pérez', Pareja2: 'López / Martínez', Dia: 'Viernes 13/11', Hora: '20:30' },
-                { Categoria: '8va Masculino', Grupo: 'Zona B - Fecha 3', Cancha: '2', Pareja1: 'Díaz / Ruiz', Pareja2: 'Sosa / Vega', Dia: 'Sábado 14/11', Hora: '18:00' }
+                { Categoria: '8va Masculino', Grupo: 'Zona A - Fecha 3', Cancha: '1', Pareja1: 'Gómez / Pérez', Pareja2: 'López / Martínez', Dia: 'Viernes 13/11', Hora: '20:30', Resultado: '' }
               ];
             } else {
-              // --- CÓDIGO REAL PARA LEER GOOGLE SHEETS ORDENADO DE ACUERDO AL EXCEL ANTERIOR ---
+              // --- CÓDIGO REAL PARA LEER LOS GOOGLE SHEETS ---
               const resPos = await fetch(urlGoogleSheetPosiciones);
               const textPos = await resPos.text();
               posiciones.value = parseTSV(textPos);
