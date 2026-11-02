@@ -15,7 +15,7 @@
     body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(4,13,25,.72),rgba(5,16,29,.58))}
     a{color:inherit}
 
-    /* Heredado del diseño original */
+    
     .topbar{background:rgba(8,20,35,.94);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff20;color:#fff}
     .topbar-inner{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-weight:900;letter-spacing:.02em}
@@ -30,34 +30,23 @@
     .hero h1{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.05em;line-height:1;margin:0;font-weight:1000;text-transform:uppercase}
     .hero p{color:#ffb76e;font-weight:900;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;margin:10px 0 0}
 
-    .category-buttons{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:20px;justify-content:center}
-    .category-buttons button{border:1px solid #d9dfe6;background:#fff;padding:11px 16px;font:inherit;font-size:.85rem;font-weight:900;color:#536174;cursor:pointer;border-radius:3px}
-    .category-buttons button.active{background:var(--orange);border-color:var(--orange);color:#111c2c}
+    .content-grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
+    
+    
+    .panel-iframe{background:rgba(255,253,249,.97);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:6px;overflow:hidden; height: 85vh; min-height: 700px; display: flex; flex-direction: column;}
+    .iframe-container{flex-grow: 1; width: 100%; border: none;}
 
-    .content-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:20px;align-items:start}
-    .panel{background:rgba(255,253,249,.97);padding:clamp(20px,3vw,32px);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:4px}
-    .kicker{font-size:.7rem;letter-spacing:.19em;text-transform:uppercase;color:#a35f1d;font-weight:900}
-    .panel h2{font-size:clamp(1.5rem,2.5vw,2rem);font-weight:1000;letter-spacing:-.05em;color:var(--navy);margin:8px 0 18px}
-
-    /* Estilos Tabla de Posiciones */
-    .table-wrapper{overflow-x:auto}
-    .standings{width:100%;border-collapse:collapse;text-align:left;min-width:550px}
-    .standings th{background:var(--navy);color:white;padding:12px 8px;font-weight:900;font-size:.75rem;text-transform:uppercase;text-align:center}
-    .standings th:first-child{text-align:left}
-    .standings td{padding:12px 8px;border-bottom:1px solid #e5e0d8;font-size:.85rem;color:var(--navy);font-weight:600;text-align:center}
-    .standings td:first-child{text-align:left}
-    .standings tr:nth-child(even){background:#fbf9f5}
-    .standings .pts{color:var(--orange);font-weight:900;font-size:1.05rem}
-
-    .match-list{display:grid;gap:12px}
-    .match-card{background:#fff;border:1px solid #e8e2d9;padding:18px;border-radius:4px;box-shadow:0 5px 15px #0817290a}
-    .match-header{display:flex;justify-content:space-between;font-size:.75rem;font-weight:900;color:var(--orange);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
-    .match-teams{font-size:1.1rem;font-weight:900;color:var(--navy);text-align:center;margin:5px 0}
-    .match-vs{display:block;color:var(--muted);font-size:.75rem;margin:5px 0}
-    .match-footer{display:flex;justify-content:space-between;font-size:.8rem;color:var(--muted);font-weight:800;background:#f8fafc;padding:10px;border-radius:4px;margin-top:12px;border:1px solid #eef2f6}
-    .match-result{display:block;text-align:center;font-weight:900;color:var(--blue);font-size:0.9rem;margin-top:8px;}
-
-    @media(max-width:820px){.content-grid{grid-template-columns:1fr}}
+    @media(max-width:620px){
+        .topbar-inner{padding:10px 15px}
+        .brand img{width:43px;height:43px}
+        .brand span{font-size:.84rem}
+        .brand small{font-size:.56rem}
+        .back-link{font-size:0;padding:11px}
+        .back-link::after{content:"Volver";font-size:.78rem}
+        .page{padding:18px 13px 40px}
+        .hero{padding:25px 20px}
+        .panel-iframe{height: 90vh;}
+    }
   </style>
 </head>
 <body>
@@ -68,180 +57,26 @@
     </div>
   </header>
 
-  <main id="cronogramaApp" class="page">
+  <main class="page">
     <section class="hero">
       <h1>Cronograma y Posiciones</h1>
-      <p>Se actualiza automáticamente todos los lunes de acuerdo a los resultados de la fecha.</p>
+      <p>Gestiona tus partidos y revisa las tablas desde nuestro sistema oficial.</p>
     </section>
 
-    <div class="category-buttons" role="tablist">
-      <button v-for="cat in categorias" :key="cat" :class="{active: categoriaActiva === cat}" @click="categoriaActiva = cat">
-        {{ cat }}
-      </button>
-    </div>
+    <div class="content-grid">
+      <!-- CONTENEDOR DEL SISTEMA EXTERNO (PADELRANK) -->
+      <section class="panel-iframe">
+        
+        
+        <iframe 
+          class="iframe-container" 
+          src="https://www.padelrank.club/torneo/96" 
+          title="Sistema de Liga Padelrank"
+          allowfullscreen>
+        </iframe>
 
-    <!-- Indicador de carga -->
-    <div v-if="cargando" style="text-align:center; color:#fff; font-weight:bold; padding:2rem;">
-      Sincronizando con la base de datos...
-    </div>
-
-    <div v-else class="content-grid">
-      <!-- PANEL IZQUIERDO: POSICIONES -->
-      <section class="panel">
-        <span class="kicker">Fase de Grupos</span>
-        <h2>Tabla de Posiciones</h2>
-        <div class="table-wrapper">
-          <table class="standings">
-            <thead>
-              <tr>
-                <th>Pareja</th>
-                <th title="Puntos">Pts</th>
-                <th title="Partidos Jugados">PJ</th>
-                <th title="Ganados">G</th>
-                <th title="Perdidos">P</th>
-                <th title="Sets a Favor">SF</th>
-                <th title="Sets en Contra">SC</th>
-                <th title="Games a Favor">GF</th>
-                <th title="Games en Contra">GC</th>
-                <th title="Diferencia de Games">DG</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="equipo in posicionesFiltradas" :key="equipo.Pareja">
-                <td>{{ equipo.Pareja }}</td>
-                <td class="pts">{{ equipo.Puntos || 0 }}</td>
-                <td>{{ equipo.PJ || 0 }}</td>
-                <td>{{ equipo.G || 0 }}</td>
-                <td>{{ equipo.P || 0 }}</td>
-                <td>{{ equipo.SF || 0 }}</td>
-                <td>{{ equipo.SC || 0 }}</td>
-                <td>{{ equipo.GF || 0 }}</td>
-                <td>{{ equipo.GC || 0 }}</td>
-                <td>{{ equipo.DG || 0 }}</td>
-              </tr>
-              <tr v-if="posicionesFiltradas.length === 0">
-                <td colspan="10" style="text-align:center; color:#888; padding: 20px;">No hay datos para esta categoría.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- PANEL DERECHO: PARTIDOS -->
-      <section class="panel">
-        <span class="kicker">Próximas Fechas</span>
-        <h2>Cronograma</h2>
-        <div class="match-list">
-          <article v-for="partido in partidosFiltrados" :key="partido.Pareja1 + partido.Hora" class="match-card">
-            <div class="match-header">
-              <span>{{ partido.Grupo }}</span>
-              <span>Cancha {{ partido.Cancha }}</span>
-            </div>
-            <div class="match-teams">
-              {{ partido.Pareja1 }}
-              <span class="match-vs">VS</span>
-              {{ partido.Pareja2 }}
-            </div>
-            <div v-if="partido.Resultado" class="match-result">
-              Final: {{ partido.Resultado }}
-            </div>
-            <div class="match-footer">
-              <span>📅 {{ partido.Dia }}</span>
-              <span>⏰ {{ partido.Hora }} hs</span>
-            </div>
-          </article>
-          <div v-if="partidosFiltrados.length === 0" style="text-align:center; color:#888; font-weight:600; padding: 20px;">
-            No hay partidos programados.
-          </div>
-        </div>
       </section>
     </div>
   </main>
-
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-  <script>
-    const { createApp, ref, computed, onMounted } = Vue;
-
-    createApp({
-      setup() {
-        const cargando = ref(true);
-        const categoriaActiva = ref('8va Masculino');
-
-        // 10 Categorías oficiales
-        const categorias = [
-          'Iniciados Masc', '8va Masculino', '7ma Masculino', '6ta Masculino', '5ta Masculino', 'Suma 6', 
-          'Damas Iniciadas', '8va Damas', '7ma Damas', 'Suma 11 Damas'
-        ];
-
-        const posiciones = ref([]);
-        const partidos = ref([]);
-
-        // --- PEGA TUS ENLACES TSV PUBLICADOS AQUÍ ---
-        const urlGoogleSheetPosiciones = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT38jtawJG0CRy9UmrIk__oOG4AjBXQYTrweo7qaUjWBZHPBCbfgu4wcFJWkk_h0C4f63YA04OOBGN9/pubhtml?gid=0&single=true'; 
-        const urlGoogleSheetPartidos = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS96YHBwkU8G0DaPFlgVSkvR4m4PoPj8HpLbs4YXDPt627IbJteJ1nZZVTvKkyT-bBgOoHjPqMDVk0H/pubhtml?gid=0&single=true';
-
-        const posicionesFiltradas = computed(() => {
-          return posiciones.value
-            .filter(p => p.Categoria === categoriaActiva.value)
-            .sort((a, b) => b.Puntos - a.Puntos);
-        });
-
-        const partidosFiltrados = computed(() => {
-          return partidos.value.filter(p => p.Categoria === categoriaActiva.value);
-        });
-
-        const parseTSV = (tsv) => {
-          const lineas = tsv.split('\n');
-          const encabezados = lineas[0].split('\t').map(h => h.trim());
-          const resultado = [];
-          for (let i = 1; i < lineas.length; i++) {
-            if (!lineas[i].trim()) continue;
-            const fila = lineas[i].split('\t');
-            const obj = {};
-            encabezados.forEach((encabezado, index) => {
-              obj[encabezado] = fila[index] ? fila[index].trim() : '';
-            });
-            resultado.push(obj);
-          }
-          return resultado;
-        };
-
-        const cargarDatos = async () => {
-          try {
-            
-            if (urlGoogleSheetPosiciones.includes('https://docs.google.com/spreadsheets/d/e/2PACX-1vT38jtawJG0CRy9UmrIk__oOG4AjBXQYTrweo7qaUjWBZHPBCbfgu4wcFJWkk_h0C4f63YA04OOBGN9/pubhtml?gid=0&single=true')) {
-              // --- DATOS DE EJEMPLO SI NO HAY ENLACE TSV ---
-              posiciones.value = [
-                { Categoria: '8va Masculino', Pareja: 'Gómez / Pérez', Puntos: '600', PJ: '2', G: '2', P: '0', SF: '4', SC: '0', GF: '24', GC: '10', DG: '14' },
-                { Categoria: '8va Masculino', Pareja: 'López / Martínez', Puntos: '340', PJ: '2', G: '1', P: '1', SF: '2', SC: '2', GF: '18', GC: '20', DG: '-2' }
-              ];
-              partidos.value = [
-                { Categoria: '8va Masculino', Grupo: 'Zona A - Fecha 3', Cancha: '1', Pareja1: 'Gómez / Pérez', Pareja2: 'López / Martínez', Dia: 'Viernes 13/11', Hora: '20:30', Resultado: '' }
-              ];
-            } else {
-              // --- CÓDIGO REAL PARA LEER LOS GOOGLE SHEETS ---
-              const resPos = await fetch(https://docs.google.com/spreadsheets/d/e/2PACX-1vT38jtawJG0CRy9UmrIk__oOG4AjBXQYTrweo7qaUjWBZHPBCbfgu4wcFJWkk_h0C4f63YA04OOBGN9/pubhtml?gid=0&single=true);
-              const textPos = await resPos.text();
-              posiciones.value = parseTSV(textPos);
-
-              const resPart = await fetch(https://docs.google.com/spreadsheets/d/e/2PACX-1vS96YHBwkU8G0DaPFlgVSkvR4m4PoPj8HpLbs4YXDPt627IbJteJ1nZZVTvKkyT-bBgOoHjPqMDVk0H/pubhtml?gid=0&single=true);
-              const textPart = await resPart.text();
-              partidos.value = parseTSV(textPart);
-            }
-          } catch (error) {
-            console.error("Error al cargar el Excel:", error);
-          } finally {
-            cargando.value = false;
-          }
-        };
-
-        onMounted(() => {
-          cargarDatos();
-        });
-
-        return { cargando, categorias, categoriaActiva, posicionesFiltradas, partidosFiltrados };
-      }
-    }).mount('#cronogramaApp');
-  </script>
 </body>
 </html>
