@@ -15,7 +15,6 @@
     body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(4,13,25,.72),rgba(5,16,29,.58))}
     a{color:inherit}
 
-    /* BARRA SUPERIOR */
     .topbar{background:rgba(8,20,35,.94);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff20;color:#fff}
     .topbar-inner{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
     .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-weight:900;letter-spacing:.02em}
@@ -26,87 +25,15 @@
     .back-link:hover{background:#ffffff16;color:#fff}
     .page{max-width:1180px;margin:0 auto;padding:32px 22px 58px}
 
-    /* HERO */
     .hero{padding:clamp(26px,5vw,40px);background:linear-gradient(115deg,rgba(24,61,101,.97),rgba(9,25,44,.96));border:1px solid #ffffff2c;box-shadow:0 24px 60px #0004;color:#fff;text-align:center;margin-bottom:20px}
     .hero h1{font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.05em;line-height:1;margin:0;font-weight:1000;text-transform:uppercase}
     .hero p{color:#ffb76e;font-weight:900;font-size:.85rem;letter-spacing:.2em;text-transform:uppercase;margin:10px 0 0}
 
-    /* ESTRUCTURA GENERAL PANELES */
     .content-grid{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
-    .panel{background:rgba(255,253,249,.97);padding:clamp(20px,3vw,32px);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:4px}
+    
+    .panel{background:rgba(255,253,249,.97);padding:clamp(20px,3vw,32px);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:6px;}
     .kicker{font-size:.7rem;letter-spacing:.19em;text-transform:uppercase;color:#a35f1d;font-weight:900}
     .panel h2{font-size:clamp(1.5rem,2.5vw,2rem);font-weight:1000;letter-spacing:-.05em;color:var(--navy);margin:8px 0 18px}
-
-    /* ESTILOS ESPECÍFICOS DE LAS ZONAS Y CATEGORÍAS */
-    .zonas-cat-block { margin-bottom: 2.2rem; }
-    .zonas-cat-block:last-child { margin-bottom: 0; }
-    .zonas-cat-title {
-      background: var(--navy, #0c1b2d);
-      color: #fff;
-      padding: 10px 16px;
-      border-left: 5px solid var(--orange, #f58220);
-      border-radius: 4px;
-      font-size: 1.15rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      margin: 0 0 14px 0;
-    }
-    .zonas-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 14px;
-    }
-    .zona-card {
-      background: #fff;
-      border: 1px solid #e5e0d8;
-      border-radius: 5px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(8, 23, 41, 0.04);
-    }
-    .zona-card-header {
-      background: #f8fafc;
-      color: var(--orange, #f58220);
-      font-weight: 900;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 10px 14px;
-      border-bottom: 1px solid #e5e0d8;
-    }
-    .zona-pair-list {
-      list-style: none;
-      margin: 0;
-      padding: 6px 14px;
-    }
-    .zona-pair-list li {
-      padding: 7px 0;
-      border-bottom: 1px solid #f1ede6;
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--navy, #0c1b2d);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .zona-pair-list li:last-child { border-bottom: none; }
-    .zona-pair-num {
-      color: var(--muted, #5e6b7a);
-      font-size: 0.78rem;
-      font-weight: 800;
-      min-width: 18px;
-    }
-
-    /* ESTILOS DE LA TABLA DE CRONOGRAMA */
-    .cronograma-wrapper { overflow-x: auto; border: 1px solid #e5e0d8; border-radius: 4px; }
-    .tabla-cronograma { width: 100%; border-collapse: collapse; text-align: left; min-width: 780px; font-size: 0.86rem; }
-    .tabla-cronograma th { background: var(--navy, #0c1b2d); color: #fff; padding: 12px 10px; font-weight: 900; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
-    .tabla-cronograma td { padding: 11px 10px; border-bottom: 1px solid #e5e0d8; color: var(--navy, #0c1b2d); font-weight: 600; }
-    .tabla-cronograma tr:nth-child(even) { background: #fbf9f5; }
-    .tabla-cronograma tr:hover { background: #fdf5eb; }
-    .badge-cancha { background: #eef2f6; color: var(--blue, #173b63); font-weight: 800; padding: 4px 8px; border-radius: 3px; font-size: 0.78rem; white-space: nowrap; }
-    .badge-cat { color: var(--orange, #f58220); font-weight: 900; }
-    .hora-col { font-weight: 800; white-space: nowrap; }
 
     @media(max-width:620px){
         .topbar-inner{padding:10px 15px}
@@ -131,13 +58,74 @@
   <main class="page">
     <section class="hero">
       <h1>Cronograma y Posiciones</h1>
-      <p>Consultá las zonas de cada categoría y los horarios de la próxima fecha.</p>
+      <p>Gestiona tus partidos y revisa las tablas de posiciones.</p>
     </section>
 
     <div class="content-grid">
-      
+
       <!-- SECCIÓN ZONAS POR CATEGORÍA -->
-      <section id="zonas-liga" class="panel">
+      <section id="zonas-liga" class="panel" style="margin-top: 18px;">
+        <style>
+          .zonas-cat-block { margin-bottom: 2.2rem; }
+          .zonas-cat-block:last-child { margin-bottom: 0; }
+          .zonas-cat-title {
+            background: var(--navy, #0c1b2d);
+            color: #fff;
+            padding: 10px 16px;
+            border-left: 5px solid var(--orange, #f58220);
+            border-radius: 4px;
+            font-size: 1.15rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            margin: 0 0 14px 0;
+          }
+          .zonas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 14px;
+          }
+          .zona-card {
+            background: #fff;
+            border: 1px solid #e5e0d8;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(8, 23, 41, 0.04);
+          }
+          .zona-card-header {
+            background: #f8fafc;
+            color: var(--orange, #f58220);
+            font-weight: 900;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 10px 14px;
+            border-bottom: 1px solid #e5e0d8;
+          }
+          .zona-pair-list {
+            list-style: none;
+            margin: 0;
+            padding: 6px 14px;
+          }
+          .zona-pair-list li {
+            padding: 7px 0;
+            border-bottom: 1px solid #f1ede6;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--navy, #0c1b2d);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+          }
+          .zona-pair-list li:last-child { border-bottom: none; }
+          .zona-pair-num {
+            color: var(--muted, #5e6b7a);
+            font-size: 0.78rem;
+            font-weight: 800;
+            min-width: 18px;
+          }
+        </style>
+
         <span class="kicker">Fase de Grupos</span>
         <h2>Zonas por Categoría</h2>
 
@@ -148,16 +136,16 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona A</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Fernandez / Fernandez</li>
-                <li><span class="zona-pair-num">2.</span> Alaimo / Lludgar</li>
-                <li><span class="zona-pair-num">3.</span> Beltran / Auat</li>
-                <li><span class="zona-pair-num">4.</span> Ybañez / Compañia</li>
+                <li><span class="zona-pair-num">1.</span> Beltran / Auat</li>
+                <li><span class="zona-pair-num">2.</span> Del Castillo / Curet</li>
+                <li><span class="zona-pair-num">3.</span> Garcia / Montero</li>
+                <li><span class="zona-pair-num">4.</span> Hernandez / Ibañez</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Campos / Ruiz</li>
+                <li><span class="zona-pair-num">1.</span> Mussi / Garay</li>
                 <li><span class="zona-pair-num">2.</span> Gassmann / Arce</li>
                 <li><span class="zona-pair-num">3.</span> Greco / Scaglione</li>
                 <li><span class="zona-pair-num">4.</span> Romano / Coria</li>
@@ -166,8 +154,8 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Mussi / Garay</li>
-                <li><span class="zona-pair-num">2.</span> Ledesma / Delgado</li>
+                <li><span class="zona-pair-num">1.</span> Campos / Ruiz</li>
+                <li><span class="zona-pair-num">2.</span> Ibañez / Cia</li>
                 <li><span class="zona-pair-num">3.</span> Lopez / Arias</li>
                 <li><span class="zona-pair-num">4.</span> Olivera / Danna</li>
               </ul>
@@ -175,19 +163,19 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona D</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Alderete / Viotti</li>
-                <li><span class="zona-pair-num">2.</span> Bravo / Zambolin</li>
-                <li><span class="zona-pair-num">3.</span> Camacho / Suarez</li>
+                <li><span class="zona-pair-num">1.</span> Alcorta / Araujo</li>
+                <li><span class="zona-pair-num">2.</span> Alderete / Viotti</li>
+                <li><span class="zona-pair-num">3.</span> Bravo / Zambolin</li>
                 <li><span class="zona-pair-num">4.</span> Milet / Garnica</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona E</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Alcorta / Araujo</li>
-                <li><span class="zona-pair-num">2.</span> Garcia / Montero</li>
-                <li><span class="zona-pair-num">3.</span> Hernandez / Ibañez</li>
-                <li><span class="zona-pair-num">4.</span> Del Castillo / Curet</li>
+                <li><span class="zona-pair-num">1.</span> Fernandez / Fernandez</li>
+                <li><span class="zona-pair-num">2.</span> Camacho / Suarez</li>
+                <li><span class="zona-pair-num">3.</span> Ledesma / Delgado</li>
+                <li><span class="zona-pair-num">4.</span> Alaimo / Lludgar</li>
               </ul>
             </div>
           </div>
@@ -200,57 +188,57 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona A</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Coronel / Gimenez</li>
-                <li><span class="zona-pair-num">2.</span> Ramirez / Mancuello</li>
-                <li><span class="zona-pair-num">3.</span> Corbalan / Diaz</li>
-                <li><span class="zona-pair-num">4.</span> Faes / Maguna</li>
+                <li><span class="zona-pair-num">1.</span> Stochetti / Ruiz</li>
+                <li><span class="zona-pair-num">2.</span> Risso / Paz</li>
+                <li><span class="zona-pair-num">3.</span> Rovarini / Lludgar</li>
+                <li><span class="zona-pair-num">4.</span> Serrano / Serrano</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Stochetti / Ruiz</li>
-                <li><span class="zona-pair-num">2.</span> Serrano / Serrano</li>
-                <li><span class="zona-pair-num">3.</span> Rovarini / Lludgar</li>
-                <li><span class="zona-pair-num">4.</span> Pappalardo / Lazarte</li>
+                <li><span class="zona-pair-num">1.</span> Arias / Santucho</li>
+                <li><span class="zona-pair-num">2.</span> Manzur / Cinquegrani</li>
+                <li><span class="zona-pair-num">3.</span> Salvatierra / Alderete</li>
+                <li><span class="zona-pair-num">4.</span> Salvi / Burgos</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Salvatierra / Alderete</li>
-                <li><span class="zona-pair-num">2.</span> Manzur / Cinquegrani</li>
-                <li><span class="zona-pair-num">3.</span> Lozano / cia</li>
-                <li><span class="zona-pair-num">4.</span> Correa / Kapp</li>
+                <li><span class="zona-pair-num">1.</span> Faes / Maguna</li>
+                <li><span class="zona-pair-num">2.</span> Ibañez / Langui</li>
+                <li><span class="zona-pair-num">3.</span> Vergottini / Gomez</li>
+                <li><span class="zona-pair-num">4.</span> Coronel / Gimenez</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona D</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Arias / Santucho</li>
-                <li><span class="zona-pair-num">2.</span> Abregu / Luna</li>
-                <li><span class="zona-pair-num">3.</span> Nader / Gassman</li>
-                <li><span class="zona-pair-num">4.</span> Ponce / Mansilla</li>
+                <li><span class="zona-pair-num">1.</span> Correa / Kapp</li>
+                <li><span class="zona-pair-num">2.</span> Lozano / cia</li>
+                <li><span class="zona-pair-num">3.</span> Rios / Guerrero</li>
+                <li><span class="zona-pair-num">4.</span> Sayago / Coria</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona E</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Risso / Paz</li>
-                <li><span class="zona-pair-num">2.</span> Gonzales / Orona</li>
-                <li><span class="zona-pair-num">3.</span> Vergottini / Gomez</li>
-                <li><span class="zona-pair-num">4.</span> Carrizo / Rodriguez</li>
+                <li><span class="zona-pair-num">1.</span> Abregu / Luna</li>
+                <li><span class="zona-pair-num">2.</span> Nader / Gassman</li>
+                <li><span class="zona-pair-num">3.</span> Pappalardo / Lazarte</li>
+                <li><span class="zona-pair-num">4.</span> Ponce / Mansilla</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona F</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Ledesma / Ledesma</li>
-                <li><span class="zona-pair-num">2.</span> Salvi / Burgos</li>
-                <li><span class="zona-pair-num">3.</span> Rios / Guerrero</li>
-                <li><span class="zona-pair-num">4.</span> Sayago / Coria</li>
-                <li><span class="zona-pair-num">5.</span> Ibañez / Langui</li>
-                <li><span class="zona-pair-num">6.</span> Raineri / Olivera</li>
+                <li><span class="zona-pair-num">1.</span> Carrizo / Rodriguez</li>
+                <li><span class="zona-pair-num">2.</span> Corbalan / Diaz</li>
+                <li><span class="zona-pair-num">3.</span> Gonzales / Orona</li>
+                <li><span class="zona-pair-num">4.</span> Ledesma / Ledesma</li>
+                <li><span class="zona-pair-num">5.</span> Raineri / Olivera</li>
+                <li><span class="zona-pair-num">6.</span> Ramirez / Mancuello</li>
               </ul>
             </div>
           </div>
@@ -263,74 +251,74 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona A</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Montinho / Sotelo</li>
-                <li><span class="zona-pair-num">2.</span> Rodriguez / Medina</li>
-                <li><span class="zona-pair-num">3.</span> Vizcarra / Bernasconi</li>
-                <li><span class="zona-pair-num">4.</span> Diaz N, / Dominguez</li>
+                <li><span class="zona-pair-num">1.</span> Diaz N, / Dominguez</li>
+                <li><span class="zona-pair-num">2.</span> Martinez / Zanoni</li>
+                <li><span class="zona-pair-num">3.</span> Vidal / Chavez</li>
+                <li><span class="zona-pair-num">4.</span> Villalba / Brizuela</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Roldan / Lescano</li>
-                <li><span class="zona-pair-num">2.</span> Chamorro / Rios</li>
-                <li><span class="zona-pair-num">3.</span> Flamenco / Gerez</li>
-                <li><span class="zona-pair-num">4.</span> Abelleira / Pacheco</li>
+                <li><span class="zona-pair-num">1.</span> Barrionuevo / Peralta</li>
+                <li><span class="zona-pair-num">2.</span> Cura / Lopez</li>
+                <li><span class="zona-pair-num">3.</span> Eberle / Demmateis</li>
+                <li><span class="zona-pair-num">4.</span> Escalada / Suarez</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Carabajal / Coronel</li>
-                <li><span class="zona-pair-num">2.</span> De la Rua / Giovanello</li>
-                <li><span class="zona-pair-num">3.</span> Gomez / Pereyra</li>
-                <li><span class="zona-pair-num">4.</span> Escalada / Suarez</li>
+                <li><span class="zona-pair-num">1.</span> Abelleira / Pacheco</li>
+                <li><span class="zona-pair-num">2.</span> Chamorro / Rios</li>
+                <li><span class="zona-pair-num">3.</span> Flamenco / Gerez</li>
+                <li><span class="zona-pair-num">4.</span> Roldan / Lescano</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona D</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Villalba / Brizuela</li>
-                <li><span class="zona-pair-num">2.</span> Leguizamon / Bolañez</li>
-                <li><span class="zona-pair-num">3.</span> Cura / Lopez</li>
-                <li><span class="zona-pair-num">4.</span> Barrionuevo / Peralta</li>
+                <li><span class="zona-pair-num">1.</span> Carabajal / Coronel</li>
+                <li><span class="zona-pair-num">2.</span> Olivera / Aranda</li>
+                <li><span class="zona-pair-num">3.</span> Omill / Cisneros</li>
+                <li><span class="zona-pair-num">4.</span> Troncozo / Diaz</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona E</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Olivera / Aranda</li>
-                <li><span class="zona-pair-num">2.</span> Eberle / Demmateis</li>
-                <li><span class="zona-pair-num">3.</span> Paoletti / Ruiz</li>
-                <li><span class="zona-pair-num">4.</span> Burgos / Gomez</li>
+                <li><span class="zona-pair-num">1.</span> Arias / Leguizamon</li>
+                <li><span class="zona-pair-num">2.</span> Bolañez / Rodriguez</li>
+                <li><span class="zona-pair-num">3.</span> Gonzales / Zanni</li>
+                <li><span class="zona-pair-num">4.</span> Paoletti / Ruiz</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona F</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Omill / Cisneros</li>
-                <li><span class="zona-pair-num">2.</span> Troncozo / Diaz</li>
-                <li><span class="zona-pair-num">3.</span> Vidal / Chavez</li>
-                <li><span class="zona-pair-num">4.</span> Martinez / Zanoni</li>
+                <li><span class="zona-pair-num">1.</span> Carrillo / Urrere</li>
+                <li><span class="zona-pair-num">2.</span> Ponti / Falcon</li>
+                <li><span class="zona-pair-num">3.</span> Montinho / Sotelo</li>
+                <li><span class="zona-pair-num">4.</span> Rodriguez / Medina</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona G</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Roldan / Diaz, M</li>
+                <li><span class="zona-pair-num">1.</span> Costa / Saavedra</li>
                 <li><span class="zona-pair-num">2.</span> Lucca / Ferrou</li>
-                <li><span class="zona-pair-num">3.</span> Gonzales / Zanni</li>
-                <li><span class="zona-pair-num">4.</span> Carrillo / Urrere</li>
+                <li><span class="zona-pair-num">3.</span> Rojas / Gutierrez</li>
+                <li><span class="zona-pair-num">4.</span> Roldan / Diaz, M</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona H</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Rojas / Gutierrez</li>
-                <li><span class="zona-pair-num">2.</span> Arias / Leguizamon</li>
-                <li><span class="zona-pair-num">3.</span> Ponti / Falcon</li>
-                <li><span class="zona-pair-num">4.</span> Costa / Saavedra</li>
-                <li><span class="zona-pair-num">5.</span> Bolañez / Rodriguez</li>
+                <li><span class="zona-pair-num">1.</span> Vizcarra / Bernasconi</li>
+                <li><span class="zona-pair-num">2.</span> Burgos / Gomez</li>
+                <li><span class="zona-pair-num">3.</span> De la Rua / Giovanello</li>
+                <li><span class="zona-pair-num">4.</span> Gomez / Pereyra</li>
+                <li><span class="zona-pair-num">5.</span> Leguizamon / Bolañez</li>
               </ul>
             </div>
           </div>
@@ -344,65 +332,65 @@
               <div class="zona-card-header">Zona A</div>
               <ul class="zona-pair-list">
                 <li><span class="zona-pair-num">1.</span> Bustamante / Escalada A,</li>
-                <li><span class="zona-pair-num">2.</span> Bolañez / Medina</li>
-                <li><span class="zona-pair-num">3.</span> Miranda / Alfaro</li>
-                <li><span class="zona-pair-num">4.</span> Guzman / Villalba</li>
-                <li><span class="zona-pair-num">5.</span> Montenegro A, / Cereaolo</li>
-                <li><span class="zona-pair-num">6.</span> Gerez E, / Danna</li>
+                <li><span class="zona-pair-num">2.</span> Carmona / Banegas</li>
+                <li><span class="zona-pair-num">3.</span> Ledesma / Gomez E,</li>
+                <li><span class="zona-pair-num">4.</span> Veliz / Mansilla</li>
+                <li><span class="zona-pair-num">5.</span> Guerriero / Leiva</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Rodas / Peralta</li>
-                <li><span class="zona-pair-num">2.</span> Storniolo / Segura</li>
-                <li><span class="zona-pair-num">3.</span> Salvi / Lofiego</li>
-                <li><span class="zona-pair-num">4.</span> Salvatierra / Masferrer</li>
-                <li><span class="zona-pair-num">5.</span> Reuter / Alderete</li>
-                <li><span class="zona-pair-num">6.</span> Arias / Rojas</li>
+                <li><span class="zona-pair-num">1.</span> Campos / Lescano</li>
+                <li><span class="zona-pair-num">2.</span> Chavez / Lobo</li>
+                <li><span class="zona-pair-num">3.</span> Hrourzek / Azar</li>
+                <li><span class="zona-pair-num">4.</span> Ponce O, / Gerez L,</li>
+                <li><span class="zona-pair-num">5.</span> Pont / Orrego</li>
+                <li><span class="zona-pair-num">6.</span> Riuiz / Ciappino</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Campos / Lescano</li>
-                <li><span class="zona-pair-num">2.</span> Godoy / Torres</li>
-                <li><span class="zona-pair-num">3.</span> Hrourzek / Azar</li>
-                <li><span class="zona-pair-num">4.</span> Pont / Orrego</li>
-                <li><span class="zona-pair-num">5.</span> Chavez / Lobo</li>
-                <li><span class="zona-pair-num">6.</span> Ponce O, / Gerez L,</li>
+                <li><span class="zona-pair-num">1.</span> Arias / Rojas</li>
+                <li><span class="zona-pair-num">2.</span> Bravo / Cejas</li>
+                <li><span class="zona-pair-num">3.</span> Escalada E, / Robles</li>
+                <li><span class="zona-pair-num">4.</span> Galvan / Guzman Terrera</li>
+                <li><span class="zona-pair-num">5.</span> Gianonni / Terzano</li>
+                <li><span class="zona-pair-num">6.</span> Lopez / Diaz</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona D</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Riuiz / Ciappino</li>
-                <li><span class="zona-pair-num">2.</span> Gianonni / Terzano</li>
-                <li><span class="zona-pair-num">3.</span> Carmona / Banegas</li>
-                <li><span class="zona-pair-num">4.</span> Coria P, / Luna</li>
-                <li><span class="zona-pair-num">5.</span> Escalada E, / Robles</li>
+                <li><span class="zona-pair-num">1.</span> Bolañez / Medina</li>
+                <li><span class="zona-pair-num">2.</span> Coria P, / Luna</li>
+                <li><span class="zona-pair-num">3.</span> Guzman / Villalba</li>
+                <li><span class="zona-pair-num">4.</span> Miranda / Alfaro</li>
+                <li><span class="zona-pair-num">5.</span> Montenegro A, / Cereaolo</li>
                 <li><span class="zona-pair-num">6.</span> Ruiz M, / Rojas</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona E</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Veliz / Mansilla</li>
-                <li><span class="zona-pair-num">2.</span> Bravo / Cejas</li>
-                <li><span class="zona-pair-num">3.</span> Galvan / Guzman Terrera</li>
-                <li><span class="zona-pair-num">4.</span> Ledesma / Gomez E,</li>
-                <li><span class="zona-pair-num">5.</span> Lopez / Diaz</li>
-                <li><span class="zona-pair-num">6.</span> Montenegro T, / Galvan</li>
+                <li><span class="zona-pair-num">1.</span> Gerez E, / Danna</li>
+                <li><span class="zona-pair-num">2.</span> Reuter / Alderete</li>
+                <li><span class="zona-pair-num">3.</span> Rodas / Peralta</li>
+                <li><span class="zona-pair-num">4.</span> Salvatierra / Masferrer</li>
+                <li><span class="zona-pair-num">5.</span> Salvi / Lofiego</li>
+                <li><span class="zona-pair-num">6.</span> Storniolo / Segura</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona F</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Ferrando / Jimenez</li>
-                <li><span class="zona-pair-num">2.</span> Almada / Cervera</li>
-                <li><span class="zona-pair-num">3.</span> Ruiz F, / Schiava</li>
-                <li><span class="zona-pair-num">4.</span> Benac / Coria A,</li>
-                <li><span class="zona-pair-num">5.</span> Guerriero / Leiva</li>
+                <li><span class="zona-pair-num">1.</span> Almada / Cervera</li>
+                <li><span class="zona-pair-num">2.</span> Benac / Coria A,</li>
+                <li><span class="zona-pair-num">3.</span> Ferrando / Jimenez</li>
+                <li><span class="zona-pair-num">4.</span> Godoy / Torres</li>
+                <li><span class="zona-pair-num">5.</span> Montenegro T, / Galvan</li>
+                <li><span class="zona-pair-num">6.</span> Ruiz F, / Schiava</li>
               </ul>
             </div>
           </div>
@@ -415,42 +403,42 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona A</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Ruiz / Palmas</li>
-                <li><span class="zona-pair-num">2.</span> Galeano / Castaño</li>
-                <li><span class="zona-pair-num">3.</span> Coria / Soria</li>
-                <li><span class="zona-pair-num">4.</span> Ojeda / Sayago</li>
-                <li><span class="zona-pair-num">5.</span> Peña / Ysse</li>
-                <li><span class="zona-pair-num">6.</span> Campos / Jimenez</li>
+                <li><span class="zona-pair-num">1.</span> Chara / Barquin</li>
+                <li><span class="zona-pair-num">2.</span> Diaz / Geovane</li>
+                <li><span class="zona-pair-num">3.</span> Herrera / Ponce P,</li>
+                <li><span class="zona-pair-num">4.</span> Karam / Escobar</li>
+                <li><span class="zona-pair-num">5.</span> Sanchez / Luna</li>
+                <li><span class="zona-pair-num">6.</span> Santillan / Santillan</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
                 <li><span class="zona-pair-num">1.</span> Abdala / Corvalan</li>
-                <li><span class="zona-pair-num">2.</span> Uriarte / Urquiza</li>
-                <li><span class="zona-pair-num">3.</span> Diaz / Geovane</li>
-                <li><span class="zona-pair-num">4.</span> Sanchez / Luna</li>
-                <li><span class="zona-pair-num">5.</span> Karam / Escobar</li>
-                <li><span class="zona-pair-num">6.</span> Santillan / Santillan</li>
+                <li><span class="zona-pair-num">2.</span> Campos / Jimenez</li>
+                <li><span class="zona-pair-num">3.</span> Coria / Soria</li>
+                <li><span class="zona-pair-num">4.</span> Ojeda / Sayago</li>
+                <li><span class="zona-pair-num">5.</span> Peña / Ysse</li>
+                <li><span class="zona-pair-num">6.</span> Uriarte / Urquiza</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Chara / Barquin</li>
-                <li><span class="zona-pair-num">2.</span> Herrera / Ponce P,</li>
-                <li><span class="zona-pair-num">3.</span> Trullenque / Ledesma</li>
-                <li><span class="zona-pair-num">4.</span> Guzman / Ponce A,</li>
-                <li><span class="zona-pair-num">5.</span> Rodriguez / Goitea</li>
-                <li><span class="zona-pair-num">6.</span> Diaz / Diaz</li>
+                <li><span class="zona-pair-num">1.</span> Galeano / Castaño</li>
+                <li><span class="zona-pair-num">2.</span> Guzman / Ponce A,</li>
+                <li><span class="zona-pair-num">3.</span> Lescano / Galvan I,</li>
+                <li><span class="zona-pair-num">4.</span> Rodriguez / Goitea</li>
+                <li><span class="zona-pair-num">5.</span> Ruiz / Palmas</li>
+                <li><span class="zona-pair-num">6.</span> Trullenque / Ledesma</li>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- Suma 7 Masculina -->
+        <!-- Suma 6 Masculina -->
         <div class="zonas-cat-block">
-          <h3 class="zonas-cat-title">Suma 7 Masculina</h3>
+          <h3 class="zonas-cat-title">Suma 6 Masculina</h3>
           <div class="zonas-grid">
             <div class="zona-card">
               <div class="zona-card-header">Zona A</div>
@@ -464,19 +452,19 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Lopez / Paz</li>
-                <li><span class="zona-pair-num">2.</span> Abate / Vizcarra</li>
-                <li><span class="zona-pair-num">3.</span> Santillan / Salvatierra</li>
-                <li><span class="zona-pair-num">4.</span> Lopez / Solivellas</li>
+                <li><span class="zona-pair-num">1.</span> Bolomo / Bolomo</li>
+                <li><span class="zona-pair-num">2.</span> Quadreli / Castro</li>
+                <li><span class="zona-pair-num">3.</span> Lopez / Solivellas</li>
+                <li><span class="zona-pair-num">4.</span> Santillan / Salvatierra</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Gomez / Bastit</li>
-                <li><span class="zona-pair-num">2.</span> Quadreli / Castro</li>
-                <li><span class="zona-pair-num">3.</span> Gomez / Gonzales</li>
-                <li><span class="zona-pair-num">4.</span> Bolomo / Bolomo</li>
+                <li><span class="zona-pair-num">1.</span> Gomez / Gonzales</li>
+                <li><span class="zona-pair-num">2.</span> Lopez / Paz</li>
+                <li><span class="zona-pair-num">3.</span> Abate / Vizcarra</li>
+                <li><span class="zona-pair-num">4.</span> Gomez / Bastit</li>
               </ul>
             </div>
           </div>
@@ -489,34 +477,34 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona A</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Orellana / Yazbek</li>
-                <li><span class="zona-pair-num">2.</span> Contardi / Muratore</li>
-                <li><span class="zona-pair-num">3.</span> Cajal / Ganin</li>
-                <li><span class="zona-pair-num">4.</span> Lescano / Gutierrez</li>
-                <li><span class="zona-pair-num">5.</span> Leiva / Julian</li>
-                <li><span class="zona-pair-num">6.</span> Busso / Romero</li>
+                <li><span class="zona-pair-num">1.</span> Abate / Trejo</li>
+                <li><span class="zona-pair-num">2.</span> Bustos / Filippi</li>
+                <li><span class="zona-pair-num">3.</span> Coman / Coman</li>
+                <li><span class="zona-pair-num">4.</span> Contardi / Muratore</li>
+                <li><span class="zona-pair-num">5.</span> Ganem / Moreno</li>
+                <li><span class="zona-pair-num">6.</span> Leiva / Julian</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Abate / Trejo</li>
-                <li><span class="zona-pair-num">2.</span> Migueles / Azar</li>
-                <li><span class="zona-pair-num">3.</span> Ganem / Moreno</li>
-                <li><span class="zona-pair-num">4.</span> Bustos / Filippi</li>
-                <li><span class="zona-pair-num">5.</span> Barbero / Infante</li>
-                <li><span class="zona-pair-num">6.</span> Coman / Coman</li>
+                <li><span class="zona-pair-num">1.</span> Barbero / Infante</li>
+                <li><span class="zona-pair-num">2.</span> Busso / Romero</li>
+                <li><span class="zona-pair-num">3.</span> Lescano / Gutierrez</li>
+                <li><span class="zona-pair-num">4.</span> Llugdar / Darddat</li>
+                <li><span class="zona-pair-num">5.</span> Soria / Caceres</li>
+                <li><span class="zona-pair-num">6.</span> Veron / Veron</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Llugdar / Darddat</li>
+                <li><span class="zona-pair-num">1.</span> Cajal / Ganin</li>
                 <li><span class="zona-pair-num">2.</span> Campos / Ruiz</li>
-                <li><span class="zona-pair-num">3.</span> Soria / Caceres</li>
-                <li><span class="zona-pair-num">4.</span> Valdez / Silvetti</li>
-                <li><span class="zona-pair-num">5.</span> Molina / Soler</li>
-                <li><span class="zona-pair-num">6.</span> Veron / Veron</li>
+                <li><span class="zona-pair-num">3.</span> Migueles / Azar</li>
+                <li><span class="zona-pair-num">4.</span> Molina / Soler</li>
+                <li><span class="zona-pair-num">5.</span> Valdez / Silvetti</li>
+                <li><span class="zona-pair-num">6.</span> Orellana / Yazbek</li>
               </ul>
             </div>
           </div>
@@ -532,27 +520,27 @@
                 <li><span class="zona-pair-num">1.</span> Juarez / Enrico</li>
                 <li><span class="zona-pair-num">2.</span> Figueroa / Leguizamon</li>
                 <li><span class="zona-pair-num">3.</span> Loto / Pedraza</li>
-                <li><span class="zona-pair-num">4.</span> Abate / Trejo</li>
+                <li><span class="zona-pair-num">4.</span> Paz / Bianchi</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Coria / Mazzoleni</li>
-                <li><span class="zona-pair-num">2.</span> Paz / Bianchi</li>
-                <li><span class="zona-pair-num">3.</span> Toloza / Miranda</li>
-                <li><span class="zona-pair-num">4.</span> Morales / Destefani</li>
-                <li><span class="zona-pair-num">5.</span> Suarez / Gonzales</li>
+                <li><span class="zona-pair-num">1.</span> Bertinat / Arias</li>
+                <li><span class="zona-pair-num">2.</span> Coria / Mazzoleni</li>
+                <li><span class="zona-pair-num">3.</span> Infante / Cervetto</li>
+                <li><span class="zona-pair-num">4.</span> Martinez / Romero</li>
+                <li><span class="zona-pair-num">5.</span> Salazar / Ferrau</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Salazar / Ferrau</li>
-                <li><span class="zona-pair-num">2.</span> Infante / Cervetto</li>
-                <li><span class="zona-pair-num">3.</span> Martinez / Romero</li>
-                <li><span class="zona-pair-num">4.</span> Bertinat / Arias</li>
-                <li><span class="zona-pair-num">5.</span> Muño / Olivares</li>
+                <li><span class="zona-pair-num">1.</span> Abate / Trejo</li>
+                <li><span class="zona-pair-num">2.</span> Morales / Destefani</li>
+                <li><span class="zona-pair-num">3.</span> Muño / Olivares</li>
+                <li><span class="zona-pair-num">4.</span> Suarez / Gonzales</li>
+                <li><span class="zona-pair-num">5.</span> Toloza / Miranda</li>
               </ul>
             </div>
           </div>
@@ -565,38 +553,38 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona A</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Galeano / Cianferoni</li>
-                <li><span class="zona-pair-num">2.</span> Martinez / Larralde</li>
-                <li><span class="zona-pair-num">3.</span> Chemez / Rojo</li>
-                <li><span class="zona-pair-num">4.</span> Micol / Chazarreta</li>
+                <li><span class="zona-pair-num">1.</span> Chemez / Rojo</li>
+                <li><span class="zona-pair-num">2.</span> Fernandez / Araujo</li>
+                <li><span class="zona-pair-num">3.</span> Micol / Chazarreta</li>
+                <li><span class="zona-pair-num">4.</span> Roldan / Colombres</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Fernandez / Araujo</li>
-                <li><span class="zona-pair-num">2.</span> Roldan / Colombres</li>
-                <li><span class="zona-pair-num">3.</span> Rojas / Butiler</li>
-                <li><span class="zona-pair-num">4.</span> Abalos / DeMarchi</li>
+                <li><span class="zona-pair-num">1.</span> Castillo / Aguila</li>
+                <li><span class="zona-pair-num">2.</span> Galeano / Cianferoni</li>
+                <li><span class="zona-pair-num">3.</span> Gola / Nebro</li>
+                <li><span class="zona-pair-num">4.</span> Martinez / Larralde</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Orieta / Tobar</li>
-                <li><span class="zona-pair-num">2.</span> Argañaraz / Herrera</li>
-                <li><span class="zona-pair-num">3.</span> Castillo / Aguila</li>
+                <li><span class="zona-pair-num">1.</span> Abalos / DeMarchi</li>
+                <li><span class="zona-pair-num">2.</span> Orieta / Tobar</li>
+                <li><span class="zona-pair-num">3.</span> Rojas / Butiler</li>
                 <li><span class="zona-pair-num">4.</span> Rossi / Rodini</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona D</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Perez / Cortez</li>
-                <li><span class="zona-pair-num">2.</span> Alegre / Rafael</li>
-                <li><span class="zona-pair-num">3.</span> Castañares / Lescano</li>
-                <li><span class="zona-pair-num">4.</span> Gola / Nebro</li>
-                <li><span class="zona-pair-num">5.</span> Brizuela / Gallardo</li>
+                <li><span class="zona-pair-num">1.</span> Alegre / Rafael</li>
+                <li><span class="zona-pair-num">2.</span> Argañaraz / Herrera</li>
+                <li><span class="zona-pair-num">3.</span> Brizuela / Gallardo</li>
+                <li><span class="zona-pair-num">4.</span> Castañares / Lescano</li>
+                <li><span class="zona-pair-num">5.</span> Perez / Cortez</li>
               </ul>
             </div>
           </div>
@@ -609,45 +597,58 @@
             <div class="zona-card">
               <div class="zona-card-header">Zona A</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Marturet / Romano</li>
-                <li><span class="zona-pair-num">2.</span> Rivero / Sesin</li>
-                <li><span class="zona-pair-num">3.</span> Cura / Montiel</li>
-                <li><span class="zona-pair-num">4.</span> Palavecino / Tula</li>
+                <li><span class="zona-pair-num">1.</span> Diaz / Caceres</li>
+                <li><span class="zona-pair-num">2.</span> Alegre / Recchia</li>
+                <li><span class="zona-pair-num">3.</span> Marturet / Romano</li>
+                <li><span class="zona-pair-num">4.</span> Rivero / Sesin</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona B</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Alegre / Recchia</li>
-                <li><span class="zona-pair-num">2.</span> Cejas / Cisneros</li>
-                <li><span class="zona-pair-num">3.</span> Roldan / Vivas</li>
-                <li><span class="zona-pair-num">4.</span> Brunet / Skupin</li>
+                <li><span class="zona-pair-num">1.</span> Palavecino / Tula</li>
+                <li><span class="zona-pair-num">2.</span> Brunet / Skupin</li>
+                <li><span class="zona-pair-num">3.</span> Cejas / Cisneros</li>
+                <li><span class="zona-pair-num">4.</span> Roldan / Vivas</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona C</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Mansilla / Lorenzo</li>
-                <li><span class="zona-pair-num">2.</span> Villalba / Cortez</li>
-                <li><span class="zona-pair-num">3.</span> Jimenez / Frias</li>
-                <li><span class="zona-pair-num">4.</span> Kusmus / Aguero</li>
+                <li><span class="zona-pair-num">1.</span> Cura / Montiel</li>
+                <li><span class="zona-pair-num">2.</span> Jimenez / Frias</li>
+                <li><span class="zona-pair-num">3.</span> Roldan / Gonzales</li>
+                <li><span class="zona-pair-num">4.</span> Villalba / Cortez</li>
               </ul>
             </div>
             <div class="zona-card">
               <div class="zona-card-header">Zona D</div>
               <ul class="zona-pair-list">
-                <li><span class="zona-pair-num">1.</span> Diaz / Caceres</li>
-                <li><span class="zona-pair-num">2.</span> Roldan / Gonzales</li>
-                <li><span class="zona-pair-num">3.</span> Mussi / Suarez</li>
-                <li><span class="zona-pair-num">4.</span> Lorenzo / Leguizamon</li>
+                <li><span class="zona-pair-num">1.</span> Mansilla / Lorenzo</li>
+                <li><span class="zona-pair-num">2.</span> Kusmus / Aguero</li>
+                <li><span class="zona-pair-num">3.</span> Lorenzo / Leguizamon</li>
+                <li><span class="zona-pair-num">4.</span> Mussi / Suarez</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
+      <!-- FIN SECCIÓN ZONAS POR CATEGORÍA -->
 
       <!-- SECCIÓN TABLA DE CRONOGRAMA -->
-      <section id="cronograma-tabla" class="panel">
+      <section id="cronograma-tabla" class="panel" style="margin-top: 18px;">
+        <style>
+          .cronograma-wrapper { overflow-x: auto; border: 1px solid #e5e0d8; border-radius: 4px; }
+          .tabla-cronograma { width: 100%; border-collapse: collapse; text-align: left; min-width: 780px; font-size: 0.86rem; }
+          .tabla-cronograma th { background: var(--navy, #0c1b2d); color: #fff; padding: 12px 10px; font-weight: 900; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.05em; white-space: nowrap; }
+          .tabla-cronograma td { padding: 11px 10px; border-bottom: 1px solid #e5e0d8; color: var(--navy, #0c1b2d); font-weight: 600; }
+          .tabla-cronograma tr:nth-child(even) { background: #fbf9f5; }
+          .tabla-cronograma tr:hover { background: #fdf5eb; }
+          .badge-cancha { background: #eef2f6; color: var(--blue, #173b63); font-weight: 800; padding: 4px 8px; border-radius: 3px; font-size: 0.78rem; white-space: nowrap; }
+          .badge-cat { color: var(--orange, #f58220); font-weight: 900; }
+          .hora-col { font-weight: 800; white-space: nowrap; }
+        </style>
+
         <span class="kicker">Fecha 1</span>
         <h2>Cronograma de Partidos</h2>
 
@@ -668,85 +669,108 @@
             </thead>
             <tbody>
               <!-- VIERNES 06/11/2026 -->
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona C</td><td>Mussi / Garay</td><td>Ledesma / Delgado</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona B</td><td>Stochetti / Ruiz</td><td>Serrano / Serrano</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">6ta Masculina</td><td>Zona B</td><td>Rovarini / Lludgar</td><td>Pappalardo / Lazarte</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">7ma Masculina</td><td>Zona B</td><td>Chamorro / Rios</td><td>Flamenco / Gerez</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">7ma Masculina</td><td>Zona B</td><td>Roldan / Lescano</td><td>Abelleira / Pacheco</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:45</td><td>17:00</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">7ma Femenina</td><td>Zona A</td><td>Galeano / Cianferoni</td><td>Martinez / Larralde</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona D</td><td>Milet / Garnica</td><td>Alcorta / Araujo</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona C</td><td>Roldan / Lescano</td><td>Flamenco / Gerez</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Masculina</td><td>Zona C</td><td>Abelleira / Pacheco</td><td>Chamorro / Rios</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona A</td><td>Bustamante / Escalada A,</td><td>Ledesma / Gomez E,</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona C</td><td>Ruiz / Palmas</td><td>Lescano / Galvan I,</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">15:45</td><td>17:00</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">7ma Femenina</td><td>Zona B</td><td>Martinez / Larralde</td><td>Galeano / Cianferoni</td></tr>
               <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">16:30</td><td>17:45</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona D</td><td>Alderete / Viotti</td><td>Bravo / Zambolin</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">16:30</td><td>17:45</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona D</td><td>Arias / Santucho</td><td>Abregu / Luna</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">16:30</td><td>17:45</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona A</td><td>Bustamante / Escalada A,</td><td>Bolañez / Medina</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">16:30</td><td>17:45</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona A</td><td>Ruiz / Palmas</td><td>Galeano / Castaño</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">17:45</td><td>19:00</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">6ta Masculina</td><td>Zona D</td><td>Nader / Gassman</td><td>Ponce / Mansilla</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">17:45</td><td>19:00</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Femenina</td><td>Zona A</td><td>Chemez / Rojo</td><td>Micol / Chazarreta</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">17:45</td><td>19:00</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona A</td><td>Miranda / Alfaro</td><td>Guzman / Villalba</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">17:45</td><td>19:00</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Femenina</td><td>Zona B</td><td>Coria / Mazzoleni</td><td>Paz / Bianchi</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona A</td><td>Coria / Soria</td><td>Ojeda / Sayago</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">6ta Masculina</td><td>Zona F</td><td>Ledesma / Ledesma</td><td>Rios / Guerrero</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:00</td><td>20:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona D</td><td>Camacho / Suarez</td><td>Milet / Garnica</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:00</td><td>20:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona C</td><td>Lozano / cia</td><td>Correa / Kapp</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:00</td><td>20:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Masculina</td><td>Zona C</td><td>Carabajal / Coronel</td><td>De la Rua / Giovanello</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:00</td><td>20:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona A</td><td>Montenegro A, / Cereaolo</td><td>Gerez E, / Danna</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:00</td><td>20:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">8va Femenina</td><td>Zona A</td><td>Juarez / Enrico</td><td>Figueroa / Leguizamon</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">7ma Femenina</td><td>Zona B</td><td>Fernandez / Araujo</td><td>Roldan / Colombres</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:15</td><td>21:30</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">Suma 7 Masculina</td><td>Zona A</td><td>Pereyra / Ruiz</td><td>Sayago / Castillo</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:15</td><td>21:30</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">Suma 7 Masculina</td><td>Zona B</td><td>Lopez / Paz</td><td>Abate / Vizcarra</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:15</td><td>21:30</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona B</td><td>Reuter / Alderete</td><td>Arias / Rojas</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:15</td><td>21:30</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona A</td><td>Peña / Ysse</td><td>Campos / Jimenez</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:15</td><td>21:30</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona A</td><td>Leiva / Julian</td><td>Busso / Romero</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">8va Femenina</td><td>Zona A</td><td>Loto / Pedraza</td><td>Abate / Trejo</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:30</td><td>22:45</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona C</td><td>Lopez / Arias</td><td>Olivera / Danna</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:30</td><td>22:45</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona D</td><td>Villalba / Brizuela</td><td>Leguizamon / Bolañez</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:30</td><td>22:45</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona B</td><td>Rodas / Peralta</td><td>Storniolo / Segura</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:30</td><td>22:45</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona C</td><td>Chavez / Lobo</td><td>Ponce O, / Gerez L,</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:30</td><td>22:45</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona B</td><td>Abate / Trejo</td><td>Migueles / Azar</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:45</td><td>23:00</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona B</td><td>Ganem / Moreno</td><td>Bustos / Filippi</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">22:45</td><td>00:00</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona B</td><td>Greco / Scaglione</td><td>Romano / Coria</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">22:45</td><td>00:00</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona C</td><td>Salvatierra / Alderete</td><td>Manzur / Cinquegrani</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">22:45</td><td>00:00</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Masculina</td><td>Zona C</td><td>Gomez / Pereyra</td><td>Escalada / Suarez</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">22:45</td><td>00:00</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona B</td><td>Salvi / Lofiego</td><td>Salvatierra / Masferrer</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">22:45</td><td>00:00</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">8va Masculina</td><td>Zona C</td><td>Campos / Lescano</td><td>Godoy / Torres</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">23:00</td><td>00:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona B</td><td>Roldan / Vivas</td><td>Brunet / Skupin</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">00:00</td><td>01:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">7ma Masculina</td><td>Zona A</td><td>Vizcarra / Bernasconi</td><td>Diaz N, / Dominguez</td></tr>
-              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">00:00</td><td>01:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona E</td><td>Paoletti / Ruiz</td><td>Burgos / Gomez</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">16:30</td><td>17:45</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona E</td><td>Abregu / Luna</td><td>Pappalardo / Lazarte</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">17:00</td><td>18:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">6ta Masculina</td><td>Zona B</td><td>Arias / Santucho</td><td>Salvi / Burgos</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">17:00</td><td>18:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">6ta Masculina</td><td>Zona E</td><td>Nader / Gassman</td><td>Ponce / Mansilla</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">17:00</td><td>18:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">8va Masculina</td><td>Zona D</td><td>Guzman / Villalba</td><td>Bolañez / Medina</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">7ma Femenina</td><td>Zona A</td><td>Micol / Chazarreta</td><td>Roldan / Colombres</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">8va Femenina</td><td>Zona A</td><td>Paz / Bianchi</td><td>Figueroa / Leguizamon</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">8va Masculina</td><td>Zona E</td><td>Gerez E, / Danna</td><td>Reuter / Alderete</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">18:15</td><td>19:30</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona D</td><td>Montenegro A, / Cereaolo</td><td>Coria P, / Luna</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">18:15</td><td>19:30</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona D</td><td>Miranda / Alfaro</td><td>Ruiz M, / Rojas</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">18:15</td><td>19:30</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona B</td><td>Coria / Soria</td><td>Ojeda / Sayago</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">7ma Femenina</td><td>Zona A</td><td>Chemez / Rojo</td><td>Fernandez / Araujo</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">8va Femenina</td><td>Zona A</td><td>Juarez / Enrico</td><td>Loto / Pedraza</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona A</td><td>Leiva / Julian</td><td>Contardi / Muratore</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:30</td><td>20:45</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">5ta Masculina</td><td>Zona E</td><td>Ledesma / Delgado</td><td>Camacho / Suarez</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:30</td><td>20:45</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">7ma Masculina</td><td>Zona D</td><td>Carabajal / Coronel</td><td>Troncozo / Diaz</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">19:30</td><td>20:45</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Suma 6 Masculina</td><td>Zona C</td><td>Lopez / Paz</td><td>Abate / Vizcarra</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">8va Masculina</td><td>Zona C</td><td>Gianonni / Terzano</td><td>Arias / Rojas</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona A</td><td>Abate / Trejo</td><td>Ganem / Moreno</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona B</td><td>Cejas / Cisneros</td><td>Palavecino / Tula</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:45</td><td>22:00</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">6ta Masculina</td><td>Zona D</td><td>Correa / Kapp</td><td>Rios / Guerrero</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:45</td><td>22:00</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona B</td><td>Abdala / Corvalan</td><td>Campos / Jimenez</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">20:45</td><td>22:00</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Suma 6 Masculina</td><td>Zona A</td><td>Sayago / Castillo</td><td>Pereyra / Ruiz</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:45</td><td>23:00</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona C</td><td>Lopez / Arias</td><td>Olivera / Danna</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:45</td><td>23:00</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona D</td><td>Lozano / cia</td><td>Sayago / Coria</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">21:45</td><td>23:00</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">8va Femenina</td><td>Zona C</td><td>Suarez / Gonzales</td><td>Abate / Trejo</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">22:00</td><td>23:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Femenina</td><td>Zona C</td><td>Muño / Olivares</td><td>Toloza / Miranda</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">22:00</td><td>23:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona B</td><td>Hrourzek / Azar</td><td>Chavez / Lobo</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">22:00</td><td>23:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona A</td><td>Bustos / Filippi</td><td>Coman / Coman</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">23:00</td><td>00:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona B</td><td>Mussi / Garay</td><td>Romano / Coria</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">23:00</td><td>00:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona B</td><td>Salvatierra / Alderete</td><td>Manzur / Cinquegrani</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">23:00</td><td>00:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">8va Masculina</td><td>Zona B</td><td>Ponce O, / Gerez L,</td><td>Pont / Orrego</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">23:15</td><td>00:30</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Masculina</td><td>Zona A</td><td>Villalba / Brizuela</td><td>Diaz N, / Dominguez</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">23:15</td><td>00:30</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">7ma Masculina</td><td>Zona B</td><td>Escalada / Suarez</td><td>Eberle / Demmateis</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">23:15</td><td>00:30</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">8va Masculina</td><td>Zona B</td><td>Riuiz / Ciappino</td><td>Campos / Lescano</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">00:15</td><td>01:30</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona B</td><td>Greco / Scaglione</td><td>Gassmann / Arce</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">00:15</td><td>01:30</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona H</td><td>Gomez / Pereyra</td><td>Leguizamon / Bolañez</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">00:15</td><td>01:30</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona B</td><td>Uriarte / Urquiza</td><td>Peña / Ysse</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">00:30</td><td>01:45</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona E</td><td>Rodas / Peralta</td><td>Storniolo / Segura</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">00:30</td><td>01:45</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona E</td><td>Salvatierra / Masferrer</td><td>Salvi / Lofiego</td></tr>
+              <tr><td>Viernes</td><td>06/11/2026</td><td class="hora-col">00:30</td><td>01:45</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona A</td><td>Diaz / Geovane</td><td>Sanchez / Luna</td></tr>
 
               <!-- SÁBADO 07/11/2026 -->
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona E</td><td>Alcorta / Araujo</td><td>Garcia / Montero</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona H</td><td>Rojas / Gutierrez</td><td>Arias / Leguizamon</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona E</td><td>Veliz / Mansilla</td><td>Bravo / Cejas</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona C</td><td>Chara / Barquin</td><td>Diaz / Diaz</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona C</td><td>Llugdar / Darddat</td><td>Campos / Ruiz</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona C</td><td>Jimenez / Frias</td><td>Kusmus / Aguero</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">6ta Masculina</td><td>Zona E</td><td>Risso / Paz</td><td>Gonzales / Orona</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">8va Masculina</td><td>Zona E</td><td>Galvan / Guzman Terrera</td><td>Ledesma / Gomez E,</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Femenina</td><td>Zona C</td><td>Salazar / Ferrau</td><td>Infante / Cervetto</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona D</td><td>Roldan / Gonzales</td><td>Mussi / Suarez</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">8va Femenina</td><td>Zona B</td><td>Coria / Mazzoleni</td><td>Paz / Bianchi</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">7ma Femenina</td><td>Zona C</td><td>Orieta / Tobar</td><td>Argañaraz / Herrera</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">17:30</td><td>18:45</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">8va Masculina</td><td>Zona E</td><td>Lopez / Diaz</td><td>Montenegro T, / Galvan</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">17:30</td><td>18:45</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona H</td><td>Ponti / Falcon</td><td>Costa / Saavedra</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">17:30</td><td>18:45</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Femenina</td><td>Zona D</td><td>Perez / Cortez</td><td>Alegre / Rafael</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">17:30</td><td>18:45</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona A</td><td>Cura / Montiel</td><td>Palavecino / Tula</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">17:30</td><td>18:45</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona A</td><td>Cajal / Ganin</td><td>Lescano / Gutierrez</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">17:30</td><td>18:45</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Suma 7 Masculina</td><td>Zona A</td><td>Celis / Mancuello</td><td>Montenegro / Cavallero</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:45</td><td>20:00</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona E</td><td>Hernandez / Ibañez</td><td>Del Castillo / Curet</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:45</td><td>20:00</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona F</td><td>Ibañez / Langui</td><td>Raineri / Olivera</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:45</td><td>20:00</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona C</td><td>Herrera / Ponce P,</td><td>Trullenque / Ledesma</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:45</td><td>20:00</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">7ma Femenina</td><td>Zona D</td><td>Castañares / Lescano</td><td>Gola / Nebro</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:45</td><td>20:00</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona C</td><td>Valdez / Silvetti</td><td>Molina / Soler</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:45</td><td>20:00</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">7ma Masculina</td><td>Zona F</td><td>Vidal / Chavez</td><td>Omill / Cisneros</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:00</td><td>21:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona A</td><td>Beltran / Auat</td><td>Ybañez / Compañia</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:00</td><td>21:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona E</td><td>Vergottini / Gomez</td><td>Carrizo / Rodriguez</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:00</td><td>21:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona F</td><td>Ferrando / Jimenez</td><td>Almada / Cervera</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:00</td><td>21:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona C</td><td>Guzman / Ponce A,</td><td>Rodriguez / Goitea</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:00</td><td>21:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona D</td><td>Diaz / Caceres</td><td>Lorenzo / Leguizamon</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:00</td><td>21:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">8va Femenina</td><td>Zona C</td><td>Martinez / Romero</td><td>Bertinat / Arias</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:15</td><td>22:30</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">6ta Masculina</td><td>Zona A</td><td>Corbalan / Diaz</td><td>Faes / Maguna</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:15</td><td>22:30</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona G</td><td>Gonzales / Zanni</td><td>Carrillo / Urrere</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:15</td><td>22:30</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Masculina</td><td>Zona E</td><td>Olivera / Aranda</td><td>Eberle / Demmateis</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:15</td><td>22:30</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Suma 7 Masculina</td><td>Zona B</td><td>Santillan / Salvatierra</td><td>Lopez / Solivellas</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:15</td><td>22:30</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona C</td><td>Soria / Caceres</td><td>Veron / Veron</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:15</td><td>22:30</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona C</td><td>Mansilla / Lorenzo</td><td>Villalba / Cortez</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">22:30</td><td>23:45</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">7ma Masculina</td><td>Zona D</td><td>Cura / Lopez</td><td>Barrionuevo / Peralta</td></tr>
-              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">22:30</td><td>23:45</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">6ta Masculina</td><td>Zona A</td><td>Risso / Paz</td><td>Serrano / Serrano</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona A</td><td>Rovarini / Lludgar</td><td>Stochetti / Ruiz</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Masculina</td><td>Zona E</td><td>Arias / Leguizamon</td><td>Bolañez / Rodriguez</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Femenina</td><td>Zona B</td><td>Coria / Mazzoleni</td><td>Infante / Cervetto</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">8va Masculina</td><td>Zona A</td><td>Carmona / Banegas</td><td>Veliz / Mansilla</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">15:00</td><td>16:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona C</td><td>Villalba / Cortez</td><td>Jimenez / Frias</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona A</td><td>Beltran / Auat</td><td>Hernandez / Ibañez</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">8va Masculina</td><td>Zona C</td><td>Galvan / Guzman Terrera</td><td>Lopez / Diaz</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">16:15</td><td>17:30</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona C</td><td>Roldan / Gonzales</td><td>Cura / Montiel</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">17:00</td><td>18:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">7ma Masculina</td><td>Zona G</td><td>Roldan / Diaz, M</td><td>Rojas / Gutierrez</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">5ta Masculina</td><td>Zona A</td><td>Del Castillo / Curet</td><td>Garcia / Montero</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona C</td><td>Faes / Maguna</td><td>Ibañez / Langui</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Femenina</td><td>Zona D</td><td>Perez / Cortez</td><td>Castañares / Lescano</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">8va Masculina</td><td>Zona C</td><td>Bravo / Cejas</td><td>Escalada E, / Robles</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:00</td><td>19:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona A</td><td>Karam / Escobar</td><td>Herrera / Ponce P,</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">18:15</td><td>19:30</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">7ma Masculina</td><td>Zona A</td><td>Martinez / Zanoni</td><td>Vidal / Chavez</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">7ma Femenina</td><td>Zona C</td><td>Orieta / Tobar</td><td>Abalos / DeMarchi</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona B</td><td>Busso / Romero</td><td>Soria / Caceres</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona C</td><td>Cajal / Ganin</td><td>Valdez / Silvetti</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona C</td><td>Campos / Ruiz</td><td>Molina / Soler</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">19:15</td><td>20:30</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona D</td><td>Mussi / Suarez</td><td>Kusmus / Aguero</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">19:30</td><td>20:45</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Suma 6 Masculina</td><td>Zona A</td><td>Celis / Mancuello</td><td>Montenegro / Cavallero</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">7ma Femenina</td><td>Zona D</td><td>Alegre / Rafael</td><td>Brizuela / Gallardo</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">8va Femenina</td><td>Zona B</td><td>Martinez / Romero</td><td>Bertinat / Arias</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona B</td><td>Llugdar / Darddat</td><td>Barbero / Infante</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona C</td><td>Galeano / Castaño</td><td>Guzman / Ponce A,</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">20:30</td><td>21:45</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">Suma 11 Femenina</td><td>Zona D</td><td>Lorenzo / Leguizamon</td><td>Mansilla / Lorenzo</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:00</td><td>22:15</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Iniciadas Femenino</td><td>Zona B</td><td>Lescano / Gutierrez</td><td>Veron / Veron</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:45</td><td>23:00</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">6ta Masculina</td><td>Zona F</td><td>Corbalan / Diaz</td><td>Carrizo / Rodriguez</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:45</td><td>23:00</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona D</td><td>Omill / Cisneros</td><td>Olivera / Aranda</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:45</td><td>23:00</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona C</td><td>Rodriguez / Goitea</td><td>Trullenque / Ledesma</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">21:45</td><td>23:00</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Suma 6 Masculina</td><td>Zona B</td><td>Lopez / Solivellas</td><td>Santillan / Salvatierra</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">22:00</td><td>23:15</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">7ma Femenina</td><td>Zona B</td><td>Castillo / Aguila</td><td>Gola / Nebro</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">22:15</td><td>23:30</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona F</td><td>Ferrando / Jimenez</td><td>Ruiz F, / Schiava</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">23:00</td><td>00:15</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">6ta Masculina</td><td>Zona F</td><td>Ledesma / Ledesma</td><td>Gonzales / Orona</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">23:00</td><td>00:15</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">6ta Masculina</td><td>Zona F</td><td>Raineri / Olivera</td><td>Ramirez / Mancuello</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">23:00</td><td>00:15</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">7ma Femenina</td><td>Zona C</td><td>Rojas / Butiler</td><td>Rossi / Rodini</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">23:00</td><td>00:15</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">7ma Masculina</td><td>Zona G</td><td>Costa / Saavedra</td><td>Lucca / Ferrou</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">23:15</td><td>00:30</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">7ma Masculina</td><td>Zona H</td><td>Vizcarra / Bernasconi</td><td>Burgos / Gomez</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">23:30</td><td>00:45</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">Suma 6 Masculina</td><td>Zona B</td><td>Quadreli / Castro</td><td>Bolomo / Bolomo</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">00:15</td><td>01:30</td><td><span class="badge-cancha">Cancha 1</span></td><td class="badge-cat">7ma Masculina</td><td>Zona B</td><td>Barrionuevo / Peralta</td><td>Cura / Lopez</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">00:15</td><td>01:30</td><td><span class="badge-cancha">Cancha 2</span></td><td class="badge-cat">7ma Masculina</td><td>Zona E</td><td>Paoletti / Ruiz</td><td>Gonzales / Zanni</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">00:15</td><td>01:30</td><td><span class="badge-cancha">Cancha 3</span></td><td class="badge-cat">8va Masculina</td><td>Zona F</td><td>Montenegro T, / Galvan</td><td>Benac / Coria A,</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">00:15</td><td>01:30</td><td><span class="badge-cancha">Cancha 5</span></td><td class="badge-cat">Iniciados Masculino</td><td>Zona A</td><td>Santillan / Santillan</td><td>Chara / Barquin</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">00:30</td><td>01:45</td><td><span class="badge-cancha">Cancha 6</span></td><td class="badge-cat">7ma Masculina</td><td>Zona F</td><td>Ponti / Falcon</td><td>Carrillo / Urrere</td></tr>
+              <tr><td>Sábado</td><td>07/11/2026</td><td class="hora-col">00:45</td><td>02:00</td><td><span class="badge-cancha">Cancha 4</span></td><td class="badge-cat">8va Masculina</td><td>Zona F</td><td>Godoy / Torres</td><td>Almada / Cervera</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- FIN SECCIÓN TABLA DE CRONOGRAMA -->
+
+    </div>
+  </main>
+</body>
+</html>
