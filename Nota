@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1b2d">
+  <title>Duelo de hermanas: Lorenzo vs. Lorenzo | Prensa Liga de Royal</title>
+  <link rel="icon" type="image/png" href="favicon-royal.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500;1,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0c1b2d;
+      --blue: #173b63;
+      --blue2: #2d5686;
+      --orange: #f58220;
+      --orange2: #ffad55;
+      --ink: #172231;
+      --muted: #5e6b7a;
+      --paper: #fffdf9;
+      --border: #e5e0d8;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--ink);
+      background: #09182a;
+      line-height: 1.7;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: url('fondo-royal.png') center/cover no-repeat;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(135deg, rgba(4, 13, 25, .82), rgba(5, 16, 29, .68));
+    }
+
+    a {
+      color: inherit;
+    }
+
+    /* BARRA SUPERIOR INSTITUCIONAL */
+    .topbar {
+      background: rgba(8, 20, 35, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #ffffff20;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .topbar-inner {
+      max-width: 1060px;
+      margin: auto;
+      padding: 13px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 900;
+      letter-spacing: .02em;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+    }
+
+    .brand span {
+      display: block;
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+
+    .brand small {
+      display: block;
+      color: #ffb36b;
+      font-size: .65rem;
+      letter-spacing: .19em;
+      margin-top: 5px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #e5edf7;
+      text-decoration: none;
+      border: 1px solid #ffffff4d;
+      padding: 10px 14px;
+      border-radius: 5px;
+      font-size: .82rem;
+      font-weight: 800;
+      transition: all .2s ease;
+    }
+
+    .back-link:hover {
+      background: #ffffff16;
+      color: #fff;
+      border-color: var(--orange);
+    }
+
+    /* CONTENEDOR DE DIARIO / EDITORIAL */
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 34px 20px 64px;
+    }
+
+    .newspaper-sheet {
+      background: rgba(255, 253, 249, .98);
+      border: 1px solid #ffffffa8;
+      border-radius: 8px;
+      box-shadow: 0 24px 60px rgba(4, 12, 24, .55);
+      overflow: hidden;
+    }
+
+    /* CABECERA DE DIARIO (MASTHEAD) */
+    .newspaper-masthead {
+      background: linear-gradient(115deg, rgba(24, 61, 101, .98), rgba(9, 25, 44, .98));
+      border-bottom: 4px solid var(--orange);
+      padding: 16px 36px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: #fff;
+    }
+
+    .masthead-section {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .75rem;
+      font-weight: 900;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--orange2);
+    }
+
+    .masthead-badge {
+      background: var(--orange);
+      color: var(--navy);
+      padding: 4px 10px;
+      border-radius: 3px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
+    .masthead-meta {
+      font-size: .78rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      letter-spacing: .04em;
+    }
+
+    /* CONTENIDO DEL ARTÍCULO */
+    .article-container {
+      padding: clamp(24px, 5vw, 52px);
+    }
+
+    /* TÍTULO Y ENCABEZADO (BAJADA) */
+    .article-header {
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 26px;
+      margin-bottom: 28px;
+    }
+
+    .kicker {
+      display: inline-block;
+      font-size: .74rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #b85d19;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .article-title {
+      font-size: clamp(1.85rem, 3.8vw, 2.85rem);
+      font-weight: 900;
+      line-height: 1.12;
+      letter-spacing: -.03em;
+      color: var(--navy);
+      margin: 0 0 18px 0;
+    }
+
+    .article-lead {
+      font-size: clamp(1.05rem, 1.8vw, 1.24rem);
+      font-weight: 600;
+      line-height: 1.55;
+      color: #334155;
+      margin: 0;
+      padding-left: 16px;
+      border-left: 4px solid var(--orange);
+    }
+
+    /* BARRA DE FIRMA Y DATOS DEL ENCUENTRO */
+    .byline-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 22px;
+      padding-top: 16px;
+      border-top: 1px solid #f1ede6;
+      font-size: .82rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .byline-author strong {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    .match-pill {
+      background: #eef2f6;
+      color: var(--blue);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: .78rem;
+      letter-spacing: .03em;
+    }
+
+    /* IMAGEN PERIODÍSTICA Y EPÍGRAFE */
+    .article-figure {
+      margin: 0 0 32px 0;
+      background: #0c1b2d;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 28px rgba(12, 27, 45, .1);
+    }
+
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: linear-gradient(135deg, #0c1b2d 0%, #173b63 60%, #2d5686 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Diseño visual de respaldo por si aún no se carga la foto real */
+    .image-placeholder-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      text-align: center;
+      background: radial-gradient(circle at center, rgba(245, 130, 32, .15) 0%, rgba(12, 27, 45, .85) 100%);
+      color: #fff;
+      pointer-events: none;
+    }
+
+    .vs-graphic {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 12px;
+    }
+
+    .vs-team {
+      font-size: clamp(1rem, 2.2vw, 1.4rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+
+    .vs-team span {
+      display: block;
+      font-size: .75em;
+      color: var(--orange2);
+      font-weight: 700;
+    }
+
+    .vs-circle {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: var(--navy);
+      font-weight: 900;
+      font-size: .95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(245, 130, 32, .5);
+    }
+
+    .article-figcaption {
+      background: #f8fafc;
+      padding: 13px 20px;
+      font-size: .84rem;
+      line-height: 1.5;
+      color: var(--muted);
+      border-top: 3px solid var(--orange);
+      font-weight: 600;
+    }
+
+    .article-figcaption strong {
+      color: var(--navy);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      margin-right: 6px;
+    }
+
+    /* FICHA DEL RESULTADO (SCOREBOARD) */
+    .scoreboard-box {
+      background: var(--navy);
+      color: #fff;
+      border-radius: 6px;
+      padding: 18px 24px;
+      margin: 0 0 32px 0;
+      border-left: 6px solid var(--orange);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: 0 10px 24px rgba(12, 27, 45, .14);
+    }
+
+    .scoreboard-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--orange2);
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+
+    .scoreboard-teams {
+      font-size: 1.02rem;
+      font-weight: 800;
+    }
+
+    .scoreboard-sets {
+      display: flex;
+      gap: 8px;
+    }
+
+    .set-pill {
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .2);
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-weight: 900;
+      font-size: .95rem;
+      letter-spacing: .05em;
+    }
+
+    .set-pill.win {
+      background: var(--orange);
+      color: var(--navy);
+      border-color: var(--orange);
+    }
+
+    /* CUERPO DE LA NOTA (DESARROLLO) */
+    .article-body {
+      font-size: 1.04rem;
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    .article-body p {
+      margin: 0 0 20px 0;
+    }
+
+    /* Letra capitular estilo diario en el primer párrafo */
+    .article-body > p:first-of-type::first-letter {
+      float: left;
+      font-size: 3.4rem;
+      line-height: 0.85;
+      padding-top: 4px;
+      padding-right: 12px;
+      padding-bottom: 4px;
+      font-weight: 900;
+      color: var(--orange);
+    }
+
+    .article-body strong {
+      color: var(--navy);
+      font-weight: 800;
+    }
+
+    /* SUBTÍTULOS INTERNOS */
+    .article-subheading {
+      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+      font-weight: 900;
+      color: var(--navy);
+      letter-spacing: -.02em;
+      margin: 36px 0 16px 0;
+      padding: 8px 0 8px 14px;
+      border-left: 5px solid var(--orange);
+      background: linear-gradient(90deg, rgba(245, 130, 32, .08), transparent);
+    }
+
+    /* PIE DE NOTA */
+    .article-footer {
+      margin-top: 38px;
+      padding-top: 22px;
+      border-top: 2px solid var(--border);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: #f1ede6;
+      color: var(--navy);
+      padding: 5px 11px;
+      border-radius: 3px;
+      font-weight: 800;
+      font-size: .74rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    @media (max-width: 620px) {
+      .topbar-inner { padding: 10px 15px; }
+      .brand img { width: 43px; height: 43px; }
+      .brand span { font-size: .84rem; }
+      .brand small { font-size: .56rem; }
+      .back-link { font-size: 0; padding: 11px; }
+      .back-link::after { content: "Volver"; font-size: .78rem; }
+      .page { padding: 18px 12px 40px; }
+      .newspaper-masthead { padding: 14px 20px; }
+      .article-container { padding: 22px 18px; }
+      .scoreboard-box { flex-direction: column; align-items: flex-start; }
+      .vs-graphic { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE NAVEG -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="logo-royal.png" alt="Royal Star’s Club">
+        <span>ROYAL STAR’S CLUB<small>LIGA DE PÁDEL</small></span>
+      </a>
+      <a class="back-link" href="index.html">← Volver al inicio</a>
+    </div>
+  </header>
+
+  <main class="page">
+    <article class="newspaper-sheet">
+
+      <!-- CABECERA ESTILO DIARIO DEPORTIVO -->
+      <div class="newspaper-masthead">
+        <div class="masthead-section">
+          <span class="masthead-badge">CRÓNICA OFICIAL</span>
+          <span>EL DIARIO DE LA LIGA · FECHA 1</span>
+        </div>
+        <div class="masthead-meta">
+          Sábado 7 de Noviembre, 2026 · Royal
+        </div>
+      </div>
+
+      <div class="article-container">
+
+        <!-- TÍTULO Y ENCABEZADO (BAJADA) -->
+        <header class="article-header">
+          <span class="kicker">Categoría Damas Suma 11 · Zona D</span>
+          <h1 class="article-title">Duelo de hermanas: Lorenzo vs. Lorenzo, uno de los encuentros más especiales de la primera jornada</h1>
+          <p class="article-lead">
+            La primera fecha de la Liga Royal tuvo un enfrentamiento particular en la categoría Damas Suma 11: Delfina y Martina Lorenzo se encontraron frente a frente en un partido que combinó competencia, emoción y un vínculo familiar que trascendió la cancha.
+          </p>
+
+          <div class="byline-bar">
+            <div class="byline-author">Por <strong>Redacción por Joaquín L. Gómez</strong> · Cobertura Especial</div>
+            <div class="match-pill">Cancha 6 · Damas Suma 11</div>
+          </div>
+        </header>
+
+        <!-- IMAGEN Y EPÍGRAFE -->
+        <figure class="article-figure">
+          <div class="image-wrapper">
+            <!-- Reemplazar 'duelo-hermanas-lorenzo.jpg' por el nombre de la foto del partido -->
+            <img src="duelo-hermanas-lorenzo.jpg" alt="Duelo de hermanas: Delfina y Martina Lorenzo en la Liga Royal" onerror="this.style.opacity='0'">
+            <div class="image-placeholder-overlay">
+              <div class="vs-graphic">
+                <div class="vs-team">M. Lorenzo / S. Mansilla<span>Drive &amp; Revés</span></div>
+                <div class="vs-circle">VS</div>
+                <div class="vs-team">D. Lorenzo / R. Leguizamón<span>Revés &amp; Drive</span></div>
+              </div>
+              <small style="color:#cbd5e1;font-weight:600;letter-spacing:.08em;text-transform:uppercase;">Aqui va su foto jeje (duelo-hermanas-lorenzo.jpg)</small>
+            </div>
+          </div>
+          <figcaption class="article-figcaption">
+            <strong>FOTO:</strong> Postal de una noche inolvidable en Royal. Las hermanas Delfina Lorenzo (junto a Rocío Leguizamón) y Martina Lorenzo (en dupla con Sofía Mansilla) protagonizaron un cruce vibrante y cargado de emoción por la primera fecha de Damas Suma 11.
+          </figcaption>
+        </figure>
+
+        <!-- MARCADOR DESTACADO -->
+        <div class="scoreboard-box">
+          <div>
+            <div class="scoreboard-label">Resultado Final · 3 Sets</div>
+            <div class="scoreboard-teams">Martina Lorenzo / Sofía Mansilla vencieron a Delfina Lorenzo / Rocío Leguizamón</div>
+          </div>
+          <div class="scoreboard-sets">
+            <span class="set-pill win">6-3</span>
+            <span class="set-pill">5-7</span>
+            <span class="set-pill win">6-3</span>
+          </div>
+        </div>
+
+        <!-- DESARROLLO DE LA NOTA -->
+        <div class="article-body">
+          <p>
+            El pasado 7 de noviembre se disputó la primera jornada de la Liga Royal en las instalaciones de The Royal Club. Entre los distintos encuentros que marcaron el inicio de la competencia, uno de los más destacados tuvo como protagonistas a las hermanas <strong>Delfina y Martina Lorenzo</strong>, quienes se enfrentaron en la categoría Damas Suma 11.
+          </p>
+
+          <p>
+            De un lado de la red, <strong>Delfina Lorenzo</strong>, jugando por el revés, formó pareja con <strong>Rocío Leguizamón</strong>, encargada de ocupar el drive. Del otro lado, su hermana <strong>Martina Lorenzo</strong>, jugadora zurda que se desempeña en el drive, compartió equipo con <strong>Sofía Mansilla</strong>, quien ocupó el revés.
+          </p>
+
+          <p>
+            El encuentro comenzó con Martina Lorenzo y Sofía Mansilla imponiendo condiciones. La dupla consiguió llevarse el primer parcial por <strong>6-3</strong>, tomando la iniciativa en un partido que prometía grandes emociones.
+          </p>
+
+          <p>
+            Sin embargo, el segundo set presentó un desarrollo diferente. Delfina Lorenzo y su compañera comenzaron mejor, logrando tomar ventaja en los primeros juegos. El encuentro tuvo entonces un momento de preocupación cuando Sofía Mansilla recibió un impacto en su ojo izquierdo durante una acción propia del juego. La situación obligó a interrumpir momentáneamente el partido para permitir que la jugadora recibiera atención y pudiera recuperarse antes de continuar.
+          </p>
+
+          <p>
+            Tras algunos minutos de interrupción, el encuentro se reanudó y la dupla de Delfina Lorenzo y Rocío Leguizamón logró cerrar el segundo parcial a su favor por <strong>7-5</strong> (5-7 en el marcador global), llevando la definición a un tercer set.
+          </p>
+
+          <p>
+            Mientras tanto, fuera de la cancha se vivía un clima de expectativa. Los espectadores seguían atentamente cada punto, conscientes de que no se trataba de un enfrentamiento más. La rivalidad deportiva entre ambas parejas se mezclaba con la particularidad de ver a dos hermanas enfrentadas en una misma competencia.
+          </p>
+
+          <p>
+            El tercer parcial mantuvo la intensidad y la paridad que habían caracterizado al encuentro. Los intercambios fueron disputados y ninguna de las dos parejas logró despegarse con facilidad. Finalmente, Martina Lorenzo y Sofía Mansilla consiguieron recuperar el control del partido y quedarse con el set definitivo por <strong>6-3</strong>, sellando así una victoria trabajada por <strong>6-3, 5-7 y 6-3</strong>.
+          </p>
+
+          <h2 class="article-subheading">Una previa marcada por la emoción</h2>
+
+          <p>
+            Antes del encuentro, Martina Lorenzo había compartido sus sensaciones ante la posibilidad de enfrentarse a su hermana. Reconoció que jugar contra Delfina siempre representa una dificultad especial: además de tratarse de un partido exigente desde lo deportivo, el vínculo familiar y la conexión entre ambas hacen que la experiencia tenga una carga emocional diferente.
+          </p>
+
+          <p>
+            Consultada también sobre sus candidatas para quedarse con el torneo, Martina señaló a <strong>Lucía Argañaraz y Maru Jiménez</strong>, anticipando su confianza en esa dupla.
+          </p>
+
+          <p>
+            El enfrentamiento entre las hermanas Lorenzo fue, sin dudas, uno de los momentos particulares de esta primera jornada. Una muestra de que la Liga Royal no solo propone competencia y buenos partidos, sino también historias personales que enriquecen cada fecha.
+          </p>
+
+          <p>
+            La primera jornada dejó numerosos encuentros destacados y grandes expectativas para lo que viene. La próxima semana, la Liga Royal volverá a reunir a sus protagonistas con nuevos cruces y desafíos que prometen mantener el nivel de competencia y espectáculo.
+          </p>
+        </div>
+
+        <!-- PIE DE LA NOTA -->
+        <footer class="article-footer">
+          <div class="tag-list">
+            <span class="tag">Liga Royal</span>
+            <span class="tag">Damas Suma 11</span>
+            <span class="tag">Fecha 1</span>
+            <span class="tag">Royal Star’s Club</span>
+          </div>
+          <div>Royal Star’s Club · Prensa y Difusión</div>
+        </footer>
+
+      </div>
+    </article>
+  </main>
+
+</body>
+</html>
