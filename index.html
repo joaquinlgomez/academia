@@ -1,341 +1,136 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101a2a">
-  <meta name="description" content="Royal Star’s Club: pádel, formación, equipo y competencia.">
-  <title>Royal Star’s Club | Pádel, equipo y formación</title>
-  <link rel="icon" type="image/png" href="favicon-royal.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-  <style>
-    :root{--navy:#101a2a;--navy-2:#172740;--gold:#f6a34a;--cream:#fff8ed;--ink:#1b2430;--muted:#657082;--green:#25d366}
-    *{box-sizing:border-box;scroll-behavior:smooth;scroll-padding-top:90px}
-    body{margin:0;color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:#e9dfcd;position:relative;isolation:isolate}
-    /* Nuevo fondo panorámico de Royal Star’s Club. */
-    body::before{content:"";position:fixed;inset:0;z-index:-2;background-image:linear-gradient(135deg,rgba(5,14,26,.28),rgba(5,14,26,.16)),url('fondo-royal.png');background-position:center;background-size:cover;background-repeat:no-repeat;filter:saturate(1.02)}
-    body::after{content:"";position:fixed;inset:0;z-index:-1;background:rgba(5,13,24,.16);pointer-events:none}
-    .site-nav{background:rgba(16,26,42,.96);backdrop-filter:blur(14px);box-shadow:0 8px 28px #101a2a26;border-bottom:1px solid #ffffff18}
-    .navbar{min-height:78px}
-    .brand-mark{width:56px;height:56px;display:inline-grid;place-items:center;flex:0 0 56px;border-radius:14px;background:transparent;box-shadow:none;overflow:hidden}.brand-mark img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 9px #0007)}
-    .brand-name{color:#fff;font-size:1.04rem;line-height:1.12;font-weight:800;letter-spacing:.025em}
-    .brand-name small{display:block;color:var(--gold);font-size:.64rem;letter-spacing:.2em;margin-top:4px}
-    .navbar .nav-link{color:#e9edf3;font-weight:650;font-size:.88rem;padding:.7rem .62rem!important;border-radius:9px;transition:color .2s,background .2s}
-    .navbar .nav-link:hover,.navbar .nav-link:focus{color:var(--gold);background:#ffffff0c}
-    .navbar-toggler{border-color:#ffffff55}.navbar-toggler:focus{box-shadow:0 0 0 .2rem #f6a34a55}.navbar-toggler-icon{filter:brightness(0) invert(1)}
-    .btn-royal{background:var(--gold);border:1px solid var(--gold);color:var(--navy);font-weight:800;border-radius:999px;padding:.78rem 1.25rem;box-shadow:0 8px 22px #f6a34a30;transition:transform .2s,box-shadow .2s}
-    .btn-royal:hover{background:#ffb765;border-color:#ffb765;color:var(--navy);transform:translateY(-2px);box-shadow:0 12px 27px #f6a34a45}
-    .btn-ghost{border:1px solid #ffffff78;color:#fff;border-radius:999px;padding:.78rem 1.25rem;font-weight:700}.btn-ghost:hover{background:#fff;color:var(--navy)}
-    .hero{min-height:calc(100svh - 78px);display:grid;align-items:center;padding:6rem 0 5.5rem;color:#fff;position:relative;overflow:hidden;background:linear-gradient(100deg,rgba(7,17,31,.66),rgba(7,17,31,.43) 55%,rgba(7,17,31,.22))}
-    .hero::after{content:"ROYAL";position:absolute;right:-.03em;bottom:-.23em;font-size:clamp(9rem,25vw,25rem);font-weight:950;letter-spacing:-.09em;color:#ffffff07;line-height:1;pointer-events:none}
-    .eyebrow{display:inline-flex;align-items:center;gap:.6rem;color:var(--gold);font-size:.75rem;text-transform:uppercase;letter-spacing:.22em;font-weight:850}
-    .eyebrow::before{content:"";width:28px;height:2px;background:var(--gold)}
-    .hero h1{font-size:clamp(2.65rem,6vw,5.35rem);line-height:.99;letter-spacing:-.055em;font-weight:900;max-width:850px;margin:1.2rem 0}
-    .hero h1 span{color:var(--gold)}.hero-lead{font-size:clamp(1.05rem,1.8vw,1.24rem);line-height:1.8;color:#e1e6ed;max-width:640px}
-    .hero-tag{display:inline-flex;align-items:center;gap:.65rem;margin-top:2rem;padding:.75rem 1rem;border:1px solid #ffffff30;border-radius:14px;background:#ffffff0d;color:#f3f5f7;font-size:.9rem}
-    .hero-tag i{color:var(--gold)}
-    .hero-side{border:1px solid #ffffff28;border-radius:28px;padding:1.5rem;background:linear-gradient(145deg,#ffffff1c,#ffffff06);backdrop-filter:blur(12px);max-width:360px;margin-left:auto;box-shadow:0 25px 70px #0003}
-    .hero-side .big-number{font-size:3.4rem;font-weight:900;letter-spacing:-.06em;color:var(--gold);line-height:1}.hero-side p{color:#e5e9ee}
-    .section-wrap{padding:5.5rem 0;position:relative}
-    .section-panel{background:rgba(255,250,242,.93);border:1px solid #ffffffb5;border-radius:28px;padding:clamp(1.3rem,4vw,3.2rem);box-shadow:0 18px 60px #101a2a18}
-    .section-kicker{color:#ad6521;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;font-weight:850}
-    .section-title{color:var(--navy);font-weight:900;letter-spacing:-.045em;font-size:clamp(2rem,4.2vw,3.2rem);margin:.55rem 0 1rem}
-    .section-intro{max-width:690px;color:#596477;line-height:1.8}
-    .title-rule{height:4px;width:64px;border-radius:3px;background:var(--gold);margin:1rem 0 2rem}
-    .value-tile{height:100%;padding:1.2rem;border-radius:18px;background:#f4eadb;border:1px solid #eadbc6}
-    .value-tile i{font-size:1.25rem;color:#ae641d;margin-bottom:.8rem}.value-tile h3{font-size:1.08rem;font-weight:850;color:var(--navy)}.value-tile p{margin:0;color:#586273;line-height:1.7;font-size:.94rem}
-    .service-card,.news-card{height:100%;background:#fffdf9;border:1px solid #eadfce;border-radius:22px;overflow:hidden;box-shadow:0 9px 26px #2532460a;transition:transform .22s,box-shadow .22s}
-    .service-card:hover,.news-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px #25324617}
-    .card-top{height:9px;background:linear-gradient(90deg,var(--gold),#ffd8a6)}.service-icon{width:56px;height:56px;display:grid;place-items:center;background:#fff0dc;color:#9a591d;border-radius:17px;font-size:1.4rem;margin-bottom:1.1rem}
-    .service-body{padding:1.55rem}.service-body h3,.news-body h3{font-size:1.2rem;font-weight:850;color:var(--navy)}.service-body p,.news-body p{color:#626d7c;line-height:1.7}.text-link{font-weight:800;color:#995819;text-decoration:none}.text-link:hover{color:#c27523}
-    .news-date{display:inline-flex;padding:.38rem .65rem;border-radius:999px;background:#fff0dc;color:#925318;font-size:.74rem;font-weight:850;letter-spacing:.04em;margin-bottom:.95rem}.news-body{padding:1.5rem}
-    .table-royal{--bs-table-bg:transparent;--bs-table-striped-bg:#f5ecdf;--bs-table-color:var(--ink);vertical-align:middle;margin-bottom:0}.table-royal thead th{background:var(--navy);color:#fff;border:0;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;padding:1rem}.table-royal tbody td{padding:1rem .85rem;border-color:#e8dece}.time-pill{display:inline-block;background:#e9f5e9;color:#25683b;border-radius:999px;padding:.3rem .65rem;font-size:.8rem;font-weight:800}
-    .calendar-shell{border:1px solid #e9decb;border-radius:22px;overflow:hidden;background:#fffdf9}.calendar-head{background:var(--navy);color:#fff;padding:1.2rem 1.3rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}.calendar-head h3{font-weight:850;margin:0;font-size:1.15rem}.calendar-nav{display:flex;gap:.5rem}.calendar-nav button{width:38px;height:38px;border-radius:12px;border:1px solid #ffffff50;background:#ffffff14;color:#fff}.calendar-nav button:hover{background:var(--gold);color:var(--navy)}
-    .calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));padding:.75rem;gap:.25rem}.weekday{text-align:center;font-size:.72rem;font-weight:850;color:#747d8b;padding:.55rem 0}.calendar-day{min-height:46px;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--ink);font-weight:650;position:relative}.calendar-day:hover{background:#fff0dc;border-color:#f1c68e}.calendar-day.muted{color:#bbc0c6}.calendar-day.today{border-color:var(--gold)}.calendar-day.selected{background:var(--gold);color:var(--navy);font-weight:900}.calendar-day.has-event::after{content:"";height:5px;width:5px;position:absolute;bottom:5px;left:calc(50% - 2.5px);border-radius:50%;background:#a75e1c}.calendar-day.selected.has-event::after{background:var(--navy)}
-    .event-panel{height:100%;padding:1.6rem;border-radius:20px;background:#f5ecdf;border:1px solid #e9dcc6}.event-panel .event-date{font-size:.78rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase;color:#96591d}.event-panel h3{font-weight:900;color:var(--navy);margin:.7rem 0}.event-panel p{color:#606b7a;line-height:1.7}.event-detail{display:flex;gap:.8rem;align-items:flex-start;margin-top:1rem;color:#4c5665}.event-detail i{color:#a5601c;margin-top:.2rem}
-    .accordion-item{border:1px solid #e9decd!important;background:#fffdf9!important;border-radius:14px!important;overflow:hidden;margin-bottom:.75rem}.accordion-button{background:#fffdf9;color:var(--navy);font-weight:800;padding:1.1rem 1.2rem;box-shadow:none!important}.accordion-button:not(.collapsed){background:#fff0dc;color:#7d4816}.accordion-body{color:#5c6675;line-height:1.75}
-    .contact-card{background:var(--navy);color:#fff;border-radius:24px;padding:clamp(1.5rem,4vw,2.4rem);height:100%}.contact-card h3{font-weight:850}.contact-card p{color:#d2d9e2;line-height:1.75}.contact-item{display:flex;gap:.9rem;align-items:center;margin-top:1.1rem;color:#f2f4f8}.contact-item i{color:var(--gold);font-size:1.15rem;width:24px;text-align:center}.contact-item a{color:inherit;text-decoration:none}.contact-item a:hover{color:var(--gold)}
-    .site-footer{background:var(--navy);color:#fff;padding:3rem 0 1.3rem;border-top:4px solid var(--gold)}.footer-title{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:850;margin-bottom:1.25rem}.footer-copy{color:#c6ced9;line-height:1.8;font-size:.92rem}.footer-link{color:#dce2e9;text-decoration:none;display:block;margin:.55rem 0;font-size:.92rem}.footer-link:hover{color:var(--gold)}
-     .sponsor-box{min-height:116px;border:1px solid #ffffff2a;border-radius:16px;background:#ffffff0d;display:flex;align-items:center;justify-content:center;padding:.55rem;transition:transform .2s,box-shadow .2s;overflow:hidden}.sponsor-box:hover{transform:translateY(-3px);box-shadow:0 10px 24px #0003}.sponsor-box img{display:block;width:100%;height:100px;max-height:100px;object-fit:contain}.sponsor-box-sch{background:#050505}.sponsor-box-anthos{background:#fff}.sponsor-box-anthos img{height:108px;max-height:108px}
-    .social-icon{width:43px;height:43px;border-radius:13px;display:inline-grid;place-items:center;border:1px solid #ffffff3b;color:#fff;text-decoration:none;margin-right:.5rem}.social-icon:hover{background:var(--gold);border-color:var(--gold);color:var(--navy)}
-    .float-ws{position:fixed;right:22px;bottom:22px;z-index:1040;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-size:1.9rem;text-decoration:none;box-shadow:0 8px 24px #07100f40;transition:transform .2s}.float-ws:hover{transform:translateY(-4px) scale(1.04);color:white}
-    .to-top{position:fixed;right:29px;bottom:91px;z-index:1039;width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;text-decoration:none;box-shadow:0 5px 15px #0002}.to-top:hover{background:var(--gold);color:var(--navy)}
-    @media(max-width:991.98px){.navbar-collapse{padding:1rem 0}.navbar-nav{gap:.2rem}.navbar .nav-link{padding:.7rem .75rem!important}.hero{min-height:unset;padding:6rem 0}.hero-side{margin:2.5rem 0 0;max-width:none}.section-wrap{padding:3.5rem 0}.hero::after{font-size:35vw}}
-    @media(max-width:575.98px){.brand-name{font-size:.86rem}.brand-mark{height:46px;width:46px;flex-basis:46px}.section-panel{border-radius:20px}.calendar-grid{gap:.05rem;padding:.4rem}.calendar-day{min-height:38px;font-size:.84rem;border-radius:8px}.weekday{font-size:.65rem}.calendar-head{padding:1rem}.hero h1{font-size:2.8rem}.float-ws{right:14px;bottom:14px;width:52px;height:52px}.to-top{right:20px;bottom:78px}}
-  
-    /* Blog y Liga */
-    .blog-feature{height:100%;min-height:310px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:clamp(1.5rem,4vw,2.4rem);border-radius:23px;background:linear-gradient(135deg,rgba(16,26,42,.98),rgba(31,55,82,.94));color:#fff;box-shadow:0 15px 35px #101a2a18}
-    .blog-feature::after{content:"BLOG";position:absolute;right:-.06em;top:-.2em;font-size:clamp(5rem,15vw,10rem);font-weight:950;letter-spacing:-.09em;color:#ffffff08;line-height:1;pointer-events:none}
-    .blog-feature-content{position:relative;z-index:1;max-width:580px}.blog-status{display:inline-flex;padding:.38rem .72rem;border:1px solid #f6a34a88;border-radius:999px;color:#ffd29c;font-size:.7rem;font-weight:900;letter-spacing:.14em}
-    .blog-feature-kicker{display:block;color:var(--gold);font-size:.76rem;font-weight:850;letter-spacing:.18em;text-transform:uppercase;margin:1.2rem 0 .5rem}.blog-feature h3{font-size:clamp(1.6rem,3.2vw,2.35rem);font-weight:900;letter-spacing:-.04em;line-height:1.12;max-width:520px}.blog-feature p{color:#d8e0e9;line-height:1.8;max-width:520px;margin:1rem 0 1.3rem}.blog-feature-link{color:#ffd29c;text-decoration:none;font-weight:850}.blog-feature-link:hover{color:#fff}.blog-topics{height:100%;display:grid;gap:1rem}.blog-topic{display:flex;align-items:center;gap:1rem;padding:1.2rem;border:1px solid #eadfce;border-radius:18px;background:#fffdf9;min-height:92px}.blog-topic-icon{width:48px;height:48px;flex:0 0 48px;display:grid;place-items:center;border-radius:15px;background:#fff0dc;color:#995819;font-size:1.2rem}.blog-topic h3{font-size:1rem;color:var(--navy);font-weight:850;margin:0 0 .25rem}.blog-topic p{font-size:.88rem;line-height:1.55;color:#657082;margin:0}
-    .league-hero{position:relative;overflow:hidden;padding:clamp(1.5rem,4vw,2.7rem);border-radius:24px;background:linear-gradient(120deg,#101a2a 0%,#1a304c 66%,#284968 100%);color:#fff;box-shadow:0 17px 38px #101a2a20}.league-hero::after{content:"LIGA";position:absolute;right:-.03em;bottom:-.28em;font-size:clamp(7rem,20vw,14rem);font-weight:950;letter-spacing:-.09em;line-height:1;color:#ffffff08;pointer-events:none}.league-hero-content{position:relative;z-index:1}.league-overline{display:inline-flex;align-items:center;gap:.55rem;color:#ffd29c;font-size:.76rem;font-weight:900;letter-spacing:.19em;text-transform:uppercase}.league-hero h2{font-size:clamp(2rem,4.5vw,3.45rem);font-weight:950;letter-spacing:-.055em;line-height:1.04;margin:1rem 0 .8rem}.league-hero h2 span{color:var(--gold)}.league-hero p{color:#e0e7ef;max-width:650px;line-height:1.75;margin-bottom:1.15rem}.league-location{display:inline-flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border-radius:12px;background:#ffffff13;border:1px solid #ffffff28;color:#fff;font-weight:800}.league-location i{color:var(--gold)}.league-date-stamp{position:relative;z-index:1;width:min(100%,190px);margin-left:auto;padding:1.25rem;border:1px solid #ffffff34;border-radius:20px;background:#ffffff12;text-align:center;backdrop-filter:blur(8px)}.league-date-stamp small{display:block;color:#ffd29c;font-size:.72rem;font-weight:900;letter-spacing:.17em}.league-date-stamp strong{display:block;font-size:3.3rem;font-weight:950;letter-spacing:-.07em;line-height:1.05}.league-date-stamp span{display:block;color:#e1e7ee;font-weight:750}.league-metric{height:100%;padding:1.35rem;border-radius:18px;background:#fffdf9;border:1px solid #eadfce;box-shadow:0 8px 22px #25324608}.league-metric-label{display:block;color:#8c591f;font-size:.72rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase;margin-bottom:.45rem}.league-metric strong{display:block;color:var(--navy);font-size:clamp(1.4rem,3vw,2rem);font-weight:950;letter-spacing:-.045em;line-height:1.1}.league-metric p{color:#657082;font-size:.88rem;line-height:1.55;margin:.55rem 0 0}.league-info-card{height:100%;padding:1.5rem;border:1px solid #eadfce;border-radius:20px;background:#fffdf9}.league-info-title{display:flex;align-items:center;gap:.7rem;color:var(--navy);font-size:1.18rem;font-weight:900;margin-bottom:1.25rem}.league-info-title i{color:#a5601c}.league-step{display:flex;gap:.9rem;align-items:flex-start;margin:1.05rem 0}.league-step-number{width:34px;height:34px;flex:0 0 34px;display:grid;place-items:center;border-radius:11px;background:#fff0dc;color:#925318;font-weight:950}.league-step h4{font-size:.98rem;color:var(--navy);font-weight:850;margin:0 0 .25rem}.league-step p{font-size:.9rem;color:#626d7c;line-height:1.6;margin:0}.league-payment-note{display:flex;gap:.85rem;align-items:flex-start;padding:1rem 1.1rem;margin-top:1.1rem;border-radius:15px;border:1px solid #f0d3ac;background:#fff5e8;color:#65451f;line-height:1.65;font-size:.9rem}.league-payment-note i{color:#a5601c;font-size:1.15rem;margin-top:.2rem}.league-category{padding:1.35rem;border:1px solid #eadfce;border-radius:18px;background:#f9f3e9;margin-bottom:1rem}.league-category:last-child{margin-bottom:0}.league-category h4{display:flex;align-items:center;gap:.6rem;font-size:1.02rem;color:var(--navy);font-weight:900;margin:0 0 1rem}.league-category h4 i{color:#a5601c}.category-tags{display:flex;flex-wrap:wrap;gap:.5rem}.category-tag{display:inline-flex;align-items:center;padding:.48rem .72rem;border-radius:999px;background:#fffdf9;border:1px solid #e8d9c3;color:#5a4b39;font-size:.83rem;font-weight:800}.league-cta{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1.35rem 1.5rem;margin-top:1.2rem;border-radius:18px;background:#f1e5d2;border:1px solid #e6d4ba}.league-cta h3{color:var(--navy);font-size:1.15rem;font-weight:900;margin:0 0 .25rem}.league-cta p{color:#626d7c;margin:0;font-size:.9rem;line-height:1.55}
-
-
-    /* Menú principal desplegable con botón de tres líneas en todas las pantallas */
-    .navbar{min-height:76px;flex-wrap:wrap}
-    .navbar>.container{flex-wrap:wrap}
-    .navbar-toggler{width:48px;height:44px;padding:0;display:grid;place-items:center;border:1px solid #ffffff35;border-radius:14px;background:#ffffff08;transition:background .2s,border-color .2s,transform .2s}
-    .navbar-toggler:hover{background:#ffffff16;border-color:#f6a34a88}
-    .navbar-toggler:focus{box-shadow:0 0 0 .2rem #f6a34a55}
-    .hamburger-lines{width:21px;height:16px;display:flex;flex-direction:column;justify-content:space-between}
-    .hamburger-lines span{display:block;width:100%;height:2px;border-radius:4px;background:#fff;transition:transform .22s ease,opacity .18s ease}
-    .navbar-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-    .navbar-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(2){opacity:0}
-    .navbar-toggler[aria-expanded="true"] .hamburger-lines span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-    .navbar .navbar-collapse{flex-basis:100%;width:100%;margin-top:.7rem;padding:.85rem;background:rgba(10,20,35,.98);border:1px solid #ffffff1c;border-radius:18px;box-shadow:0 16px 38px #0003;}
-    .navbar .navbar-nav{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.35rem;width:100%;margin:0!important}
-    .navbar .navbar-nav .nav-link{display:flex;align-items:center;justify-content:center;min-height:44px;padding:.65rem .75rem!important;text-align:center}
-    .navbar .navbar-nav .nav-item:last-child{display:flex;align-items:stretch}
-    .navbar .navbar-nav .nav-item:last-child .btn{display:flex;align-items:center;justify-content:center;width:100%;min-height:44px;margin:0!important}
-    @media(max-width:991.98px){.navbar .navbar-collapse{padding:.75rem}.navbar .navbar-nav{grid-template-columns:repeat(3,minmax(0,1fr))}.navbar .navbar-nav .nav-link{padding:.65rem .5rem!important}.navbar .navbar-nav .nav-item:last-child .btn{padding:.65rem .65rem}}
-    @media(max-width:575.98px){.navbar .navbar-nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:.25rem}.navbar .navbar-nav .nav-link{justify-content:flex-start;text-align:left;padding:.7rem .75rem!important}.navbar .navbar-nav .nav-item:last-child{grid-column:1/-1}.navbar .navbar-collapse{margin-top:.55rem;padding:.65rem;border-radius:15px}.navbar-toggler{width:44px;height:42px}}
-
-
-    .league-promo-shell{position:relative;z-index:5;padding:16px 0 0;margin-bottom:0}
-    .league-promo{position:relative;isolation:isolate;display:grid;grid-template-columns:142px minmax(0,1fr) auto;align-items:center;gap:1.4rem;min-height:150px;padding:1.35rem 2rem;overflow:hidden;text-decoration:none;color:#fff;background:linear-gradient(112deg,#2c5688 0%,#1d416d 48%,#10243d 100%);box-shadow:0 14px 32px #06142648;border:1px solid #ffffff20;transition:transform .22s,box-shadow .22s}
-    .league-promo::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.19;background-image:radial-gradient(#ffffff 1px,transparent 1px);background-size:14px 14px;mask-image:linear-gradient(90deg,transparent 0%,#000 55%,#000 100%)}
-    .league-promo::after{content:"ROYAL";position:absolute;right:13%;bottom:-.55em;z-index:-1;color:#ffffff0b;font-size:clamp(5rem,13vw,10rem);font-weight:1000;letter-spacing:-.08em;line-height:1}
-    .league-promo:hover{transform:translateY(-3px);box-shadow:0 20px 38px #0614265c;color:#fff}
-    .league-promo-emblem{display:grid;place-items:center;width:116px;height:116px;border-radius:50%;background:#ffffff12;border:1px solid #ffffff42;backdrop-filter:blur(5px)}
-    .league-promo-emblem img{width:90px;height:90px;object-fit:contain;filter:drop-shadow(0 5px 10px #0007)}
-    .league-promo-copy small{display:block;color:#ffbd74;text-transform:uppercase;font-size:.72rem;letter-spacing:.2em;font-weight:900;margin-bottom:.35rem}
-    .league-promo-copy h2{margin:0;color:#fff;font-size:clamp(2rem,4.5vw,3.65rem);font-weight:1000;line-height:.98;letter-spacing:-.055em;text-transform:uppercase}
-    .league-promo-copy p{margin:.55rem 0 0;color:#e4edf8;font-size:.94rem;line-height:1.5}
-    .league-promo-action{min-width:160px;text-align:center;padding:.9rem 1rem;border:1px solid #ffffff6b;background:#ffffff17;border-radius:5px;color:#fff;font-weight:900;letter-spacing:.03em}
-    .league-promo-action strong{display:block;font-size:1.2rem;color:#ffbd74}.league-promo-action span{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;margin-top:.2rem}
-    .league-promo:focus-visible{outline:4px solid #ffb45f;outline-offset:4px}
-    @media(max-width:767.98px){.league-promo-shell{padding:12px 0 0}.league-promo{grid-template-columns:76px minmax(0,1fr);gap:.9rem;padding:1rem;min-height:120px}.league-promo-emblem{width:72px;height:72px}.league-promo-emblem img{width:62px;height:62px}.league-promo-copy h2{font-size:clamp(1.65rem,7vw,2.5rem)}.league-promo-copy p{font-size:.82rem}.league-promo-action{grid-column:1/-1;min-width:0;padding:.55rem .8rem}.league-promo-action strong,.league-promo-action span{display:inline;margin:0 .25rem}}
-    @media(max-width:420px){.league-promo-copy small{font-size:.62rem;letter-spacing:.12em}.league-promo-copy p{max-width:250px}}
-  </style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#101a2a" name="theme-color"/>
+<meta content="Royal Star&rsquo;s Club: p&aacute;del, formaci&oacute;n, equipo y competencia." name="description"/>
+<title>Royal Star&rsquo;s Club | P&aacute;del, equipo y formaci&oacute;n</title>
+<link href="assets/img/favicon-royal.png" rel="icon" type="image/png"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"/>
+<link href="assets/css/main.css" rel="stylesheet"/>
 </head>
 <body id="top">
-  <nav class="navbar site-nav sticky-top" aria-label="Navegación principal">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2 me-3" href="#inicio" aria-label="Royal Star’s Club, inicio">
-        <span class="brand-mark"><img src="logo-royal.png" alt="Escudo Royal Star’s Club"></span><span class="brand-name">ROYAL STAR’S CLUB<small>PÁDEL · EQUIPO · FORMACIÓN</small></span>
-      </a>
-      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#royalNav" aria-controls="royalNav" aria-expanded="false" aria-label="Abrir menú"><span class="hamburger-lines" aria-hidden="true"><span></span><span></span><span></span></span></button>
-      <div class="collapse navbar-collapse" id="royalNav">
-        <ul class="navbar-nav align-items-stretch">
-          <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
-          <li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
-          <li class="nav-item"><a class="nav-link" href="#novedades">Novedades</a></li>
-          <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-          <li class="nav-item"><a class="nav-link" href="liga.html" target="_blank" rel="noopener">Liga</a></li>
-          <li class="nav-item"><a class="nav-link" href="#horarios">Horarios</a></li>
-          <li class="nav-item"><a class="nav-link" href="#calendario">Calendario</a></li>
-          <li class="nav-item"><a class="nav-link" href="#preguntas">Preguntas frecuentes</a></li>
-          <li class="nav-item ms-xl-1"><a class="btn btn-royal btn-sm px-3 mt-2 mt-xl-0" href="#contacto">Contacto <i class="fa-solid fa-arrow-right ms-1"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-  <main>
-
-    <div class="league-promo-shell">
-      <div class="container">
-        <a class="league-promo" href="liga.html" target="_blank" rel="noopener" aria-label="Abrir la página especial Liga de Royal">
-          <span class="league-promo-emblem"><img src="logo-royal.png" alt="" aria-hidden="true"></span>
-          <span class="league-promo-copy"><small>Royal Star’s Club presenta</small><h2>Liga de Royal</h2><p>Conocé las categorías, el formato de competencia y cómo inscribirte.</p></span>
-          <span class="league-promo-action"><strong>06 NOV</strong><span>Ver información <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i></span></span>
-        </a>
-      </div>
-    </div>
-    <section id="inicio" class="hero">
-      <div class="container position-relative" style="z-index:1">
-        <div class="row align-items-center g-5">
-          <div class="col-lg-8">
-            <span class="eyebrow">Royal Star’s Club · Academia de pádel</span>
-            <h1>Más que un deporte.<br><span>Una forma de crecer.</span></h1>
-            <p class="hero-lead">No es solo entrenar pádel: es entrenar tu cuerpo, tu mente y tu espíritu deportivo. Un espacio para aprender, competir y disfrutar del juego en equipo.</p>
-            <div class="d-flex flex-wrap gap-3 mt-4"><a class="btn btn-royal" href="https://wa.me/543855944628?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp me-2"></i>Consultar por WhatsApp</a><a class="btn btn-ghost" href="#cursos">Conocé la academia <i class="fa-solid fa-arrow-down ms-2"></i></a></div>
-            <div class="hero-tag"><i class="fa-solid fa-bullseye"></i> Técnica, preparación y mentalidad deportiva</div>
-          </div>
-          <div class="col-lg-4 d-none d-lg-block"><div class="hero-side"><span class="eyebrow">Nuestro objetivo</span><div class="big-number mt-3">360°</div><h2 class="h4 fw-bold mt-2">Formación integral</h2><p class="mb-0">Desarrollamos el juego, la confianza y los valores que acompañan a cada jugador dentro y fuera de la pista.</p><hr class="border-light opacity-25 my-4"><div class="d-flex gap-3 align-items-center"><i class="fa-solid fa-medal fs-3" style="color:var(--gold)"></i><div><strong>Aprender · Entrenar · Superarse</strong><div class="small text-white-50">Cada práctica es una oportunidad.</div></div></div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="nosotros" class="section-wrap">
-      <div class="container"><div class="section-panel">
-        <div class="row g-5 align-items-start"><div class="col-lg-5"><span class="section-kicker">Quiénes somos</span><h2 class="section-title">Pasión por el pádel.<br>Compromiso con las personas.</h2><div class="title-rule"></div><p class="section-intro">Somos un equipo apasionado por la enseñanza, el deporte y el crecimiento personal. Acompañamos a cada jugador con propuestas adaptadas a su edad, nivel y objetivos.</p></div>
-          <div class="col-lg-7"><div class="row g-3">
-            <div class="col-sm-6"><div class="value-tile"><i class="fa-solid fa-flag-checkered"></i><h3>Nuestra misión</h3><p>Potenciar el rendimiento deportivo y el desarrollo integral de cada jugador.</p></div></div>
-            <div class="col-sm-6"><div class="value-tile"><i class="fa-solid fa-eye"></i><h3>Nuestra visión</h3><p>Ser referentes en formación, convivencia y pasión por el pádel.</p></div></div>
-            <div class="col-sm-6"><div class="value-tile"><i class="fa-solid fa-handshake-angle"></i><h3>Nuestros valores</h3><p>Respeto, disciplina, compañerismo, esfuerzo y compromiso.</p></div></div>
-            <div class="col-sm-6"><div class="value-tile"><i class="fa-solid fa-people-group"></i><h3>Un equipo</h3><p>Un ambiente de aprendizaje positivo donde cada persona tiene lugar.</p></div></div>
-          </div></div>
-        </div>
-      </div></div>
-    </section>
-
-    <section id="cursos" class="section-wrap pt-0">
-      <div class="container"><div class="section-panel">
-        <div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4"><div><span class="section-kicker">Entrená con nosotros</span><h2 class="section-title mb-0">Cursos y servicios</h2></div><p class="section-intro mb-1">Propuestas para aprender, mejorar y prepararte para nuevos desafíos.</p></div><div class="title-rule"></div>
-        <div class="row g-4">
-          <div class="col-md-6 col-xl-4"><article class="service-card"><div class="card-top"></div><div class="service-body"><div class="service-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></div><h3>Clases y entrenamientos</h3><p>Formación por categorías y niveles para infantiles, adolescentes y adultos, con trabajo técnico y táctico.</p><a class="text-link" href="#horarios">Ver horarios <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
-          <div class="col-md-6 col-xl-4"><article class="service-card"><div class="card-top"></div><div class="service-body"><div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>Preparación física</h3><p>Trabajo físico específico para mejorar la movilidad, la coordinación, la resistencia y el rendimiento.</p><a class="text-link" href="#contacto">Consultar propuesta <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
-          <div class="col-md-6 col-xl-4"><article class="service-card"><div class="card-top"></div><div class="service-body"><div class="service-icon"><i class="fa-solid fa-trophy"></i></div><h3>Torneos y competencia</h3><p>Prácticas y preparación para competir con estrategia, confianza, compañerismo y mentalidad deportiva.</p><a class="text-link" href="#calendario">Ver calendario <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
-        </div>
-      </div></div>
-    </section>
-
-    <section id="novedades" class="section-wrap pt-0">
-      <div class="container"><div class="section-panel">
-        <span class="section-kicker">Lo que pasa en Royal</span><h2 class="section-title">Novedades</h2><p class="section-intro">Noticias, actividades y anuncios, no sólo de la academia, sino del padel provincial.</p><div class="title-rule"></div>
-        <div class="row g-4">
-          <div class="col-md-6 col-xl-3"><article class="news-card"><div class="card-top"></div><div class="news-body"><span class="news-date">ACADEMIA</span><h3>Nuevos grupos de entrenamiento</h3><p>Estamos organizando los grupos por nivel y categoría para acompañar mejor el desarrollo de cada jugador.</p><a href="#contacto" class="text-link">Pedir información <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="news-card"><div class="card-top"></div><div class="news-body"><span class="news-date">PREPARACIÓN</span><h3>Entrenamiento integral</h3><p>La técnica, la toma de decisiones y el trabajo físico se combinan en una propuesta de formación completa.</p><a href="#cursos" class="text-link">Conocer servicios <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="news-card"><div class="card-top"></div><div class="news-body"><span class="news-date">COMUNIDAD</span><h3>Crecer en equipo</h3><p>Promovemos el respeto, la disciplina y el compañerismo tanto en los entrenamientos como en la competencia.</p><a href="#nosotros" class="text-link">Sobre la academia <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
-          <div class="col-md-6 col-xl-3"><article class="news-card"><div class="card-top"></div><div class="news-body"><span class="news-date">ACTIVIDADES</span><h3>Próximos encuentros</h3><p>Consultá el calendario de muestra para orientarte sobre las fechas de actividades y encuentros deportivos.</p><a href="#calendario" class="text-link">Abrir calendario <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
-        </div>
-      </div></div>
-    </section>
-
-
-    <section id="blog" class="section-wrap pt-0">
-      <div class="container"><div class="section-panel">
-        <span class="section-kicker">Ideas, experiencias y pádel</span>
-        <h2 class="section-title">Blog Royal</h2>
-        <p class="section-intro">Un espacio para compartir consejos, historias, aprendizajes y todo lo que se vive dentro y fuera de la pista.</p>
-        <div class="title-rule"></div>
-        <div class="row g-4 align-items-stretch">
-          <div class="col-lg-7">
-            <article class="blog-feature">
-              <div class="blog-feature-content">
-                <span class="blog-status">PRÓXIMAMENTE</span>
-                <span class="blog-feature-kicker">Blog Royal Club</span>
-                <h3>Historias que se viven dentro y fuera del 20x10.</h3>
-                <p>Estamos preparando este espacio para publicar novedades, consejos de entrenamiento, experiencias de competencia y noticias de nuestra comunidad.</p>
-                <a class="blog-feature-link" href="#contacto">¿Tenés una consulta? Contactanos <i class="fa-solid fa-arrow-right ms-1"></i></a>
-              </div>
-            </article>
-          </div>
-          <div class="col-lg-5">
-            <div class="blog-topics">
-              <article class="blog-topic"><span class="blog-topic-icon"><i class="fa-solid fa-bullseye"></i></span><div><h3>Técnica y entrenamiento</h3><p>Ideas para aprender, practicar y seguir mejorando.</p></div></article>
-              <article class="blog-topic"><span class="blog-topic-icon"><i class="fa-solid fa-trophy"></i></span><div><h3>Competencia</h3><p>Historias, torneos y desafíos de la comunidad Royal.</p></div></article>
-              <article class="blog-topic"><span class="blog-topic-icon"><i class="fa-solid fa-people-group"></i></span><div><h3>Comunidad</h3><p>Personas, encuentros y momentos que nos unen.</p></div></article>
-            </div>
-          </div>
-        </div>
-      </div></div>
-    </section>
-
-    
-
-    <section id="horarios" class="section-wrap pt-0">
-      <div class="container"><div class="section-panel">
-        <span class="section-kicker">Organizá tu semana</span><h2 class="section-title">Horarios</h2><p class="section-intro">La siguiente grilla, por ahora, sólo es ilustrativa. Confirmá disponibilidad y horarios actualizados por WhatsApp antes de asistir.</p><div class="title-rule"></div>
-        <div class="table-responsive rounded-4 border"><table class="table table-striped table-hover table-royal"><thead><tr><th scope="col">Actividad</th><th scope="col">Categoría</th><th scope="col">Días</th><th scope="col">Horario de ejemplo</th></tr></thead><tbody>
-          <tr><td class="fw-bold">Escuela de pádel</td><td>Infantiles</td><td>Lunes y miércoles</td><td><span class="time-pill">09:00–10:00</span></td></tr>
-          <tr><td class="fw-bold">Formación técnica</td><td>Adolescentes</td><td>Martes y jueves</td><td><span class="time-pill">17:00–18:30</span></td></tr>
-          <tr><td class="fw-bold">Entrenamiento general</td><td>Adultos</td><td>Lunes, miércoles y viernes</td><td><span class="time-pill">18:30–20:00</span></td></tr>
-          <tr><td class="fw-bold">Preparación competitiva</td><td>Por nivel</td><td>Sábados</td><td><span class="time-pill">A coordinar</span></td></tr>
-        </tbody></table></div>
-        <p class="small text-secondary mt-3 mb-0"><i class="fa-solid fa-circle-info me-1"></i>Los horarios publicados aquí son ejemplos visuales, no una confirmación de clases disponibles.</p>
-      </div></div>
-    </section>
-
-    <section id="calendario" class="section-wrap pt-0">
-      <div class="container"><div class="section-panel">
-        <span class="section-kicker">Fechas y actividades</span><h2 class="section-title">Calendario de la academia</h2><p class="section-intro">Usá las flechas para cambiar de mes y seleccioná un día para consultar la actividad prevista. Los eventos precargados son de demostración y deben sustituirse por las fechas reales de Royal Club.</p><div class="title-rule"></div>
-        <div class="row g-4 align-items-stretch"><div class="col-lg-7"><div class="calendar-shell"><div class="calendar-head"><h3 id="calendarMonth" aria-live="polite">Mes</h3><div class="calendar-nav"><button id="prevMonth" type="button" aria-label="Mes anterior"><i class="fa-solid fa-chevron-left"></i></button><button id="nextMonth" type="button" aria-label="Mes siguiente"><i class="fa-solid fa-chevron-right"></i></button></div></div><div id="calendarGrid" class="calendar-grid" aria-label="Calendario mensual"></div></div><div class="small text-secondary mt-2"><span class="d-inline-block rounded-circle me-1" style="width:7px;height:7px;background:#a75e1c"></span> Mini torneo</div></div>
-          <div class="col-lg-5"><div class="event-panel"><span class="event-date" id="selectedDateLabel">Fecha seleccionada</span><h3 id="eventTitle">Elegí una fecha</h3><p id="eventDescription">Seleccioná cualquier día del calendario para ver aquí su información.</p><div class="event-detail"><i class="fa-regular fa-clock"></i><div><strong>Horario</strong><div id="eventTime" class="small">A confirmar</div></div></div><div class="event-detail"><i class="fa-solid fa-location-dot"></i><div><strong>Lugar</strong><div id="eventPlace" class="small">Royal Star’s Club</div></div></div><a href="https://wa.me/543855944628?text=Hola,%20quiero%20consultar%20por%20el%20calendario%20de%20Royal%20Club" class="btn btn-royal mt-4" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp me-2"></i>Consultar una fecha</a></div></div>
-        </div>
-      </div></div>
-    </section>
-
-    <section id="preguntas" class="section-wrap pt-0">
-      <div class="container"><div class="section-panel">
-        <span class="section-kicker">Te ayudamos</span><h2 class="section-title">Preguntas frecuentes</h2><p class="section-intro">Respuestas rápidas para quienes quieren sumarse a la academia.</p><div class="title-rule"></div>
-        <div class="accordion" id="faqAccordion">
-          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="true" aria-controls="faq1">¿Necesito experiencia previa para empezar?</button></h3><div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">No necesariamente. Consultanos por los grupos disponibles para que podamos orientarte según tu experiencia, edad y objetivos.</div></div></div>
-          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false" aria-controls="faq2">¿Cómo consulto los horarios y la disponibilidad?</button></h3><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Podés revisar la sección Horarios y escribirnos por WhatsApp para confirmar los turnos vigentes y la disponibilidad de cada grupo.</div></div></div>
-          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false" aria-controls="faq3">¿La academia ofrece preparación para torneos?</button></h3><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">La propuesta contempla entrenamiento técnico, táctico y preparación competitiva. Consultá qué actividades están programadas en este momento.</div></div></div>
-          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false" aria-controls="faq4">¿Dónde puedo ver las próximas actividades?</button></h3><div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">En el Calendario podés navegar por los meses y seleccionar una fecha. Por ahora, sus eventos son de muestra hasta cargar el cronograma confirmado.</div></div></div>
-          <div class="accordion-item"><h3 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false" aria-controls="faq5">¿Cómo me inscribo o pido más información?</button></h3><div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">Escribinos por WhatsApp o contactanos desde los enlaces de esta página para que podamos orientarte sobre los pasos a seguir.</div></div></div>
-        </div>
-      </div></div>
-    </section>
-
-    <section id="contacto" class="section-wrap pt-0">
-      <div class="container"><div class="row g-4"><div class="col-lg-7"><div class="section-panel h-100"><span class="section-kicker">Estamos para ayudarte</span><h2 class="section-title">Conectá con Royal</h2><div class="title-rule"></div><p class="section-intro mb-4">¿Querés conocer los grupos, consultar horarios o recibir más información? Escribinos y te orientamos.</p><a class="btn btn-royal" href="https://wa.me/543855944628?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp me-2"></i>Enviar mensaje</a><div class="mt-4 d-flex gap-2"><a class="social-icon" href="https://instagram.com/royalstarsclub" target="_blank" rel="noopener" aria-label="Instagram Royal Stars Club"><i class="fa-brands fa-instagram"></i></a><a class="social-icon bg-dark text-white" href="https://wa.me/543855944628" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a></div></div></div><div class="col-lg-5"><div class="contact-card"><h3>Hablemos de tu próximo entrenamiento</h3><p>Estamos para ayudarte a encontrar una propuesta que se ajuste a tus objetivos.</p><div class="contact-item"><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/543855944628" target="_blank" rel="noopener">+54 3855 944628</a></div><div class="contact-item"><i class="fa-brands fa-instagram"></i><a href="https://instagram.com/royalstarsclub" target="_blank" rel="noopener">@royalstarsclub</a></div><div class="contact-item"><i class="fa-regular fa-calendar"></i><a href="#calendario">Consultar próximas actividades</a></div><hr class="border-light opacity-25 my-4"><p class="small mb-0"><i class="fa-solid fa-circle-info me-2" style="color:var(--gold)"></i>Solemos contestarlos mensajes todos los días pero más aún en horarios comprendidos entre las 15hs y 19hs.</p></div></div></div></div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row g-4 pb-4">
-        <div class="col-md-6 col-lg-4"><a class="navbar-brand d-flex align-items-center gap-2 mb-3" href="#inicio"><span class="brand-mark"><img src="logo-royal.png" alt="Escudo Royal Star’s Club"></span><span class="brand-name">ROYAL STAR’S CLUB<small>PÁDEL · EQUIPO · FORMACIÓN</small></span></a><p class="footer-copy">Formación deportiva con pasión, respeto y compromiso. Crecemos juntos dentro y fuera de la pista.</p></div>
-        <div class="col-6 col-lg-2"><h2 class="footer-title">Navegación</h2><a class="footer-link" href="#nosotros">Nosotros</a><a class="footer-link" href="#cursos">Cursos y servicios</a><a class="footer-link" href="#novedades">Novedades</a><a class="footer-link" href="#blog">Blog</a><a class="footer-link" href="liga.html" target="_blank" rel="noopener">Liga</a><a class="footer-link" href="#horarios">Horarios</a><a class="footer-link" href="#calendario">Calendario</a><a class="footer-link" href="#preguntas">Preguntas frecuentes</a></div>
-        <div class="col-6 col-lg-2"><h2 class="footer-title">Contacto</h2><a class="footer-link" href="https://wa.me/543855944628" target="_blank" rel="noopener">WhatsApp</a><a class="footer-link" href="https://instagram.com/royalstarsclub" target="_blank" rel="noopener">Instagram</a><span class="footer-link">Royal Star’s Club</span></div>
-        <div class="col-lg-4"><h2 class="footer-title">Sponsors que nos acompañan</h2><p class="footer-copy small">Gracias a las marcas que forman parte de la comunidad Royal.</p><div class="row g-3 align-items-stretch"><div class="col-6"><div class="sponsor-box sponsor-box-sch"><img src="sponsor-sch.png" alt="SCH, sponsor de Royal Star’s Club" loading="lazy"></div></div><div class="col-6"><div class="sponsor-box sponsor-box-anthos"><img src="sponsor-anthos-gym.png" alt="Anthos Gym, sponsor de Royal Star’s Club" loading="lazy"></div></div></div></div>
-      </div>
-      <hr class="border-light opacity-25"><div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-2 pt-2"><p class="footer-copy small mb-0">© <span id="year"></span> Royal Star’s Club. Todos los derechos reservados.</p><a class="footer-link mb-0" href="#top">Volver arriba <i class="fa-solid fa-arrow-up ms-1"></i></a></div>
-    </div>
-  </footer>
-  <a class="float-ws" href="https://wa.me/543855944628?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-  <a class="to-top" href="#top" aria-label="Volver al inicio"><i class="fa-solid fa-arrow-up"></i></a>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    (() => {
-      const monthName = new Intl.DateTimeFormat('es-AR', { month: 'long', year: 'numeric' });
-      const fullDate = new Intl.DateTimeFormat('es-AR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
-      const today = new Date();
-      let displayedMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-      let selectedDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-      const events = {
-        // Eventos ilustrativos: cambiar por fechas reales cuando se confirme el calendario.
-        '2026-10-17': { title: 'Encuentro de entrenamiento', description: 'Fecha de demostración para mostrar cómo se publicarán las actividades de la academia.', time: 'Horario a confirmar', place: 'Royal Star’s Club' },
-        '2026-10-24': { title: 'Jornada de práctica', description: 'Actividad de ejemplo para entrenamiento, juego y compañerismo.', time: 'Horario a confirmar', place: 'Royal Star’s Club' },
-        '2026-11-06': { title: 'Inicio de la Liga Royal', description: 'Comienza la Liga Royal en ROYAL STARS CLUB. Los partidos semanales se coordinan para viernes o sábado.', time: 'Horario a convenir', place: 'ROYAL STARS CLUB' },
-        '2026-11-07': { title: 'Mini Torneo', description: 'Arrancamos despues de las 11am con categorías 8va y 7ma.', time: 'Horario a confirmar', place: 'Royal Star’s Club' }
-      };
-      const keyOf = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-      const sameDay = (a,b) => a.getFullYear()===b.getFullYear() && a.getMonth()===b.getMonth() && a.getDate()===b.getDate();
-      const grid = document.getElementById('calendarGrid');
-      function renderCalendar(){
-        document.getElementById('calendarMonth').textContent = monthName.format(displayedMonth).replace(/^./, s => s.toLocaleUpperCase('es-AR'));
-        grid.replaceChildren();
-        ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'].forEach(label => { const el=document.createElement('div'); el.className='weekday'; el.textContent=label; grid.appendChild(el); });
-        const first = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), 1);
-        const mondayIndex = (first.getDay()+6)%7;
-        const start = new Date(first.getFullYear(), first.getMonth(), 1-mondayIndex);
-        for(let i=0;i<42;i++){
-          const date = new Date(start.getFullYear(), start.getMonth(), start.getDate()+i);
-          const k = keyOf(date); const btn=document.createElement('button'); btn.type='button'; btn.className='calendar-day'; btn.textContent=String(date.getDate());
-          btn.setAttribute('aria-label', fullDate.format(date));
-          if(date.getMonth()!==displayedMonth.getMonth()) btn.classList.add('muted');
-          if(sameDay(date,today)) btn.classList.add('today');
-          if(sameDay(date,selectedDate)){btn.classList.add('selected');btn.setAttribute('aria-pressed','true');} else btn.setAttribute('aria-pressed','false');
-          if(events[k]) btn.classList.add('has-event');
-          btn.addEventListener('click',()=>{selectedDate=new Date(date);displayedMonth=new Date(date.getFullYear(),date.getMonth(),1);renderCalendar();renderEvent();});
-          grid.appendChild(btn);
-        }
-      }
-      function renderEvent(){
-        document.getElementById('selectedDateLabel').textContent=fullDate.format(selectedDate).replace(/^./,s=>s.toLocaleUpperCase('es-AR'));
-        const event=events[keyOf(selectedDate)];
-        document.getElementById('eventTitle').textContent=event?event.title:'Sin actividades publicadas';
-        document.getElementById('eventDescription').textContent=event?event.description:'No hay actividades de demostración cargadas para esta fecha. Consultá por WhatsApp para confirmar si hay clases o encuentros programados.';
-        document.getElementById('eventTime').textContent=event?event.time:'Consultar disponibilidad';
-        document.getElementById('eventPlace').textContent=event?event.place:'Royal Star’s Club';
-      }
-      document.getElementById('prevMonth').addEventListener('click',()=>{displayedMonth=new Date(displayedMonth.getFullYear(),displayedMonth.getMonth()-1,1);renderCalendar();});
-      document.getElementById('nextMonth').addEventListener('click',()=>{displayedMonth=new Date(displayedMonth.getFullYear(),displayedMonth.getMonth()+1,1);renderCalendar();});
-      document.getElementById('year').textContent=String(new Date().getFullYear());
-      document.querySelectorAll('#royalNav .nav-link, #royalNav .btn').forEach(link=>link.addEventListener('click',()=>{const menu=document.getElementById('royalNav');if(menu.classList.contains('show'))bootstrap.Collapse.getOrCreateInstance(menu).hide();}));
-      const royalMenu=document.getElementById('royalNav');
-      const royalToggle=document.querySelector('.navbar-toggler');
-      royalMenu.addEventListener('shown.bs.collapse',()=>royalToggle.setAttribute('aria-label','Cerrar menú'));
-      royalMenu.addEventListener('hidden.bs.collapse',()=>royalToggle.setAttribute('aria-label','Abrir menú'));
-      renderCalendar();renderEvent();
-    })();
-  </script>
+<nav aria-label="Navegaci&oacute;n principal" class="navbar site-nav sticky-top">
+<div class="container">
+<a aria-label="Royal Star&rsquo;s Club, inicio" class="navbar-brand d-flex align-items-center gap-2 me-3" href="#inicio">
+<span class="brand-mark"><img alt="Escudo Royal Star&rsquo;s Club" src="assets/img/logo-royal.png"/></span><span class="brand-name">ROYAL STAR&rsquo;S CLUB<small>P&Aacute;DEL &middot; EQUIPO &middot; FORMACI&Oacute;N</small></span>
+</a>
+<button aria-controls="royalNav" aria-expanded="false" aria-label="Abrir men&uacute;" class="navbar-toggler ms-auto" data-bs-target="#royalNav" data-bs-toggle="collapse" type="button"><span aria-hidden="true" class="hamburger-lines"><span></span><span></span><span></span></span></button>
+<div class="collapse navbar-collapse" id="royalNav">
+<ul class="navbar-nav align-items-stretch">
+<li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+<li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+<li class="nav-item"><a class="nav-link" href="#cursos">Cursos</a></li>
+<li class="nav-item"><a class="nav-link" href="novedades.html" rel="noopener" target="_blank">Novedades</a></li>
+<li class="nav-item"><a class="nav-link" href="novedades.html#blog" rel="noopener" target="_blank">Noticias</a></li>
+<li class="nav-item"><a class="nav-link" href="liga.html" rel="noopener" target="_blank">Liga</a></li>
+<li class="nav-item"><a class="nav-link" href="#horarios">Horarios</a></li>
+<li class="nav-item"><a class="nav-link" href="#calendario">Calendario</a></li>
+<li class="nav-item"><a class="nav-link" href="cronograma.html" rel="noopener" target="_blank">Cronograma</a></li>
+<li class="nav-item"><a class="nav-link" href="#preguntas">Preguntas frecuentes</a></li>
+<li class="nav-item ms-xl-1"><a class="btn btn-royal btn-sm px-3 mt-2 mt-xl-0" href="#contacto">Contacto <i class="fa-solid fa-arrow-right ms-1"></i></a></li>
+</ul>
+</div>
+</div>
+</nav>
+<main>
+<div class="league-promo-shell">
+<div class="container">
+<a aria-label="Abrir la p&aacute;gina especial Liga de Royal" class="league-promo" href="liga.html" rel="noopener" target="_blank">
+<span class="league-promo-emblem"><img alt="" aria-hidden="true" src="assets/img/logo-royal.png"/></span>
+<span class="league-promo-copy"><small>Royal Star&rsquo;s Club presenta</small><h2>Liga de Royal</h2><p>Conoc&eacute; las categor&iacute;as, el formato de competencia y c&oacute;mo inscribirte.</p></span>
+<span class="league-promo-action"><strong>06 NOV</strong><span>Ver informaci&oacute;n <i class="fa-solid fa-arrow-up-right-from-square ms-1"></i></span></span>
+</a>
+</div>
+</div>
+<section class="hero" id="inicio">
+<div class="container position-relative" style="z-index:1">
+<div class="row align-items-center g-5">
+<div class="col-lg-8">
+<span class="eyebrow">Royal Star&rsquo;s Club &middot; Academia de p&aacute;del</span>
+<h1>M&aacute;s que un deporte.<br/><span>Una forma de crecer.</span></h1>
+<p class="hero-lead">No es solo entrenar p&aacute;del: es entrenar tu cuerpo, tu mente y tu esp&iacute;ritu deportivo. Un espacio para aprender, competir y disfrutar del juego en equipo.</p>
+<div class="d-flex flex-wrap gap-3 mt-4"><a class="btn btn-royal" href="https://wa.me/543855944628?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" rel="noopener" target="_blank"><i class="fa-brands fa-whatsapp me-2"></i>Consultar por WhatsApp</a><a class="btn btn-ghost" href="#cursos">Conoc&eacute; la academia <i class="fa-solid fa-arrow-down ms-2"></i></a></div>
+<div class="hero-tag"><i class="fa-solid fa-bullseye"></i> T&eacute;cnica, preparaci&oacute;n y mentalidad deportiva</div>
+</div>
+<div class="col-lg-4 d-none d-lg-block"><div class="hero-side"><span class="eyebrow">Nuestro objetivo</span><div class="big-number mt-3">360&deg;</div><h2 class="h4 fw-bold mt-2">Formaci&oacute;n integral</h2><p class="mb-0">Desarrollamos el juego, la confianza y los valores que acompa&ntilde;an a cada jugador dentro y fuera de la pista.</p><hr class="border-light opacity-25 my-4"/><div class="d-flex gap-3 align-items-center"><i class="fa-solid fa-medal fs-3" style="color:var(--gold)"></i><div><strong>Aprender &middot; Entrenar &middot; Superarse</strong><div class="small text-white-50">Cada pr&aacute;ctica es una oportunidad.</div></div></div></div></div>
+</div>
+</div>
+</section>
+<section class="section-wrap" id="nosotros">
+<div class="container"><div class="section-panel">
+<div class="row g-5 align-items-start"><div class="col-lg-5"><span class="section-kicker">Qui&eacute;nes somos</span><h2 class="section-title">Pasi&oacute;n por el p&aacute;del.<br/>Compromiso con las personas.</h2><div class="title-rule"></div><p class="section-intro">Somos un equipo apasionado por la ense&ntilde;anza, el deporte y el crecimiento personal. Acompa&ntilde;amos a cada jugador con propuestas adaptadas a su edad, nivel y objetivos.</p></div>
+<div class="col-lg-7"><div class="row g-3">
+<div class="col-sm-6"><div class="value-tile"><i class="fa-solid fa-flag-checkered"></i><h3>Nuestra misi&oacute;n</h3><p>Potenciar el rendimiento deportivo y el desarrollo integral de cada jugador.</p></div></div>
+<div class="col-sm-6"><div class="value-tile"><i class="fa-solid fa-eye"></i><h3>Nuestra visi&oacute;n</h3><p>Ser referentes en formaci&oacute;n, convivencia y pasi&oacute;n por el p&aacute;del.</p></div></div>
+<div class="col-sm-6"><div class="value-tile"><i class="fa-solid fa-handshake-angle"></i><h3>Nuestros valores</h3><p>Respeto, disciplina, compa&ntilde;erismo, esfuerzo y compromiso.</p></div></div>
+<div class="col-sm-6"><div class="value-tile"><i class="fa-solid fa-people-group"></i><h3>Un equipo</h3><p>Un ambiente de aprendizaje positivo donde cada persona tiene lugar.</p></div></div>
+</div></div>
+</div>
+</div></div>
+</section>
+<section class="section-wrap pt-0" id="cursos">
+<div class="container"><div class="section-panel">
+<div class="d-flex flex-wrap align-items-end justify-content-between gap-3 mb-4"><div><span class="section-kicker">Entren&aacute; con nosotros</span><h2 class="section-title mb-0">Cursos y servicios</h2></div><p class="section-intro mb-1">Propuestas para aprender, mejorar y prepararte para nuevos desaf&iacute;os.</p></div><div class="title-rule"></div>
+<div class="row g-4">
+<div class="col-md-6 col-xl-4"><article class="service-card"><div class="card-top"></div><div class="service-body"><div class="service-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></div><h3>Clases y entrenamientos</h3><p>Formaci&oacute;n por categor&iacute;as y niveles para infantiles, adolescentes y adultos, con trabajo t&eacute;cnico y t&aacute;ctico.</p><a class="text-link" href="#horarios">Ver horarios <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
+<div class="col-md-6 col-xl-4"><article class="service-card"><div class="card-top"></div><div class="service-body"><div class="service-icon"><i class="fa-solid fa-heart-pulse"></i></div><h3>Preparaci&oacute;n f&iacute;sica</h3><p>Trabajo f&iacute;sico espec&iacute;fico para mejorar la movilidad, la coordinaci&oacute;n, la resistencia y el rendimiento.</p><a class="text-link" href="#contacto">Consultar propuesta <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
+<div class="col-md-6 col-xl-4"><article class="service-card"><div class="card-top"></div><div class="service-body"><div class="service-icon"><i class="fa-solid fa-trophy"></i></div><h3>Torneos y competencia</h3><p>Pr&aacute;cticas y preparaci&oacute;n para competir con estrategia, confianza, compa&ntilde;erismo y mentalidad deportiva.</p><a class="text-link" href="#calendario">Ver calendario <i class="fa-solid fa-arrow-right ms-1"></i></a></div></article></div>
+</div>
+</div></div>
+</section>
+<section class="section-wrap pt-0" id="horarios">
+<div class="container"><div class="section-panel">
+<span class="section-kicker">Organiz&aacute; tu semana</span><h2 class="section-title">Horarios</h2><p class="section-intro">La siguiente grilla es ilustrativa. Confirm&aacute; disponibilidad y horarios actualizados por WhatsApp antes de asistir.</p><div class="title-rule"></div>
+<div class="table-responsive rounded-4 border"><table class="table table-striped table-hover table-royal"><thead><tr><th scope="col">Actividad</th><th scope="col">Categor&iacute;a</th><th scope="col">D&iacute;as</th><th scope="col">Horario de ejemplo</th></tr></thead><tbody>
+<tr><td class="fw-bold">Escuela de p&aacute;del</td><td>Infantiles</td><td>Lunes y mi&eacute;rcoles</td><td><span class="time-pill">09:00&ndash;10:00</span></td></tr>
+<tr><td class="fw-bold">Formaci&oacute;n t&eacute;cnica</td><td>Adolescentes</td><td>Martes y jueves</td><td><span class="time-pill">17:00&ndash;18:30</span></td></tr>
+<tr><td class="fw-bold">Entrenamiento general</td><td>Adultos</td><td>Lunes, mi&eacute;rcoles y viernes</td><td><span class="time-pill">18:30&ndash;20:00</span></td></tr>
+<tr><td class="fw-bold">Preparaci&oacute;n competitiva</td><td>Por nivel</td><td>S&aacute;bados</td><td><span class="time-pill">A coordinar</span></td></tr>
+</tbody></table></div>
+<p class="small text-secondary mt-3 mb-0"><i class="fa-solid fa-circle-info me-1"></i>Los horarios publicados aqu&iacute; son ejemplos visuales, no una confirmaci&oacute;n de clases disponibles.</p>
+</div></div>
+</section>
+<section class="section-wrap pt-0" id="calendario">
+<div class="container"><div class="section-panel">
+<span class="section-kicker">Fechas y actividades</span><h2 class="section-title">Calendario de la academia</h2><p class="section-intro">Us&aacute; las flechas para cambiar de mes y seleccion&aacute; un d&iacute;a para consultar las actividades y fechas publicadas por Royal Star&rsquo;s Club.</p><div class="title-rule"></div>
+<div class="row g-4 align-items-stretch"><div class="col-lg-7"><div class="calendar-shell"><div class="calendar-head"><h3 aria-live="polite" id="calendarMonth">Mes</h3><div class="calendar-nav"><button aria-label="Mes anterior" id="prevMonth" type="button"><i class="fa-solid fa-chevron-left"></i></button><button aria-label="Mes siguiente" id="nextMonth" type="button"><i class="fa-solid fa-chevron-right"></i></button></div></div><div aria-label="Calendario mensual" class="calendar-grid" id="calendarGrid"></div></div><div class="small text-secondary mt-2"><span class="d-inline-block rounded-circle me-1" style="width:7px;height:7px;background:#a75e1c"></span> D&iacute;a con actividad publicada</div></div>
+<div class="col-lg-5"><div class="event-panel"><span class="event-date" id="selectedDateLabel">Fecha seleccionada</span><h3 id="eventTitle">Eleg&iacute; una fecha</h3><p id="eventDescription">Seleccion&aacute; cualquier d&iacute;a del calendario para ver aqu&iacute; su informaci&oacute;n.</p><div class="event-detail"><i class="fa-regular fa-clock"></i><div><strong>Horario</strong><div class="small" id="eventTime">A confirmar</div></div></div><div class="event-detail"><i class="fa-solid fa-location-dot"></i><div><strong>Lugar</strong><div class="small" id="eventPlace">Royal Star&rsquo;s Club</div></div></div><a class="btn btn-royal mt-4" href="https://wa.me/543855944628?text=Hola,%20quiero%20consultar%20por%20el%20calendario%20de%20Royal%20Club" rel="noopener" target="_blank"><i class="fa-brands fa-whatsapp me-2"></i>Consultar una fecha</a></div></div>
+</div>
+</div></div>
+</section>
+<section class="section-wrap pt-0" id="preguntas">
+<div class="container"><div class="section-panel">
+<span class="section-kicker">Te ayudamos</span><h2 class="section-title">Preguntas frecuentes</h2><p class="section-intro">Respuestas r&aacute;pidas para quienes quieren sumarse a la academia.</p><div class="title-rule"></div>
+<div class="accordion" id="faqAccordion">
+<div class="accordion-item"><h3 class="accordion-header"><button aria-controls="faq1" aria-expanded="true" class="accordion-button" data-bs-target="#faq1" data-bs-toggle="collapse" type="button">&iquest;Necesito experiencia previa para empezar?</button></h3><div class="accordion-collapse collapse show" data-bs-parent="#faqAccordion" id="faq1"><div class="accordion-body">No necesariamente. Consultanos por los grupos disponibles para que podamos orientarte seg&uacute;n tu experiencia, edad y objetivos.</div></div></div>
+<div class="accordion-item"><h3 class="accordion-header"><button aria-controls="faq2" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#faq2" data-bs-toggle="collapse" type="button">&iquest;C&oacute;mo consulto los horarios y la disponibilidad?</button></h3><div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="faq2"><div class="accordion-body">Pod&eacute;s revisar la secci&oacute;n Horarios y escribirnos por WhatsApp para confirmar los turnos vigentes y la disponibilidad de cada grupo.</div></div></div>
+<div class="accordion-item"><h3 class="accordion-header"><button aria-controls="faq3" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#faq3" data-bs-toggle="collapse" type="button">&iquest;La academia ofrece preparaci&oacute;n para torneos?</button></h3><div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="faq3"><div class="accordion-body">La propuesta contempla entrenamiento t&eacute;cnico, t&aacute;ctico y preparaci&oacute;n competitiva. Consult&aacute; qu&eacute; actividades est&aacute;n programadas en este momento.</div></div></div>
+<div class="accordion-item"><h3 class="accordion-header"><button aria-controls="faq4" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#faq4" data-bs-toggle="collapse" type="button">&iquest;D&oacute;nde puedo ver las pr&oacute;ximas actividades?</button></h3><div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="faq4"><div class="accordion-body">En el Calendario pod&eacute;s navegar por los meses y seleccionar una fecha. Tambi&eacute;n pod&eacute;s consultar la p&aacute;gina Cronograma desde el men&uacute; principal.</div></div></div>
+<div class="accordion-item"><h3 class="accordion-header"><button aria-controls="faq5" aria-expanded="false" class="accordion-button collapsed" data-bs-target="#faq5" data-bs-toggle="collapse" type="button">&iquest;C&oacute;mo me inscribo o pido m&aacute;s informaci&oacute;n?</button></h3><div class="accordion-collapse collapse" data-bs-parent="#faqAccordion" id="faq5"><div class="accordion-body">Escribinos por WhatsApp o contactanos desde los enlaces de esta p&aacute;gina para que podamos orientarte sobre los pasos a seguir.</div></div></div>
+</div>
+</div></div>
+</section>
+<section class="section-wrap pt-0" id="contacto">
+<div class="container"><div class="row g-4"><div class="col-lg-7"><div class="section-panel h-100"><span class="section-kicker">Estamos para ayudarte</span><h2 class="section-title">Conect&aacute; con Royal</h2><div class="title-rule"></div><p class="section-intro mb-4">&iquest;Quer&eacute;s conocer los grupos, consultar horarios o recibir m&aacute;s informaci&oacute;n? Escribinos y te orientamos.</p><a class="btn btn-royal" href="https://wa.me/543855944628?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" rel="noopener" target="_blank"><i class="fa-brands fa-whatsapp me-2"></i>Enviar mensaje</a><div class="mt-4 d-flex gap-2"><a aria-label="Instagram Royal Stars Club" class="social-icon" href="https://instagram.com/royalstarsclub" rel="noopener" target="_blank"><i class="fa-brands fa-instagram"></i></a><a aria-label="WhatsApp" class="social-icon bg-dark text-white" href="https://wa.me/543855944628" rel="noopener" target="_blank"><i class="fa-brands fa-whatsapp"></i></a></div></div></div><div class="col-lg-5"><div class="contact-card"><h3>Hablemos de tu pr&oacute;ximo entrenamiento</h3><p>Estamos para ayudarte a encontrar una propuesta que se ajuste a tus objetivos.</p><div class="contact-item"><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/543855944628" rel="noopener" target="_blank">+54 3855 944628</a></div><div class="contact-item"><i class="fa-brands fa-instagram"></i><a href="https://instagram.com/royalstarsclub" rel="noopener" target="_blank">@royalstarsclub</a></div><div class="contact-item"><i class="fa-regular fa-calendar"></i><a href="#calendario">Consultar pr&oacute;ximas actividades</a></div><hr class="border-light opacity-25 my-4"/><p class="small mb-0"><i class="fa-solid fa-circle-info me-2" style="color:var(--gold)"></i>Los datos de contacto se conservaron de la p&aacute;gina original.</p></div></div></div></div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="row g-4 pb-4">
+<div class="col-md-6 col-lg-4"><a class="navbar-brand d-flex align-items-center gap-2 mb-3" href="#inicio"><span class="brand-mark"><img alt="Escudo Royal Star&rsquo;s Club" src="assets/img/logo-royal.png"/></span><span class="brand-name">ROYAL STAR&rsquo;S CLUB<small>P&Aacute;DEL &middot; EQUIPO &middot; FORMACI&Oacute;N</small></span></a><p class="footer-copy">Formaci&oacute;n deportiva con pasi&oacute;n, respeto y compromiso. Crecemos juntos dentro y fuera de la pista.</p></div>
+<div class="col-6 col-lg-2"><h2 class="footer-title">Navegaci&oacute;n</h2><a class="footer-link" href="#nosotros">Nosotros</a><a class="footer-link" href="#cursos">Cursos y servicios</a><a class="footer-link" href="novedades.html" rel="noopener" target="_blank">Novedades</a><a class="footer-link" href="novedades.html#blog" rel="noopener" target="_blank">Noticias</a><a class="footer-link" href="liga.html" rel="noopener" target="_blank">Liga</a><a class="footer-link" href="#horarios">Horarios</a><a class="footer-link" href="#calendario">Calendario</a><a class="footer-link" href="cronograma.html" rel="noopener" target="_blank">Cronograma</a><a class="footer-link" href="#preguntas">Preguntas frecuentes</a></div>
+<div class="col-6 col-lg-2"><h2 class="footer-title">Contacto</h2><a class="footer-link" href="https://wa.me/543855944628" rel="noopener" target="_blank">WhatsApp</a><a class="footer-link" href="https://instagram.com/royalstarsclub" rel="noopener" target="_blank">Instagram</a><span class="footer-link">Royal Star&rsquo;s Club</span></div>
+<div class="col-lg-4"><h2 class="footer-title">Sponsors que nos acompa&ntilde;an</h2><p class="footer-copy small">Gracias a las marcas que forman parte de la comunidad Royal.</p><div class="row g-3 align-items-stretch"><div class="col-6"><div class="sponsor-box sponsor-box-sch"><img alt="SCH, sponsor de Royal Star&rsquo;s Club" loading="lazy" src="assets/img/sponsor-sch.png"/></div></div><div class="col-6"><div class="sponsor-box sponsor-box-anthos"><img alt="Anthos Gym, sponsor de Royal Star&rsquo;s Club" loading="lazy" src="assets/img/sponsor-anthos-gym.png"/></div></div></div></div>
+</div>
+<hr class="border-light opacity-25"/><div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-2 pt-2"><p class="footer-copy small mb-0">&copy; <span id="year"></span> Royal Star&rsquo;s Club. Todos los derechos reservados.</p><a class="footer-link mb-0" href="#top">Volver arriba <i class="fa-solid fa-arrow-up ms-1"></i></a></div>
+</div>
+</footer>
+<a aria-label="Contactar por WhatsApp" class="float-ws" href="https://wa.me/543855944628?text=Hola,%20me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20informaci%C3%B3n" rel="noopener" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<a aria-label="Volver al inicio" class="to-top" href="#top"><i class="fa-solid fa-arrow-up"></i></a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
