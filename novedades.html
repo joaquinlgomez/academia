@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#0c1b2d"/>
+<meta name="description" content="Noticias, actividades y novedades de Royal Star’s Club."/>
+<title>Novedades | Royal Star’s Club</title>
+<link rel="icon" href="assets/img/favicon-royal.png" type="image/png"/>
+<link rel="stylesheet" href="assets/css/portal.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+<header class="portal-topbar"><div class="portal-topbar-inner">
+<a class="portal-brand" href="index.html"><img src="assets/img/logo-royal.png" alt="Escudo Royal Star’s Club"/><span>ROYAL STAR’S CLUB<small>PÁDEL · EQUIPO · FORMACIÓN</small></span></a>
+<a class="portal-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver al sitio</a>
+</div></header>
+<main class="portal-page">
+<section class="portal-hero" data-mark="ROYAL"><div class="portal-hero-content">
+<span class="portal-kicker">Actualidad · Comunidad · Competencia</span>
+<h1>Novedades <span>Royal</span></h1>
+<p>Enterate de las noticias, actividades, anuncios y experiencias que forman parte de Royal Star’s Club.</p>
+<a class="portal-btn" href="#blog"><i class="fa-regular fa-newspaper"></i> Ver noticias</a>
+</div></section>
+<section class="portal-panel" id="blog">
+<span class="portal-kicker">Lo que pasa en Royal</span><h2>Últimas publicaciones</h2>
+<p class="portal-intro">Buscá por título o filtrá las noticias por tema. Abrí cada publicación para leer el contenido completo.</p>
+<div class="news-toolbar"><div class="news-filters" id="newsFilters" aria-label="Filtrar noticias">
+<button class="filter-btn active" type="button" data-filter="Todas">Todas</button>
+<button class="filter-btn" type="button" data-filter="Academia">Academia</button>
+<button class="filter-btn" type="button" data-filter="Competencia">Competencia</button>
+<button class="filter-btn" type="button" data-filter="Comunidad">Comunidad</button>
+<button class="filter-btn" type="button" data-filter="Blog">Noticias</button>
+</div><input class="news-search" id="newsSearch" type="search" placeholder="Buscar una noticia…" aria-label="Buscar noticias"/></div>
+<div class="news-grid" id="newsGrid" aria-live="polite"><div class="news-empty">Cargando publicaciones…</div></div>
+</section>
+<footer class="portal-footer">© <span id="currentYear"></span> Royal Star’s Club · <a href="index.html">Volver a la página principal</a> · <a href="cronograma.html" target="_blank" rel="noopener">Ver cronograma</a></footer>
+</main>
+<dialog class="news-dialog" id="newsDialog"><div class="dialog-inner"><button type="button" class="dialog-close" id="closeNewsDialog" aria-label="Cerrar">×</button><div id="dialogContent"></div></div></dialog>
+<script src="assets/js/novedades.js"></script>
+</body>
+</html>
