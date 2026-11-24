@@ -32,11 +32,37 @@
 <button class="filter-btn" type="button" data-filter="Comunidad">Comunidad</button>
 <button class="filter-btn" type="button" data-filter="Blog">Blog</button>
 </div><input class="news-search" id="newsSearch" type="search" placeholder="Buscar una noticia…" aria-label="Buscar noticias"/></div>
-<div class="news-grid" id="newsGrid" aria-live="polite"><div class="news-empty">Cargando publicaciones…</div></div>
+
+<!-- GRILLA DE NOTICIAS CON LAS DOS NOTAS DE LA LIGA ROYAL -->
+<div class="news-grid" id="newsGrid" aria-live="polite">
+    <!-- Tarjeta 1: Duelo de hermanas Lorenzo -->
+    <article class="news-card" data-category="Competencia" style="cursor:pointer;" onclick="window.location.href='nota-duelo-hermanas-lorenzo.html'">
+        <div class="card-top" style="background: url('duelo-hermanas-lorenzo.jpg') center/cover no-repeat; background-color: #173b63;"></div>
+        <div class="news-body">
+            <span class="news-date">COMPETENCIA · LIGA ROYAL 2026</span>
+            <h3>Duelo de hermanas: Lorenzo vs. Lorenzo, uno de los encuentros más especiales</h3>
+            <p>Delfina y Martina Lorenzo se encontraron frente a frente en la categoría Damas Suma 11 en un partido que combinó competencia, emoción y vínculo familiar.</p>
+            <span class="text-link">Leer nota completa <i class="fa-solid fa-arrow-right ms-1"></i></span>
+        </div>
+    </article>
+
+    <!-- Tarjeta 2: Debut de Suárez y Mussi -->
+    <article class="news-card" data-category="Competencia" style="cursor:pointer;" onclick="window.location.href='nota-suarez-mussi-debut.html'">
+        <div class="card-top" style="background: url('debut-suarez-mussi.jpg') center/cover no-repeat; background-color: #173b63;"></div>
+        <div class="news-body">
+            <span class="news-date">COMPETENCIA · LIGA ROYAL 2026</span>
+            <h3>Suárez y Mussi: un debut con victoria en la Liga Royal 2026</h3>
+            <p>Camila Mussi y Julieta Suárez comenzaron su participación en la categoría Damas Suma 11 con una victoria en dos parciales frente a Kusmus y Agüero.</p>
+            <span class="text-link">Leer nota completa <i class="fa-solid fa-arrow-right ms-1"></i></span>
+        </div>
+    </article>
+</div>
+
 </section>
 <footer class="portal-footer">© <span id="currentYear"></span> Royal Star’s Club · <a href="index.html">Volver a la página principal</a> · <a href="cronograma.html" target="_blank" rel="noopener">Ver cronograma</a></footer>
 </main>
 <dialog class="news-dialog" id="newsDialog"><div class="dialog-inner"><button type="button" class="dialog-close" id="closeNewsDialog" aria-label="Cerrar">×</button><div id="dialogContent"></div></div></dialog>
 <script src="assets/js/novedades.js"></script>
+<script>document.getElementById('currentYear').textContent = new Date().getFullYear();</script>
 </body>
 </html>

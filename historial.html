@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1b2d">
+  <meta name="description" content="Historial oficial de enfrentamientos, parciales y puntajes por fecha de la Liga de Royal en Royal Star’s Club.">
+  <title>Historial de Partidos | Liga de Royal</title>
+  <link rel="icon" type="image/png" href="favicon-royal.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0c1b2d;
+      --blue:#173b63;
+      --blue2:#2d5686;
+      --orange:#f58220;
+      --orange2:#ffad55;
+      --ink:#172231;
+      --muted:#5e6b7a;
+      --paper:#fffdf9;
+      --border:#e8e2d9;
+      --win-bg:#f0faf4;
+      --win-border:#b7e4c7;
+      --win-ink:#14532d;
+    }
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;font-family:Montserrat,sans-serif;color:var(--ink);background:#09182a}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background:url('fondo-royal.png') center/cover no-repeat}
+    body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(4,13,25,.74),rgba(5,16,29,.60))}
+    a{color:inherit}
+
+    /* TOPBAR */
+    .topbar{background:rgba(8,20,35,.94);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff20;color:#fff;position:sticky;top:0;z-index:50}
+    .topbar-inner{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-weight:900;letter-spacing:.02em}
+    .brand img{width:52px;height:52px;object-fit:contain}
+    .brand span{display:block;font-size:1rem;line-height:1.1}
+    .brand small{display:block;color:#ffb36b;font-size:.65rem;letter-spacing:.19em;margin-top:5px}
+    .topbar-nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .nav-btn{display:inline-flex;align-items:center;gap:7px;color:#e5edf7;text-decoration:none;border:1px solid #ffffff4d;padding:10px 14px;border-radius:5px;font-size:.82rem;font-weight:800;transition:all .18s ease}
+    .nav-btn:hover{background:#ffffff16;color:#fff;border-color:#ffffff80}
+    .nav-btn.primary{background:var(--orange);border-color:var(--orange);color:#111c2c;font-weight:900}
+    .nav-btn.primary:hover{background:var(--orange2);border-color:var(--orange2);color:#111c2c}
+    .nav-btn.current{background:#ffffff1a;border-color:var(--orange);color:#ffb76e}
+
+    /* LAYOUT */
+    .page{max-width:1180px;margin:0 auto;padding:32px 22px 64px}
+    .hero{padding:clamp(26px,5vw,42px);background:linear-gradient(115deg,rgba(24,61,101,.97),rgba(9,25,44,.96));border:1px solid #ffffff2c;box-shadow:0 24px 60px #0004;color:#fff;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
+    .hero::after{content:"HISTORIAL";position:absolute;right:-.03em;bottom:-.32em;font-size:clamp(4.5rem,14vw,11rem);font-weight:900;letter-spacing:-.08em;color:#ffffff07;line-height:1;pointer-events:none}
+    .hero h1{font-size:clamp(1.9rem,4vw,3.3rem);letter-spacing:-.04em;line-height:1.05;margin:0;font-weight:900;text-transform:uppercase;position:relative;z-index:1}
+    .hero p{color:#ffb76e;font-weight:800;font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;margin:10px 0 0;position:relative;z-index:1}
+    .hero-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:20px;position:relative;z-index:1}
+    .hero-stat{background:#ffffff14;border:1px solid #ffffff2e;padding:8px 14px;border-radius:4px;font-size:.76rem;font-weight:700;color:#e5edf7}
+    .hero-stat strong{color:var(--orange2);font-weight:900;margin-right:4px}
+
+    .panel{background:rgba(255,253,249,.97);padding:clamp(20px,3vw,32px);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:6px}
+    .kicker{font-size:.7rem;letter-spacing:.19em;text-transform:uppercase;color:#a35f1d;font-weight:900}
+    .panel-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+    .panel h2{font-size:clamp(1.45rem,2.5vw,2rem);font-weight:900;letter-spacing:-.04em;color:var(--navy);margin:6px 0 0}
+
+    /* FECHA TABS */
+    .fecha-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 18px}
+    .fecha-tab{border:1px solid #d5dce4;background:#fff;padding:11px 16px;font:inherit;font-size:.83rem;font-weight:900;color:var(--navy);cursor:pointer;border-radius:4px;display:inline-flex;align-items:center;gap:8px;transition:all .18s ease}
+    .fecha-tab:hover{border-color:var(--orange);color:var(--navy)}
+    .fecha-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 6px 16px rgba(12,27,45,.18)}
+    .fecha-count{font-size:.7rem;font-weight:800;padding:2px 7px;border-radius:999px;background:#eef2f6;color:var(--blue)}
+    .fecha-tab.active .fecha-count{background:var(--orange);color:#111c2c}
+    .fecha-tab.upcoming .fecha-count{background:#fff3e4;color:#a35f1d}
+
+    /* SEARCH & CONTROLS */
+    .controls-row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin-bottom:16px}
+    .search-box{position:relative}
+    .search-input{width:100%;padding:13px 40px 13px 16px;border:1px solid #cfd8e3;border-radius:4px;background:#fff;font:inherit;font-size:.9rem;font-weight:600;color:var(--navy);transition:border-color .18s ease,box-shadow .18s ease}
+    .search-input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(245,130,32,.18)}
+    .search-clear{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:#eef2f6;color:var(--navy);width:24px;height:24px;border-radius:50%;font-weight:900;cursor:pointer;display:none;align-items:center;justify-content:center;font-size:.85rem}
+    .search-clear.visible{display:inline-flex}
+    .reset-btn{border:1px solid #d9dfe6;background:#fbf9f5;color:var(--navy);padding:12px 15px;border-radius:4px;font:inherit;font-size:.8rem;font-weight:800;cursor:pointer;white-space:nowrap;transition:all .18s ease}
+    .reset-btn:hover{border-color:var(--orange);color:#a35f1d}
+
+    /* CATEGORY FILTER BAR (EXACT MATCH WITH cronograma.html) */
+    .zonas-filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+    .zonas-filter-btn{border:1px solid #d9dfe6;background:#fff;padding:10px 14px;font:inherit;font-size:.8rem;font-weight:900;color:#536174;cursor:pointer;border-radius:3px;transition:all .18s ease}
+    .zonas-filter-btn:hover{border-color:var(--orange);color:var(--navy)}
+    .zonas-filter-btn.active{background:var(--orange);border-color:var(--orange);color:#111c2c;box-shadow:0 4px 12px rgba(245,130,32,.25)}
+
+    /* LEGEND & META BAR */
+    .pos-legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.75rem;color:#536174;margin-bottom:20px;background:#fbf9f5;padding:10px 14px;border-radius:4px;border:1px solid var(--border);align-items:center;justify-content:space-between}
+    .legend-items{display:flex;flex-wrap:wrap;gap:12px}
+    .legend-items span strong{color:var(--navy)}
+    .results-meta{font-size:.78rem;font-weight:800;color:var(--blue)}
+
+    /* PLAYER SUMMARY BANNER (WHEN SEARCHING) */
+    .player-summary{display:none;background:linear-gradient(115deg,#0c1b2d,#173b63);color:#fff;border-left:5px solid var(--orange);border-radius:5px;padding:16px 18px;margin-bottom:22px;box-shadow:0 10px 24px rgba(12,27,45,.15)}
+    .player-summary.visible{display:block}
+    .player-summary-title{font-size:.72rem;text-transform:uppercase;letter-spacing:.16em;color:var(--orange2);font-weight:900;margin:0 0 10px}
+    .player-summary-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+    .player-pill{background:#ffffff12;border:1px solid #ffffff24;border-radius:4px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .player-pill-name{font-weight:800;font-size:.88rem;color:#fff}
+    .player-pill-cat{font-size:.7rem;color:#cbd5e1;font-weight:700;margin-top:2px}
+    .player-pill-stats{text-align:right;white-space:nowrap}
+    .player-pill-pts{font-size:.95rem;font-weight:900;color:var(--orange2)}
+    .player-pill-rec{font-size:.7rem;color:#d6e1ed;font-weight:700}
+
+    /* GROUP HEADERS */
+    .fecha-section{margin-bottom:32px}
+    .fecha-section:last-child{margin-bottom:0}
+    .fecha-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--navy);padding-bottom:8px;margin:0 0 18px}
+    .fecha-heading h3{margin:0;font-size:1.15rem;font-weight:900;color:var(--navy);text-transform:uppercase;display:flex;align-items:center;gap:10px}
+    .fecha-heading h3::before{content:"";display:inline-block;width:6px;height:20px;background:var(--orange);border-radius:2px}
+    .fecha-heading span{font-size:.76rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+    .cat-group{margin-bottom:22px}
+    .cat-group:last-child{margin-bottom:0}
+    .cat-group-title{font-size:.82rem;font-weight:900;color:var(--blue);text-transform:uppercase;letter-spacing:.1em;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+    .cat-group-title::after{content:"";flex:1;height:1px;background:#e8e2d9}
+
+    /* MATCH CARDS GRID */
+    .matches-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(460px,1fr));gap:14px}
+    .match-card{background:#fff;border:1px solid var(--border);border-radius:5px;padding:14px 16px;box-shadow:0 5px 15px rgba(8,23,41,.04);display:flex;flex-direction:column;gap:11px;transition:border-color .18s ease,box-shadow .18s ease}
+    .match-card:hover{border-color:#e4c4a2;box-shadow:0 8px 22px rgba(8,23,41,.08)}
+    .match-card.is-special{border-left:4px solid var(--orange)}
+    .match-card.is-uncomputed{border-left:4px solid #94a3b8;background:#fcfcfd}
+
+    .match-top{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:.72rem}
+    .match-meta-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+    .chip-fecha{background:var(--navy);color:#fff;font-weight:900;padding:3px 8px;border-radius:3px;text-transform:uppercase;letter-spacing:.06em;font-size:.66rem}
+    .chip-cat{background:#eef2f6;color:var(--blue);font-weight:800;padding:3px 8px;border-radius:3px;font-size:.7rem}
+    .chip-badge{font-weight:900;padding:3px 8px;border-radius:3px;font-size:.67rem;text-transform:uppercase;letter-spacing:.05em}
+    .chip-badge.ascenso{background:#fff3e4;color:#a35f1d;border:1px solid #f2cfa6}
+    .chip-badge.wo{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+    .chip-badge.info{background:#eff6ff;color:#1e40af;border:1px solid #bfdbfe}
+    .chip-badge.pending{background:#f1f5f9;color:#475569;border:1px solid #cbd5e1}
+
+    .match-body{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}
+    .team-box{padding:9px 11px;border-radius:4px;border:1px solid #f0ece1;background:#fbf9f5;min-width:0}
+    .team-box.winner{background:var(--win-bg);border-color:var(--win-border)}
+    .team-role{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:4px;font-size:.64rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+    .team-box.winner .team-role{color:var(--win-ink)}
+    .team-box.loser .team-role{color:var(--muted)}
+    .team-name{font-size:.88rem;font-weight:900;color:var(--navy);line-height:1.25;word-break:break-word}
+    .team-sub{font-size:.68rem;font-weight:700;color:var(--muted);margin-top:3px;line-height:1.3}
+    .team-sub.moved{color:#a35f1d}
+    .pts-pill{display:inline-block;padding:2px 7px;border-radius:3px;font-size:.7rem;font-weight:900;white-space:nowrap}
+    .pts-pill.win{background:var(--orange);color:#111c2c}
+    .pts-pill.lose{background:#e9eef5;color:var(--navy)}
+    .pts-pill.zero{background:#fee2e2;color:#991b1b}
+    .pts-pill.tbd{background:#e2e8f0;color:#475569}
+
+    .score-center{text-align:center;padding:6px 10px;background:var(--navy);color:#fff;border-radius:4px;min-width:108px}
+    .score-sets{font-size:.98rem;font-weight:900;letter-spacing:.03em;color:var(--orange2);line-height:1.1}
+    .score-parciales{font-size:.76rem;font-weight:800;color:#fff;margin-top:4px;white-space:nowrap}
+    .score-games{font-size:.64rem;font-weight:700;color:#cbd5e1;margin-top:3px}
+
+    .match-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:8px;border-top:1px dashed #e8e2d9;font-size:.73rem;color:var(--muted);line-height:1.45}
+    .match-note{font-weight:600}
+    .cronica-link{color:var(--orange);font-weight:900;text-decoration:none;white-space:nowrap}
+    .cronica-link:hover{text-decoration:underline}
+
+    /* EMPTY STATE */
+    .empty-state{text-align:center;padding:46px 24px;background:#fbf9f5;border:1px dashed #d8cfc3;border-radius:6px;margin-top:8px}
+    .empty-icon{width:54px;height:54px;border-radius:50%;background:#fff3e4;border:1px solid #f0d7b7;color:var(--orange);display:grid;place-items:center;margin:0 auto 14px;font-size:1.5rem;font-weight:900}
+    .empty-state h3{margin:0 0 8px;color:var(--navy);font-size:1.2rem;font-weight:900}
+    .empty-state p{margin:0 auto 18px;max-width:480px;color:var(--muted);font-size:.88rem;line-height:1.6}
+    .empty-cta{display:inline-flex;align-items:center;gap:8px;background:var(--orange);color:#111c2c;font-weight:900;text-decoration:none;padding:11px 18px;border-radius:4px;font-size:.82rem}
+    .empty-cta:hover{background:var(--orange2)}
+
+    .footer{text-align:center;color:#d5deea;padding:28px 10px 0;font-size:.78rem}
+    .footer a{color:#ffb36b;text-decoration:none;font-weight:700}
+    .footer a:hover{text-decoration:underline}
+
+    @media(max-width:780px){
+      .matches-grid{grid-template-columns:1fr}
+      .match-body{grid-template-columns:1fr;gap:8px}
+      .score-center{order:-1;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left;padding:8px 12px}
+      .score-parciales,.score-games{margin-top:0}
+      .controls-row{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .topbar-inner{padding:10px 15px}
+      .brand img{width:42px;height:42px}
+      .brand span{font-size:.82rem}
+      .brand small{font-size:.55rem}
+      .topbar-nav{gap:6px}
+      .nav-btn{padding:8px 10px;font-size:.74rem}
+      .page{padding:18px 13px 44px}
+      .hero{padding:24px 18px}
+      .zonas-filter-btn{flex:1 1 calc(50% - 8px);text-align:center;padding:9px 8px;font-size:.76rem}
+      .fecha-tab{flex:1 1 calc(50% - 8px);justify-content:center;padding:10px 10px;font-size:.78rem}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="logo-royal.png" alt="Royal Star’s Club">
+        <span>ROYAL STAR’S CLUB<small>LIGA DE PÁDEL</small></span>
+      </a>
+      <nav class="topbar-nav" aria-label="Navegación de la Liga">
+        <a class="nav-btn primary" href="cronograma.html">Posiciones y Cronograma</a>
+        <a class="nav-btn current" href="historial.html" aria-current="page">Historial</a>
+        <a class="nav-btn" href="index.html">← Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <h1>Historial de Partidos</h1>
+      <p>Resultados oficiales, parciales y puntajes · Liga de Royal 2026</p>
+      <div class="hero-stats" id="heroStats"></div>
+    </section>
+
+    <section class="panel" aria-label="Buscador y resultados de partidos">
+      <div class="panel-head">
+        <div>
+          <span class="kicker">Registro Oficial por Jornada</span>
+          <h2>Enfrentamientos y Resultados</h2>
+        </div>
+        <div class="results-meta" id="resultsCounter">Cargando partidos…</div>
+      </div>
+
+      <!-- SELECTOR DE FECHAS -->
+      <div class="fecha-tabs" id="fechaTabs" role="tablist" aria-label="Filtrar por fecha"></div>
+
+      <!-- BUSCADOR EN TIEMPO REAL -->
+      <div class="controls-row">
+        <div class="search-box">
+          <input
+            id="searchInput"
+            class="search-input"
+            type="search"
+            placeholder="Buscar jugador o pareja (ej. Vergottini, Mussi, Campos, Escalada…)"
+            aria-label="Buscar jugador o pareja"
+            autocomplete="off"
+          >
+          <button type="button" class="search-clear" id="searchClear" aria-label="Limpiar búsqueda">×</button>
+        </div>
+        <button type="button" class="reset-btn" id="resetFilters">Limpiar filtros</button>
+      </div>
+
+      <!-- FILTRO POR CATEGORÍA -->
+      <div class="zonas-filter-bar" id="categoriaTabs" role="tablist" aria-label="Filtrar por categoría"></div>
+
+      <!-- REFERENCIAS DE PUNTUACIÓN -->
+      <div class="pos-legend">
+        <div class="legend-items">
+          <span><strong>Victoria 2 sets:</strong> +300 pts</span>
+          <span><strong>Victoria 3 sets:</strong> +200 pts</span>
+          <span><strong>Derrota 3 sets:</strong> +100 pts</span>
+          <span><strong>Derrota 2 sets:</strong> +40 pts</span>
+          <span><strong>WO:</strong> 300 / 0 pts</span>
+          <span><strong>STB:</strong> Super Tie-Break (suma 1 game al ganador)</span>
+        </div>
+      </div>
+
+      <!-- RESUMEN POR JUGADOR / PAREJA AL BUSCAR -->
+      <div class="player-summary" id="playerSummary" aria-live="polite"></div>
+
+      <!-- LISTADO DE RESULTADOS -->
+      <div id="matchesContainer" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer">
+      © 2026 Royal Star’s Club ·
+      <a href="cronograma.html">Ver Posiciones y Cronograma</a> ·
+      <a href="liga.html">Reglamento de la Liga</a> ·
+      <a href="index.html">Volver al sitio principal</a>
+    </footer>
+  </main>
+
+  <script src="data/historial.js"></script>
+  <script>
+    (() => {
+      'use strict';
+
+      const CATEGORIAS = window.HISTORIAL_CATEGORIAS || [];
+      const FECHAS = window.HISTORIAL_FECHAS || [];
+      const PARTIDOS = window.HISTORIAL_PARTIDOS || [];
+
+      const CAT_SHORT = {
+        'Iniciados Masculino': 'Iniciados Masc.',
+        '8va Masculina': '8va Masc.',
+        '7ma Masculina': '7ma Masc.',
+        '6ta Masculina': '6ta Masc.',
+        '5ta Masculina': '5ta Masc.',
+        'Suma 6 Masculina': 'Suma 6 Masc.',
+        'Iniciadas Femenino': 'Iniciadas Fem.',
+        '8va Femenina': '8va Fem.',
+        '7ma Femenina': '7ma Fem.',
+        'Suma 11 Femenina': 'Suma 11 Fem.'
+      };
+
+      const state = {
+        fecha: 'todas',
+        categoria: 'todas',
+        query: ''
+      };
+
+      const $heroStats = document.getElementById('heroStats');
+      const $fechaTabs = document.getElementById('fechaTabs');
+      const $catTabs = document.getElementById('categoriaTabs');
+      const $searchInput = document.getElementById('searchInput');
+      const $searchClear = document.getElementById('searchClear');
+      const $resetBtn = document.getElementById('resetFilters');
+      const $counter = document.getElementById('resultsCounter');
+      const $playerSummary = document.getElementById('playerSummary');
+      const $container = document.getElementById('matchesContainer');
+
+      const norm = (str) => String(str || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[.,\-_/]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+      const esc = (str) => String(str ?? '').replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+
+      function renderHeroStats() {
+        const confirmados = PARTIDOS.filter(p => p.computado);
+        const fechasActivas = FECHAS.filter(f => f.disponible).length;
+        const interCat = confirmados.filter(p => p.etiqueta && /ascenso|inter/i.test(p.etiqueta)).length;
+        $heroStats.innerHTML = `
+          <span class="hero-stat"><strong>${confirmados.length}</strong> partidos oficiales</span>
+          <span class="hero-stat"><strong>${fechasActivas} / ${FECHAS.length}</strong> fechas cargadas</span>
+          <span class="hero-stat"><strong>${CATEGORIAS.length}</strong> categorías</span>
+          <span class="hero-stat"><strong>${interCat}</strong> cruces de ascenso / inter-categoría</span>
+        `;
+      }
+
+      function renderFechaTabs() {
+        const totalConfirmados = PARTIDOS.filter(p => p.computado).length;
+        let html = `
+          <button type="button" class="fecha-tab ${state.fecha === 'todas' ? 'active' : ''}" data-fecha="todas" role="tab" aria-selected="${state.fecha === 'todas'}">
+            Todas <span class="fecha-count">${totalConfirmados}</span>
+          </button>
+        `;
+        for (const f of FECHAS) {
+          const count = PARTIDOS.filter(p => p.fecha === f.id && p.computado).length;
+          const isActive = state.fecha === String(f.id);
+          html += `
+            <button type="button" class="fecha-tab ${isActive ? 'active' : ''} ${!f.disponible ? 'upcoming' : ''}" data-fecha="${f.id}" role="tab" aria-selected="${isActive}">
+              ${esc(f.titulo)} <span class="fecha-count">${f.disponible ? count : 'Próxima'}</span>
+            </button>
+          `;
+        }
+        $fechaTabs.innerHTML = html;
+      }
+
+      function renderCatTabs() {
+        let html = `
+          <button type="button" class="zonas-filter-btn ${state.categoria === 'todas' ? 'active' : ''}" data-cat="todas">
+            Todas
+          </button>
+        `;
+        for (const cat of CATEGORIAS) {
+          const isActive = state.categoria === cat;
+          html += `
+            <button type="button" class="zonas-filter-btn ${isActive ? 'active' : ''}" data-cat="${esc(cat)}">
+              ${esc(CAT_SHORT[cat] || cat)}
+            </button>
+          `;
+        }
+        $catTabs.innerHTML = html;
+      }
+
+      function matchesQuery(partido, tokens) {
+        if (!tokens.length) return true;
+        const haystack = norm([
+          partido.ganador.nombre,
+          partido.perdedor.nombre,
+          partido.categoriaJugada,
+          partido.zonaJugada,
+          partido.ganador.categoriaActual,
+          partido.perdedor.categoriaActual,
+          partido.etiqueta,
+          partido.nota
+        ].join(' '));
+        return tokens.every(tok => haystack.includes(tok));
+      }
+
+      function matchesCategory(partido, cat) {
+        if (cat === 'todas') return true;
+        return partido.categoriaJugada === cat
+          || partido.ganador.categoriaActual === cat
+          || partido.perdedor.categoriaActual === cat
+          || (Array.isArray(partido.categoriasInvolucradas) && partido.categoriasInvolucradas.includes(cat));
+      }
+
+      function badgeClass(etiqueta, computado) {
+        if (!computado) return 'pending';
+        if (!etiqueta) return '';
+        const e = norm(etiqueta);
+        if (e.includes('wo')) return 'wo';
+        if (e.includes('ascenso') || e.includes('inter')) return 'ascenso';
+        return 'info';
+      }
+
+      function renderPlayerSummary(filtered, tokens) {
+        if (!tokens.length) {
+          $playerSummary.classList.remove('visible');
+          $playerSummary.innerHTML = '';
+          return;
+        }
+        // Agrupar por clave compuesta (Categoría actual + Pareja) para evitar colisiones entre categorías
+        const summary = new Map();
+        const addSide = (side, won, setsContra, gamesContra, matchComputado) => {
+          if (!matchComputado || !side.enTabla) return;
+          const pairNorm = norm(side.nombre);
+          if (!tokens.every(t => pairNorm.includes(t))) return;
+          const key = `${side.categoriaActual}|||${side.zonaActual}|||${side.nombre}`;
+          if (!summary.has(key)) {
+            summary.set(key, {
+              nombre: side.nombre,
+              cat: side.categoriaActual,
+              zona: side.zonaActual,
+              pts: 0, pj: 0, pg: 0, pp: 0, sf: 0, sc: 0, gf: 0, gc: 0
+            });
+          }
+          const rec = summary.get(key);
+          rec.pts += side.puntos;
+          rec.pj += 1;
+          if (won) rec.pg += 1; else rec.pp += 1;
+          rec.sf += side.sets;
+          rec.sc += setsContra;
+          rec.gf += side.games;
+          rec.gc += gamesContra;
+        };
+
+        for (const p of filtered) {
+          addSide(p.ganador, true, p.perdedor.sets, p.perdedor.games, p.computado);
+          addSide(p.perdedor, false, p.ganador.sets, p.ganador.games, p.computado);
+        }
+
+        if (!summary.size) {
+          $playerSummary.classList.remove('visible');
+          $playerSummary.innerHTML = '';
+          return;
+        }
+
+        const cards = [...summary.values()]
+          .sort((a, b) => b.pts - a.pts || (b.sf - b.sc) - (a.sf - a.sc) || (b.gf - b.gc) - (a.gf - a.gc))
+          .map(r => `
+            <div class="player-pill">
+              <div>
+                <div class="player-pill-name">${esc(r.nombre)}</div>
+                <div class="player-pill-cat">${esc(r.cat)} · ${esc(r.zona)}</div>
+              </div>
+              <div class="player-pill-stats">
+                <div class="player-pill-pts">${r.pts} pts</div>
+                <div class="player-pill-rec">${r.pj} PJ (${r.pg}G-${r.pp}P) · Sets ${r.sf}-${r.sc} · Games ${r.gf}-${r.gc}</div>
+              </div>
+            </div>
+          `).join('');
+
+        const scope = state.fecha === 'todas' ? 'en el filtro actual' : `en Fecha ${state.fecha}`;
+        $playerSummary.innerHTML = `
+          <div class="player-summary-title">Resumen acumulado por pareja ${esc(scope)} (clave Categoría + Pareja)</div>
+          <div class="player-summary-grid">${cards}</div>
+        `;
+        $playerSummary.classList.add('visible');
+      }
+
+      function renderCard(p) {
+        const bCls = badgeClass(p.etiqueta, p.computado);
+        const wMoved = p.ganador.enTabla && (p.ganador.categoriaActual !== p.categoriaJugada || (p.zonaJugada !== 'Inter-zona' && p.ganador.zonaActual !== p.zonaJugada));
+        const lMoved = p.perdedor.enTabla && (p.perdedor.categoriaActual !== p.categoriaJugada || (p.zonaJugada !== 'Inter-zona' && p.perdedor.zonaActual !== p.zonaJugada));
+
+        const wPtsLabel = !p.computado ? 'Pendiente' : `+${p.ganador.puntos} pts`;
+        const lPtsLabel = !p.computado ? 'Pendiente' : (p.perdedor.puntos === 0 ? '0 pts (WO)' : `+${p.perdedor.puntos} pts`);
+        const lPtsCls = !p.computado ? 'tbd' : (p.perdedor.puntos === 0 ? 'zero' : 'lose');
+
+        const wSub = wMoved
+          ? `<div class="team-sub moved">Tabla actual: ${esc(p.ganador.categoriaActual)} · ${esc(p.ganador.zonaActual)}</div>`
+          : (p.ganador.enTabla ? `<div class="team-sub">${esc(p.ganador.categoriaActual)} · ${esc(p.ganador.zonaActual)}</div>` : `<div class="team-sub">No figura en tabla actual</div>`);
+
+        const lSub = lMoved
+          ? `<div class="team-sub moved">Tabla actual: ${esc(p.perdedor.categoriaActual)} · ${esc(p.perdedor.zonaActual)}</div>`
+          : (p.perdedor.enTabla ? `<div class="team-sub">${esc(p.perdedor.categoriaActual)} · ${esc(p.perdedor.zonaActual)}</div>` : `<div class="team-sub">No computa en tabla actual</div>`);
+
+        const showFooter = p.nota || p.cronica;
+        const cardExtraCls = !p.computado ? 'is-uncomputed' : (p.etiqueta ? 'is-special' : '');
+
+        return `
+          <article class="match-card ${cardExtraCls}">
+            <div class="match-top">
+              <div class="match-meta-left">
+                <span class="chip-fecha">Fecha ${p.fecha}</span>
+                <span class="chip-cat">${esc(p.categoriaJugada)} · ${esc(p.zonaJugada)}</span>
+              </div>
+              ${p.etiqueta ? `<span class="chip-badge ${bCls}">${esc(p.etiqueta)}</span>` : ''}
+            </div>
+
+            <div class="match-body">
+              <div class="team-box winner">
+                <div class="team-role">
+                  <span>✓ Ganador</span>
+                  <span class="pts-pill ${p.computado ? 'win' : 'tbd'}">${wPtsLabel}</span>
+                </div>
+                <div class="team-name">${esc(p.ganador.nombre)}</div>
+                ${wSub}
+              </div>
+
+              <div class="score-center">
+                <div class="score-sets">${esc(p.setsMarcador)}</div>
+                <div class="score-parciales">${esc(p.parciales)}</div>
+                <div class="score-games">${p.gamesMarcador === 'Sin games' ? 'Games sin registrar' : `${esc(p.gamesMarcador)} games`}</div>
+              </div>
+
+              <div class="team-box loser">
+                <div class="team-role">
+                  <span>Rival</span>
+                  <span class="pts-pill ${lPtsCls}">${lPtsLabel}</span>
+                </div>
+                <div class="team-name">${esc(p.perdedor.nombre)}</div>
+                ${lSub}
+              </div>
+            </div>
+
+            ${showFooter ? `
+              <div class="match-foot">
+                <span class="match-note">${esc(p.nota)}</span>
+                ${p.cronica ? `<a class="cronica-link" href="${esc(p.cronica)}" target="_blank" rel="noopener">Leer crónica oficial ↗</a>` : ''}
+              </div>
+            ` : ''}
+          </article>
+        `;
+      }
+
+      function render() {
+        const tokens = norm(state.query).split(' ').filter(Boolean);
+        $searchClear.classList.toggle('visible', state.query.trim().length > 0);
+
+        // Si se eligió una fecha que aún no tiene resultados cargados (Fecha 3 o Fecha 4)
+        if (state.fecha !== 'todas') {
+          const fechaObj = FECHAS.find(f => String(f.id) === state.fecha);
+          if (fechaObj && !fechaObj.disponible) {
+            $playerSummary.classList.remove('visible');
+            $playerSummary.innerHTML = '';
+            $counter.textContent = `${fechaObj.titulo} · Pendiente`;
+            $container.innerHTML = `
+              <div class="empty-state">
+                <div class="empty-icon">📅</div>
+                <h3>${esc(fechaObj.titulo)} — ${esc(fechaObj.subtitulo)}</h3>
+                <p>${esc(fechaObj.mensajeVacio || 'Resultados disponibles al finalizar la jornada.')}</p>
+                ${fechaObj.id === 3 ? `<a class="empty-cta" href="cronograma.html#cronograma-tabla">Ver cronograma programado de la Fecha 3 →</a>` : `<a class="empty-cta" href="cronograma.html">Ver tablas de posiciones actuales →</a>`}
+              </div>
+            `;
+            return;
+          }
+        }
+
+        const filtered = PARTIDOS.filter(p => {
+          if (state.fecha !== 'todas' && String(p.fecha) !== state.fecha) return false;
+          if (!matchesCategory(p, state.categoria)) return false;
+          return matchesQuery(p, tokens);
+        });
+
+        const confCount = filtered.filter(p => p.computado).length;
+        const pendCount = filtered.length - confCount;
+        $counter.textContent = pendCount > 0
+          ? `${confCount} oficial${confCount === 1 ? '' : 'es'} · ${pendCount} a confirmar`
+          : `${confCount} partido${confCount === 1 ? '' : 's'} encontrado${confCount === 1 ? '' : 's'}`;
+
+        renderPlayerSummary(filtered, tokens);
+
+        if (!filtered.length) {
+          $container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-icon">🔎</div>
+              <h3>No encontramos partidos con ese filtro</h3>
+              <p>Probá buscar solo un apellido (por ejemplo, <strong>Vergottini</strong> o <strong>Mussi</strong>) o seleccioná <strong>Todas</strong> las categorías y fechas.</p>
+              <button type="button" class="empty-cta" id="emptyResetBtn" style="border:0;cursor:pointer;font:inherit;">Mostrar todos los partidos</button>
+            </div>
+          `;
+          document.getElementById('emptyResetBtn')?.addEventListener('click', resetAll);
+          return;
+        }
+
+        // Agrupar por Fecha (descendente cuando es "todas" o solo la fecha elegida) y luego por Categoría oficial
+        const fechasToShow = state.fecha === 'todas'
+          ? FECHAS.filter(f => f.disponible).slice().sort((a, b) => b.id - a.id)
+          : FECHAS.filter(f => String(f.id) === state.fecha);
+
+        let html = '';
+        for (const fObj of fechasToShow) {
+          const inFecha = filtered.filter(p => p.fecha === fObj.id);
+          if (!inFecha.length) continue;
+
+          // Ordenar categorías según orden oficial
+          const catOrder = new Map(CATEGORIAS.map((c, idx) => [c, idx]));
+          const byCat = new Map();
+          for (const m of inFecha) {
+            const catKey = state.categoria !== 'todas' ? state.categoria : m.categoriaJugada;
+            if (!byCat.has(catKey)) byCat.set(catKey, []);
+            byCat.get(catKey).push(m);
+          }
+
+          const sortedCats = [...byCat.keys()].sort((a, b) => (catOrder.get(a) ?? 99) - (catOrder.get(b) ?? 99));
+
+          html += `
+            <div class="fecha-section">
+              <div class="fecha-heading">
+                <h3>${esc(fObj.titulo)}</h3>
+                <span>${esc(fObj.subtitulo)} · ${inFecha.length} encuentro${inFecha.length === 1 ? '' : 's'}</span>
+              </div>
+          `;
+
+          for (const catKey of sortedCats) {
+            const list = byCat.get(catKey).slice().sort((a, b) => {
+              if (a.computado !== b.computado) return a.computado ? -1 : 1;
+              return a.zonaJugada.localeCompare(b.zonaJugada, 'es');
+            });
+            html += `
+              <div class="cat-group">
+                <h4 class="cat-group-title">${esc(catKey)} (${list.length})</h4>
+                <div class="matches-grid">
+                  ${list.map(renderCard).join('')}
+                </div>
+              </div>
+            `;
+          }
+
+          html += `</div>`;
+        }
+
+        $container.innerHTML = html;
+      }
+
+      function resetAll() {
+        state.fecha = 'todas';
+        state.categoria = 'todas';
+        state.query = '';
+        $searchInput.value = '';
+        renderFechaTabs();
+        renderCatTabs();
+        render();
+      }
+
+      $fechaTabs.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-fecha]');
+        if (!btn) return;
+        state.fecha = btn.dataset.fecha;
+        renderFechaTabs();
+        render();
+      });
+
+      $catTabs.addEventListener('click', (e) => {
+        const btn = e.target.closest('[data-cat]');
+        if (!btn) return;
+        state.categoria = btn.dataset.cat;
+        renderCatTabs();
+        render();
+      });
+
+      $searchInput.addEventListener('input', (e) => {
+        state.query = e.target.value;
+        render();
+      });
+
+      $searchClear.addEventListener('click', () => {
+        state.query = '';
+        $searchInput.value = '';
+        $searchInput.focus();
+        render();
+      });
+
+      $resetBtn.addEventListener('click', resetAll);
+
+      // Permitir deep-link opcional: historial.html?q=Vergottini&fecha=2&cat=6ta%20Masculina
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('fecha')) state.fecha = params.get('fecha');
+      if (params.get('cat') && CATEGORIAS.includes(params.get('cat'))) state.categoria = params.get('cat');
+      if (params.get('q')) {
+        state.query = params.get('q');
+        $searchInput.value = state.query;
+      }
+
+      renderHeroStats();
+      renderFechaTabs();
+      renderCatTabs();
+      render();
+    })();
+  </script>
+</body>
+</html>
