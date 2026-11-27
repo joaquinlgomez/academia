@@ -423,11 +423,20 @@
           const rec = summary.get(key);
           rec.pts += side.puntos;
           rec.pj += 1;
-          if (won) rec.pg += 1; else rec.pp += 1;
-          rec.sf += side.sets;
-          rec.sc += setsContra;
-          rec.gf += side.games;
-          rec.gc += gamesContra;
+          if (side.tablaOverride) {
+            rec.pg += side.tablaOverride.pg;
+            rec.pp += side.tablaOverride.pp;
+            rec.sf += side.tablaOverride.sf;
+            rec.sc += side.tablaOverride.sc;
+            rec.gf += side.tablaOverride.gf;
+            rec.gc += side.tablaOverride.gc;
+          } else {
+            if (won) rec.pg += 1; else rec.pp += 1;
+            rec.sf += side.sets;
+            rec.sc += setsContra;
+            rec.gf += side.games;
+            rec.gc += gamesContra;
+          }
         };
 
         for (const p of filtered) {
@@ -469,9 +478,9 @@
         const wMoved = p.ganador.enTabla && (p.ganador.categoriaActual !== p.categoriaJugada || (p.zonaJugada !== 'Inter-zona' && p.ganador.zonaActual !== p.zonaJugada));
         const lMoved = p.perdedor.enTabla && (p.perdedor.categoriaActual !== p.categoriaJugada || (p.zonaJugada !== 'Inter-zona' && p.perdedor.zonaActual !== p.zonaJugada));
 
-        const wPtsLabel = !p.computado ? 'Pendiente' : `+${p.ganador.puntos} pts`;
-        const lPtsLabel = !p.computado ? 'Pendiente' : (p.perdedor.puntos === 0 ? '0 pts (WO)' : `+${p.perdedor.puntos} pts`);
-        const lPtsCls = !p.computado ? 'tbd' : (p.perdedor.puntos === 0 ? 'zero' : 'lose');
+        const wPtsLabel = !p.computado ? 'Pendiente' : (p.ganador.puntosLabel || `+${p.ganador.puntos} pts`);
+        const lPtsLabel = !p.computado ? 'Pendiente' : (p.perdedor.puntosLabel || (p.perdedor.puntos === 0 ? '0 pts (WO)' : `+${p.perdedor.puntos} pts`));
+        const lPtsCls = !p.computado ? 'tbd' : (p.perdedor.puntosLabel ? 'win' : (p.perdedor.puntos === 0 ? 'zero' : 'lose'));
 
         const wSub = wMoved
           ? `<div class="team-sub moved">Tabla actual: ${esc(p.ganador.categoriaActual)} · ${esc(p.ganador.zonaActual)}</div>`
