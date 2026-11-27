@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c1b2d">
+  <meta name="description" content="Cuadros eliminatorios de Copa de Oro y Copa de Plata y Tablas Generales en vivo de la Liga de Royal en Royal Star’s Club.">
+  <title>Playoffs y Tablas Generales | Liga de Royal</title>
+  <link rel="icon" type="image/png" href="favicon-royal.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#0c1b2d;
+      --blue:#173b63;
+      --blue2:#2d5686;
+      --orange:#f58220;
+      --orange2:#ffad55;
+      --ink:#172231;
+      --muted:#5e6b7a;
+      --paper:#fffdf9;
+      --border:#e8e2d9;
+    }
+    *{box-sizing:border-box;scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;font-family:Montserrat,sans-serif;color:var(--ink);background:#09182a}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background:url('fondo-royal.png') center/cover no-repeat}
+    body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(4,13,25,.74),rgba(5,16,29,.60))}
+    a{color:inherit}
+
+    /* TOPBAR */
+    .topbar{background:rgba(8,20,35,.94);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff20;color:#fff;position:sticky;top:0;z-index:50}
+    .topbar-inner{max-width:1180px;margin:auto;padding:13px 22px;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff;font-weight:900;letter-spacing:.02em}
+    .brand img{width:52px;height:52px;object-fit:contain}
+    .brand span{display:block;font-size:1rem;line-height:1.1}
+    .brand small{display:block;color:#ffb36b;font-size:.65rem;letter-spacing:.19em;margin-top:5px}
+    .topbar-nav{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:flex-end}
+    .nav-btn{display:inline-flex;align-items:center;gap:7px;color:#e5edf7;text-decoration:none;border:1px solid #ffffff4d;padding:10px 14px;border-radius:5px;font-size:.82rem;font-weight:800;transition:all .18s ease}
+    .nav-btn:hover{background:#ffffff16;color:#fff;border-color:#ffffff80}
+    .nav-btn.primary{background:var(--orange);border-color:var(--orange);color:#111c2c;font-weight:900}
+    .nav-btn.primary:hover{background:var(--orange2);border-color:var(--orange2);color:#111c2c}
+    .nav-btn.current{background:#ffffff1a;border-color:var(--orange);color:#ffb76e}
+
+    /* LAYOUT */
+    .page{max-width:1180px;margin:0 auto;padding:32px 22px 64px}
+    .hero{padding:clamp(26px,5vw,42px);background:linear-gradient(115deg,rgba(24,61,101,.97),rgba(9,25,44,.96));border:1px solid #ffffff2c;box-shadow:0 24px 60px #0004;color:#fff;text-align:center;margin-bottom:20px;position:relative;overflow:hidden}
+    .hero::after{content:"PLAYOFFS";position:absolute;right:-.03em;bottom:-.32em;font-size:clamp(4.5rem,14vw,11rem);font-weight:900;letter-spacing:-.08em;color:#ffffff07;line-height:1;pointer-events:none}
+    .hero h1{font-size:clamp(1.9rem,4vw,3.3rem);letter-spacing:-.04em;line-height:1.05;margin:0;font-weight:900;text-transform:uppercase;position:relative;z-index:1}
+    .hero p{color:#ffb76e;font-weight:800;font-size:.84rem;letter-spacing:.16em;text-transform:uppercase;margin:10px 0 0;position:relative;z-index:1}
+    .hero-stats{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:20px;position:relative;z-index:1}
+    .hero-stat{background:#ffffff14;border:1px solid #ffffff2e;padding:8px 14px;border-radius:4px;font-size:.76rem;font-weight:700;color:#e5edf7}
+    .hero-stat strong{color:var(--orange2);font-weight:900;margin-right:4px}
+
+    .panel{background:rgba(255,253,249,.97);padding:clamp(20px,3vw,32px);border:1px solid #ffffffa8;box-shadow:0 15px 38px #08172926;border-radius:6px}
+    .kicker{font-size:.7rem;letter-spacing:.19em;text-transform:uppercase;color:#a35f1d;font-weight:900}
+    .panel h2{font-size:clamp(1.45rem,2.5vw,2rem);font-weight:900;letter-spacing:-.04em;color:var(--navy);margin:6px 0 10px}
+
+    .footer{text-align:center;color:#d5deea;padding:28px 10px 0;font-size:.78rem}
+    .footer a{color:#ffb36b;text-decoration:none;font-weight:700}
+    .footer a:hover{text-decoration:underline}
+
+    @media(max-width:620px){
+      .topbar-inner{padding:10px 15px}
+      .brand img{width:42px;height:42px}
+      .brand span{font-size:.82rem}
+      .brand small{font-size:.55rem}
+      .topbar-nav{gap:6px}
+      .nav-btn{padding:8px 10px;font-size:.74rem}
+      .page{padding:18px 13px 44px}
+      .hero{padding:24px 18px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="logo-royal.png" alt="Royal Star’s Club">
+        <span>ROYAL STAR’S CLUB<small>LIGA DE PÁDEL</small></span>
+      </a>
+      <nav class="topbar-nav" aria-label="Navegación de la Liga">
+        <a class="nav-btn primary" href="cronograma.html">Posiciones y Cronograma</a>
+        <a class="nav-btn" href="historial.html">Historial</a>
+        <a class="nav-btn current" href="playoffs.html" aria-current="page">Playoffs</a>
+        <a class="nav-btn" href="index.html">← Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <h1>Playoffs y Tablas Generales</h1>
+      <p>Cuadros eliminatorios de Copa de Oro y Plata · Liga de Royal 2026</p>
+      <div class="hero-stats" id="heroStats">
+        <span class="hero-stat"><strong>10</strong> categorías</span>
+        <span class="hero-stat"><strong>Copa de Oro + Plata</strong> fase final</span>
+        <span class="hero-stat"><strong>13–14 y 18–19 Dic</strong> definición oficial</span>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CUADROS ELIMINATORIOS (PLAYOFFS ORO Y PLATA) -->
+    <section id="cuadros-liga" class="panel" style="margin-top: 18px;">
+      <style>
+        .playoff-tabs {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          margin: 14px 0 18px;
+        }
+        .playoff-tab-btn {
+          border: 1px solid #d9dfe6;
+          background: #fff;
+          padding: 9px 14px;
+          font: inherit;
+          font-size: 0.82rem;
+          font-weight: 900;
+          color: #536174;
+          cursor: pointer;
+          border-radius: 3px;
+          transition: all 0.15s ease;
+        }
+        .playoff-tab-btn:hover {
+          border-color: var(--orange, #f58220);
+          color: var(--navy, #0c1b2d);
+        }
+        .playoff-tab-btn.active {
+          background: var(--orange, #f58220);
+          border-color: var(--orange, #f58220);
+          color: #111c2c;
+          box-shadow: 0 4px 12px rgba(245, 130, 32, 0.24);
+        }
+
+        /* BARRA DE MODO: "SI LAS ZONAS CERRARAN HOY" */
+        .simulador-bar {
+          background: linear-gradient(115deg, #0c1b2d, #173b63);
+          border: 1px solid #294c73;
+          border-left: 5px solid var(--orange, #f58220);
+          border-radius: 5px;
+          padding: 14px 18px;
+          margin: 0 0 18px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 14px;
+          flex-wrap: wrap;
+          color: #fff;
+          box-shadow: 0 10px 24px rgba(12, 27, 45, 0.14);
+        }
+        .simulador-copy {
+          display: flex;
+          flex-direction: column;
+          gap: 3px;
+        }
+        .simulador-kicker {
+          font-size: 0.68rem;
+          font-weight: 900;
+          letter-spacing: 0.16em;
+          text-transform: uppercase;
+          color: var(--orange2, #ffad55);
+        }
+        .simulador-title {
+          font-size: 0.95rem;
+          font-weight: 900;
+          color: #fff;
+        }
+        .simulador-modes {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+        }
+        .modo-btn {
+          border: 1px solid rgba(255, 255, 255, 0.32);
+          background: rgba(255, 255, 255, 0.09);
+          color: #e5edf7;
+          padding: 9px 14px;
+          border-radius: 4px;
+          font: inherit;
+          font-size: 0.79rem;
+          font-weight: 800;
+          cursor: pointer;
+          transition: all 0.16s ease;
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+        .modo-btn:hover:not(:disabled) {
+          background: rgba(255, 255, 255, 0.18);
+          border-color: #fff;
+          color: #fff;
+        }
+        .modo-btn.active {
+          background: var(--orange, #f58220);
+          border-color: var(--orange, #f58220);
+          color: #111c2c;
+          font-weight: 900;
+          box-shadow: 0 4px 14px rgba(245, 130, 32, 0.32);
+        }
+        .modo-btn:disabled {
+          opacity: 0.48;
+          cursor: not-allowed;
+        }
+
+        /* AVISOS */
+        .sim-warning {
+          background: #fff8eb;
+          border: 1px solid #f3d098;
+          border-left: 4px solid var(--orange, #f58220);
+          color: #6e4411;
+          padding: 11px 15px;
+          border-radius: 4px;
+          font-size: 0.83rem;
+          font-weight: 700;
+          margin-bottom: 16px;
+          line-height: 1.5;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+        .sim-switch-inline {
+          border: 1px solid #e0b679;
+          background: #fff;
+          color: var(--navy, #0c1b2d);
+          font: inherit;
+          font-size: 0.75rem;
+          font-weight: 900;
+          padding: 6px 11px;
+          border-radius: 3px;
+          cursor: pointer;
+          white-space: nowrap;
+        }
+        .sim-switch-inline:hover {
+          border-color: var(--orange, #f58220);
+          background: #fff3e0;
+        }
+        .fetch-fallback-notice {
+          background: #f1f5f9;
+          border: 1px solid #cbd5e1;
+          border-left: 4px solid #64748b;
+          color: #334155;
+          padding: 12px 15px;
+          border-radius: 4px;
+          font-size: 0.83rem;
+          font-weight: 600;
+          margin-bottom: 16px;
+          line-height: 1.5;
+        }
+
+        .playoff-meta {
+          background: #f8fafc;
+          border: 1px solid #e5e0d8;
+          border-left: 4px solid var(--orange, #f58220);
+          padding: 12px 16px;
+          border-radius: 4px;
+          margin-bottom: 20px;
+          font-size: 0.88rem;
+          color: var(--navy, #0c1b2d);
+          line-height: 1.55;
+        }
+        .playoff-cup-title {
+          background: var(--navy, #0c1b2d);
+          color: #fff;
+          padding: 10px 16px;
+          border-left: 5px solid var(--orange, #f58220);
+          border-radius: 4px;
+          font-size: 1.05rem;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          margin: 22px 0 14px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+        .playoff-cup-title small {
+          font-size: 0.72rem;
+          font-weight: 800;
+          color: var(--orange2, #ffad55);
+          letter-spacing: 0.08em;
+        }
+        .playoff-cup-title.plata {
+          background: #2c3e50;
+          border-left-color: #94a3b8;
+        }
+        .playoff-cup-title.plata small {
+          color: #cbd5e1;
+        }
+
+        /* BRACKETS */
+        .bracket-scroll {
+          overflow-x: auto;
+          padding-bottom: 10px;
+        }
+        .bracket-grid {
+          display: flex;
+          gap: 24px;
+          min-width: 760px;
+          align-items: stretch;
+        }
+        .bracket-round {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          gap: 12px;
+          min-width: 215px;
+        }
+        .bracket-round-header {
+          text-align: center;
+          font-size: 0.75rem;
+          font-weight: 900;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          color: #a35f1d;
+          background: #fff3e4;
+          border: 1px solid #f0d7b7;
+          padding: 6px 8px;
+          border-radius: 3px;
+          margin-bottom: 4px;
+        }
+        .bracket-match {
+          background: #fff;
+          border: 1px solid #e5e0d8;
+          border-radius: 4px;
+          box-shadow: 0 3px 10px rgba(8, 23, 41, 0.04);
+          overflow: hidden;
+        }
+        .bracket-match-label {
+          background: #f8fafc;
+          font-size: 0.68rem;
+          font-weight: 900;
+          color: #64748b;
+          padding: 4px 10px;
+          border-bottom: 1px solid #eef2f6;
+          display: flex;
+          justify-content: space-between;
+          gap: 6px;
+          text-transform: uppercase;
+        }
+        .bracket-match-label .tag-live {
+          color: #b45309;
+        }
+        .bracket-slot {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 6px;
+          padding: 8px 10px;
+          font-size: 0.83rem;
+          font-weight: 800;
+          color: var(--navy, #0c1b2d);
+          border-bottom: 1px solid #f1ede6;
+        }
+        .bracket-slot:last-child {
+          border-bottom: none;
+        }
+        .seed-badge {
+          background: var(--navy, #0c1b2d);
+          color: #fff;
+          font-size: 0.7rem;
+          font-weight: 900;
+          padding: 2px 6px;
+          border-radius: 3px;
+          margin-right: 7px;
+          min-width: 28px;
+          text-align: center;
+          display: inline-block;
+          flex-shrink: 0;
+        }
+        .seed-badge.plata {
+          background: #64748b;
+        }
+        .slot-tbd {
+          color: #64748b;
+          font-weight: 700;
+          font-size: 0.8rem;
+          display: inline-flex;
+          align-items: center;
+        }
+        .slot-live {
+          color: var(--navy, #0c1b2d);
+          font-weight: 800;
+          font-size: 0.81rem;
+          display: inline-flex;
+          align-items: center;
+          line-height: 1.25;
+        }
+        .slot-zona-pill {
+          font-size: 0.68rem;
+          font-weight: 800;
+          color: #8b561e;
+          background: #fff3e4;
+          border: 1px solid #f0d7b7;
+          padding: 1px 6px;
+          border-radius: 3px;
+          white-space: nowrap;
+          flex-shrink: 0;
+        }
+        .slot-zona-pill.plata {
+          color: #475569;
+          background: #f1f5f9;
+          border-color: #cbd5e1;
+        }
+        .slot-bye {
+          color: #94a3b8;
+          font-style: italic;
+          font-weight: 700;
+          font-size: 0.78rem;
+          display: inline-flex;
+          align-items: center;
+        }
+        .final-highlight {
+          border: 2px solid var(--orange, #f58220);
+          background: #fdf5eb;
+        }
+
+        /* TABLA GENERAL EN VIVO */
+        .general-header-bar {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin: 18px 0 12px;
+        }
+        .general-header-bar h3 {
+          margin: 0;
+          font-size: 1.1rem;
+          font-weight: 900;
+          color: var(--navy, #0c1b2d);
+          text-transform: uppercase;
+          display: flex;
+          align-items: center;
+          gap: 9px;
+        }
+        .general-header-bar h3::before {
+          content: "";
+          display: inline-block;
+          width: 6px;
+          height: 20px;
+          background: var(--orange, #f58220);
+          border-radius: 2px;
+        }
+        .general-legend {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          font-size: 0.73rem;
+          font-weight: 800;
+          color: var(--muted, #5e6b7a);
+        }
+        .tabla-general-wrap {
+          overflow-x: auto;
+          background: #fff;
+          border: 1px solid #e8e2d9;
+          border-radius: 5px;
+          box-shadow: 0 5px 15px rgba(8, 23, 41, 0.04);
+        }
+        .tabla-general {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 0.81rem;
+          text-align: center;
+          min-width: 640px;
+        }
+        .tabla-general th {
+          background: var(--navy, #0c1b2d);
+          color: #fff;
+          padding: 9px 7px;
+          font-weight: 900;
+          font-size: 0.7rem;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          white-space: nowrap;
+        }
+        .tabla-general th.col-left,
+        .tabla-general td.col-left {
+          text-align: left;
+          padding-left: 12px;
+        }
+        .tabla-general td {
+          padding: 8px 7px;
+          border-bottom: 1px solid #f0ece1;
+          color: var(--navy, #0c1b2d);
+          font-weight: 600;
+          white-space: nowrap;
+        }
+        .tabla-general tbody tr:nth-child(even) {
+          background: #fbf9f5;
+        }
+        .tabla-general tbody tr:hover {
+          background: #fdf5eb;
+        }
+        .tabla-general tbody tr.row-oro {
+          border-left: 4px solid var(--orange, #f58220);
+        }
+        .tabla-general tbody tr.row-plata {
+          border-left: 4px solid #64748b;
+        }
+        .tabla-general tbody tr.row-fuera {
+          border-left: 4px solid transparent;
+          opacity: 0.78;
+        }
+        .tabla-general tbody tr.cutoff-divider td {
+          border-bottom: 2px dashed #cbd5e1;
+        }
+        .tabla-general td.col-pos {
+          font-weight: 900;
+          color: #536174;
+          width: 50px;
+        }
+        .tabla-general td.col-pareja {
+          font-weight: 800;
+          color: var(--navy, #0c1b2d);
+        }
+        .tabla-general td.col-zona {
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: #536174;
+        }
+        .tabla-general td.col-gf {
+          font-weight: 900;
+          color: var(--blue, #173b63);
+          background: rgba(23, 59, 99, 0.05);
+        }
+        .tabla-general td.col-pts {
+          color: var(--orange, #f58220);
+          font-weight: 900;
+          background: rgba(245, 130, 32, 0.06);
+        }
+        .status-badge {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+          padding: 3px 9px;
+          border-radius: 999px;
+          font-size: 0.7rem;
+          font-weight: 900;
+          letter-spacing: 0.03em;
+          white-space: nowrap;
+        }
+        .status-badge.oro {
+          background: #fff3e0;
+          color: #9a4d08;
+          border: 1px solid #f5c384;
+        }
+        .status-badge.plata {
+          background: #eef2f6;
+          color: #334155;
+          border: 1px solid #cbd5e1;
+        }
+        .status-badge.fuera {
+          color: #94a3b8;
+          font-weight: 800;
+        }
+
+        @media (max-width: 680px) {
+          .simulador-bar {
+            padding: 13px 14px;
+          }
+          .simulador-modes {
+            width: 100%;
+          }
+          .modo-btn {
+            flex: 1 1 calc(50% - 8px);
+            justify-content: center;
+            padding: 9px 10px;
+            font-size: 0.75rem;
+          }
+          .playoff-tab-btn {
+            flex: 1 1 calc(50% - 8px);
+            text-align: center;
+            padding: 9px 8px;
+            font-size: 0.77rem;
+          }
+        }
+      </style>
+
+      <span class="kicker">Fase Final · Eliminación Directa</span>
+      <h2>Cuadros y Tablas Generales por Categoría</h2>
+      <p style="font-size:0.9rem; color:var(--muted, #5e6b7a); margin-bottom: 14px; line-height: 1.55;">
+        Tabla general ordenada por <strong>Games a favor (GF) → Sets a favor (SF) → Puntos (Pts)</strong> (con diferencia de games <strong>DG</strong> como desempate). Prioridad de cruce: <strong>1° vs. último clasificado</strong>, ubicando a parejas de la misma zona en mitades opuestas siempre que sea posible.
+      </p>
+
+      <!-- SELECTOR DE MODO EN VIVO -->
+      <div class="simulador-bar" role="region" aria-label="Modo de visualización Si las zonas cerraran hoy">
+        <div class="simulador-copy">
+          <span class="simulador-kicker">Simulador en tiempo real · Datos de Cronograma</span>
+          <span class="simulador-title">¿Cómo quedarían los Playoffs si las zonas cerraran HOY?</span>
+        </div>
+        <div class="simulador-modes" id="modoSelector" role="tablist" aria-label="Elegir vista de Playoffs">
+          <button type="button" class="modo-btn active" data-modo="cruces-hoy" role="tab" aria-selected="true">⚡ Cruces HOY</button>
+          <button type="button" class="modo-btn" data-modo="tabla-hoy" role="tab" aria-selected="false">📊 Tabla General HOY</button>
+          <button type="button" class="modo-btn" data-modo="base" role="tab" aria-selected="false">📋 Cuadros Base (A definir)</button>
+        </div>
+      </div>
+
+      <div id="liveNoticeContainer"></div>
+      <div class="playoff-tabs" id="playoffTabs" role="tablist" aria-label="Seleccionar categoría"></div>
+      <div id="playoffContent" aria-live="polite"></div>
+
+      <script>
+        (function () {
+          'use strict';
+
+          const CATEGORIAS_CUADROS = [
+            {
+              id: '8va-masc',
+              nombre: '8va Masculina',
+              catCronograma: '8va Masculina',
+              zonas: '8 zonas (A a H)',
+              reglaOro: 'Clasifican los 2 primeros de cada zona (16 parejas) a Octavos de Final de Oro.',
+              reglaPlata: 'Clasifican los 3° y 4° de cada zona (16 parejas) a Octavos de Final de Plata.',
+              oroRondas: 16,
+              plataRondas: 16,
+              reglaCalculo: { oroDirectosMaxPos: 2, oroMejoresPos: 0, oroMejoresCant: 0, plataRestantesPos: 0, plataDirectosPos: [3, 4], plataMejoresPos: 0, plataMejoresCant: 0 }
+            },
+            {
+              id: '7ma-masc',
+              nombre: '7ma Masculina',
+              catCronograma: '7ma Masculina',
+              zonas: '8 zonas (A a H)',
+              reglaOro: 'Clasifican los 2 primeros de cada zona (16 parejas) a Octavos de Final de Oro.',
+              reglaPlata: 'Clasifican los 3° y 4° de cada zona (16 parejas) a Octavos de Final de Plata.',
+              oroRondas: 16,
+              plataRondas: 16,
+              reglaCalculo: { oroDirectosMaxPos: 2, oroMejoresPos: 0, oroMejoresCant: 0, plataRestantesPos: 0, plataDirectosPos: [3, 4], plataMejoresPos: 0, plataMejoresCant: 0 }
+            },
+            {
+              id: '6ta-masc',
+              nombre: '6ta Masculina',
+              catCronograma: '6ta Masculina',
+              zonas: '6 zonas (A a F)',
+              reglaOro: 'Clasifican los 2 primeros de cada zona (12) + 4 mejores terceros (4) = 16 parejas a Octavos de Oro.',
+              reglaPlata: 'Los 2 terceros restantes + los 6 cuartos = 8 parejas a Cuartos de Final de Plata.',
+              oroRondas: 16,
+              plataRondas: 8,
+              reglaCalculo: { oroDirectosMaxPos: 2, oroMejoresPos: 3, oroMejoresCant: 4, plataRestantesPos: 3, plataDirectosPos: [4], plataMejoresPos: 0, plataMejoresCant: 0 }
+            },
+            {
+              id: '5ta-masc',
+              nombre: '5ta Masculina',
+              catCronograma: '5ta Masculina',
+              zonas: '5 zonas (A a E)',
+              reglaOro: 'Clasifican los 3 primeros de cada zona (15) + mejor cuarto (1) = 16 parejas a Octavos de Oro.',
+              reglaPlata: 'Los 4 cuartos restantes disputan Semifinales y Final de Copa de Plata.',
+              oroRondas: 16,
+              plataRondas: 4,
+              reglaCalculo: { oroDirectosMaxPos: 3, oroMejoresPos: 4, oroMejoresCant: 1, plataRestantesPos: 4, plataDirectosPos: [], plataMejoresPos: 0, plataMejoresCant: 0 }
+            },
+            {
+              id: 'inic-fem',
+              nombre: 'Iniciadas Femenino',
+              catCronograma: 'Iniciadas Femenino',
+              zonas: '5 zonas (A a E)',
+              reglaOro: 'Clasifican los 3 primeros de cada zona (15) + mejor cuarto (1) = 16 parejas a Octavos de Oro.',
+              reglaPlata: 'Los 4 cuartos restantes + mejores quintos clasifican a Cuartos de Final de Plata.',
+              oroRondas: 16,
+              plataRondas: 8,
+              reglaCalculo: { oroDirectosMaxPos: 3, oroMejoresPos: 4, oroMejoresCant: 1, plataRestantesPos: 4, plataDirectosPos: [], plataMejoresPos: 5, plataMejoresCant: 4 }
+            },
+            {
+              id: 'suma11-fem',
+              nombre: 'Suma 11 Femenina',
+              catCronograma: 'Suma 11 Femenina',
+              zonas: '4 zonas (A a D)',
+              reglaOro: 'Clasifican los 2 primeros de cada zona (8 parejas) a Cuartos de Final de Oro.',
+              reglaPlata: 'Clasifican los 3° y 4° de cada zona (8 parejas) a Cuartos de Final de Plata.',
+              oroRondas: 8,
+              plataRondas: 8,
+              reglaCalculo: { oroDirectosMaxPos: 2, oroMejoresPos: 0, oroMejoresCant: 0, plataRestantesPos: 0, plataDirectosPos: [3, 4], plataMejoresPos: 0, plataMejoresCant: 0 }
+            },
+            {
+              id: '7ma-fem',
+              nombre: '7ma Femenina',
+              catCronograma: '7ma Femenina',
+              zonas: '5 zonas (A a E)',
+              reglaOro: 'Clasifican los 3 primeros de cada zona (15) + mejor cuarto (1) = 16 parejas a Octavos de Oro.',
+              reglaPlata: 'Los 4 cuartos restantes + mejores quintos clasifican a Cuartos de Final de Plata.',
+              oroRondas: 16,
+              plataRondas: 8,
+              reglaCalculo: { oroDirectosMaxPos: 3, oroMejoresPos: 4, oroMejoresCant: 1, plataRestantesPos: 4, plataDirectosPos: [], plataMejoresPos: 5, plataMejoresCant: 4 }
+            },
+            {
+              id: 'inic-masc',
+              nombre: 'Iniciados Masculino',
+              catCronograma: 'Iniciados Masculino',
+              zonas: '3 zonas (A a C)',
+              reglaOro: 'Clasifican los 2 primeros de cada zona (6) + 2 mejores terceros (2) = 8 parejas a Cuartos de Oro.',
+              reglaPlata: 'El 3° restante + los 4° y 5° de cada zona + mejor 6° = 8 parejas a Cuartos de Plata.',
+              oroRondas: 8,
+              plataRondas: 8,
+              reglaCalculo: { oroDirectosMaxPos: 2, oroMejoresPos: 3, oroMejoresCant: 2, plataRestantesPos: 3, plataDirectosPos: [4, 5], plataMejoresPos: 6, plataMejoresCant: 1 }
+            },
+            {
+              id: '8va-fem',
+              nombre: '8va Femenina',
+              catCronograma: '8va Femenina',
+              zonas: '6 zonas (A a F)',
+              reglaOro: 'Clasifican los 2 primeros de cada zona (12) + 4 mejores terceros (4) = 16 parejas a Octavos de Oro.',
+              reglaPlata: 'Los 2 terceros restantes + los 6 cuartos = 8 parejas a Cuartos de Final de Plata.',
+              oroRondas: 16,
+              plataRondas: 8,
+              reglaCalculo: { oroDirectosMaxPos: 2, oroMejoresPos: 3, oroMejoresCant: 4, plataRestantesPos: 3, plataDirectosPos: [4], plataMejoresPos: 0, plataMejoresCant: 0 }
+            },
+            {
+              id: 'suma6-masc',
+              nombre: 'Suma 6 / Suma 7 Masc.',
+              catCronograma: 'Suma 6 Masculina',
+              zonas: '3 zonas (A a C · 12 parejas)',
+              reglaOro: 'Sin Octavos ni Plata. Clasifican los 2 primeros de cada zona (6) + 2 mejores terceros (2) = 8 parejas directo a Cuartos de Final.',
+              reglaPlata: 'Partido Interzonal sugerido (fecha regular): Celis / Mancuello (Zona A) vs. Lopez / Paz (Zona C).',
+              oroRondas: 8,
+              plataRondas: 0,
+              reglaCalculo: { oroDirectosMaxPos: 2, oroMejoresPos: 3, oroMejoresCant: 2, plataRestantesPos: 0, plataDirectosPos: [], plataMejoresPos: 0, plataMejoresCant: 0 }
+            }
+          ];
+
+          const esc = (str) => String(str ?? '').replace(/[&<>"']/g, c => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+          }[c]));
+
+          // Criterio oficial de Tabla General: GF desc -> SF desc -> Pts desc -> DG desc -> DS desc
+          function compararGeneral(a, b) {
+            return (b.gf - a.gf)
+              || (b.sf - a.sf)
+              || (b.pts - a.pts)
+              || (b.dg - a.dg)
+              || (b.ds - a.ds)
+              || a.zona.localeCompare(b.zona, 'es');
+          }
+
+          const tabsEl = document.getElementById('playoffTabs');
+          const contentEl = document.getElementById('playoffContent');
+          const modoSelectorEl = document.getElementById('modoSelector');
+          const noticeEl = document.getElementById('liveNoticeContainer');
+          const heroStatsEl = document.getElementById('heroStats');
+
+          let activa = CATEGORIAS_CUADROS[0].id;
+          let modo = 'cruces-hoy'; // 'cruces-hoy' | 'tabla-hoy' | 'base'
+          let datosPorCategoria = null; // Map<catCronograma, Array<ParejaStat>>
+          let cargaFallida = false;
+
+          // Deep-link opcional: playoffs.html?cat=6ta-masc&modo=tabla-hoy
+          const params = new URLSearchParams(window.location.search);
+          if (params.get('cat') && CATEGORIAS_CUADROS.some(c => c.id === params.get('cat'))) {
+            activa = params.get('cat');
+          }
+          if (params.get('modo') && ['cruces-hoy', 'tabla-hoy', 'base'].includes(params.get('modo'))) {
+            modo = params.get('modo');
+          }
+
+          function calcularClasificacionCategoria(cat) {
+            if (!datosPorCategoria || !datosPorCategoria.has(cat.catCronograma)) {
+              return null;
+            }
+            const todas = datosPorCategoria.get(cat.catCronograma);
+            const r = cat.reglaCalculo;
+
+            const oroPool = [];
+            const plataPool = [];
+            const usados = new Set();
+
+            // 1) Clasificados directos a Oro por posición en zona (ej. 1° y 2°, o 1° a 3°)
+            for (const p of todas) {
+              if (p.posZona <= r.oroDirectosMaxPos) {
+                oroPool.push(p);
+                usados.add(p.uid);
+              }
+            }
+
+            // 2) Mejores N de una posición específica a Oro (ej. 4 mejores 3° o mejor 4°)
+            let restantesDeCorteOro = [];
+            if (r.oroMejoresPos > 0 && r.oroMejoresCant > 0) {
+              const candidatos = todas.filter(p => p.posZona === r.oroMejoresPos).sort(compararGeneral);
+              const entran = candidatos.slice(0, r.oroMejoresCant);
+              restantesDeCorteOro = candidatos.slice(r.oroMejoresCant);
+              for (const p of entran) {
+                oroPool.push(p);
+                usados.add(p.uid);
+              }
+            }
+
+            // 3) Clasificados a Plata (si la categoría tiene Copa de Plata)
+            if (cat.plataRondas > 0) {
+              if (r.plataRestantesPos > 0 && r.plataRestantesPos === r.oroMejoresPos) {
+                for (const p of restantesDeCorteOro) {
+                  plataPool.push(p);
+                  usados.add(p.uid);
+                }
+              }
+              if (Array.isArray(r.plataDirectosPos) && r.plataDirectosPos.length > 0) {
+                for (const p of todas) {
+                  if (!usados.has(p.uid) && r.plataDirectosPos.includes(p.posZona)) {
+                    plataPool.push(p);
+                    usados.add(p.uid);
+                  }
+                }
+              }
+              if (r.plataMejoresPos > 0 && r.plataMejoresCant > 0) {
+                const candidatosPlata = todas
+                  .filter(p => !usados.has(p.uid) && p.posZona === r.plataMejoresPos)
+                  .sort(compararGeneral)
+                  .slice(0, r.plataMejoresCant);
+                for (const p of candidatosPlata) {
+                  plataPool.push(p);
+                  usados.add(p.uid);
+                }
+              }
+            }
+
+            // 4) Ordenar cada copa según criterio de Tabla General (GF -> SF -> Pts -> DG)
+            const oroOrdenado = oroPool.slice().sort(compararGeneral).map((p, idx) => ({
+              ...p,
+              copa: 'ORO',
+              seedNum: idx + 1,
+              seedLabel: `#${idx + 1}`
+            }));
+
+            const plataOrdenado = plataPool.slice().sort(compararGeneral).map((p, idx) => ({
+              ...p,
+              copa: 'PLATA',
+              seedNum: idx + 1,
+              seedLabel: `P${idx + 1}`
+            }));
+
+            const fueraOrdenado = todas
+              .filter(p => !usados.has(p.uid))
+              .sort(compararGeneral)
+              .map(p => ({
+                ...p,
+                copa: 'FUERA',
+                seedNum: null,
+                seedLabel: '—'
+              }));
+
+            return {
+              oro: oroOrdenado,
+              plata: plataOrdenado,
+              fuera: fueraOrdenado,
+              tablaCompleta: [...oroOrdenado, ...plataOrdenado, ...fueraOrdenado]
+            };
+          }
+
+          function renderSlotHTML(seedLabel, fallbackText, seedIndex, listaCopa, esPlata, usarProyeccion) {
+            const badgeClass = esPlata ? 'seed-badge plata' : 'seed-badge';
+            if (!usarProyeccion || !listaCopa) {
+              return `
+                <div class="bracket-slot">
+                  <span class="slot-tbd"><span class="${badgeClass}">${esc(seedLabel)}</span>${esc(fallbackText)}</span>
+                </div>
+              `;
+            }
+
+            const equipo = listaCopa[seedIndex];
+            if (!equipo) {
+              return `
+                <div class="bracket-slot">
+                  <span class="slot-bye"><span class="${badgeClass}">${esc(seedLabel)}</span>Libre (BYE)</span>
+                </div>
+              `;
+            }
+
+            const pillClass = esPlata ? 'slot-zona-pill plata' : 'slot-zona-pill';
+            return `
+              <div class="bracket-slot">
+                <span class="slot-live"><span class="${badgeClass}">${esc(seedLabel)}</span>${esc(equipo.pareja)}</span>
+                <span class="${pillClass}" title="${esc(equipo.zona)} · ${equipo.posZona}° en su zona (${equipo.gf} GF · ${equipo.pts} pts)">${esc(equipo.zonaCorta)}</span>
+              </div>
+            `;
+          }
+
+          function crearPartidoRondaInicialHTML(etiqueta, seed1Num, fallback1, seed2Num, fallback2, listaCopa, esPlata, usarProyeccion, esFinal) {
+            const prefix = esPlata ? 'P' : '#';
+            const s1 = `${prefix}${seed1Num}`;
+            const s2 = `${prefix}${seed2Num}`;
+            const finalClass = esFinal ? ' final-highlight' : '';
+
+            let estadoDerecha = '<span>A definir</span>';
+            if (usarProyeccion && listaCopa) {
+              const eq1 = listaCopa[seed1Num - 1];
+              const eq2 = listaCopa[seed2Num - 1];
+              if (eq1 && !eq2) {
+                estadoDerecha = `<span class="tag-live">Avanza ${esc(s1)}</span>`;
+              } else {
+                estadoDerecha = '<span class="tag-live">Proyección HOY</span>';
+              }
+            }
+
+            return `
+              <div class="bracket-match${finalClass}">
+                <div class="bracket-match-label">
+                  <span>${esc(etiqueta)}</span>
+                  ${estadoDerecha}
+                </div>
+                ${renderSlotHTML(s1, fallback1, seed1Num - 1, listaCopa, esPlata, usarProyeccion)}
+                ${renderSlotHTML(s2, fallback2, seed2Num - 1, listaCopa, esPlata, usarProyeccion)}
+              </div>
+            `;
+          }
+
+          function crearPartidoPosteriorHTML(etiqueta, s1, n1, s2, n2, esPlata, esFinal) {
+            const badgeClass = esPlata ? 'seed-badge plata' : 'seed-badge';
+            const finalClass = esFinal ? ' final-highlight' : '';
+            return `
+              <div class="bracket-match${finalClass}">
+                <div class="bracket-match-label">
+                  <span>${esc(etiqueta)}</span>
+                  <span>A definir</span>
+                </div>
+                <div class="bracket-slot">
+                  <span class="slot-tbd"><span class="${badgeClass}">${esc(s1)}</span>${esc(n1)}</span>
+                </div>
+                <div class="bracket-slot">
+                  <span class="slot-tbd"><span class="${badgeClass}">${esc(s2)}</span>${esc(n2)}</span>
+                </div>
+              </div>
+            `;
+          }
+
+          function generarCuadroHTML(cantidad, esPlata, listaCopa, usarProyeccion) {
+            const tablaRef = esPlata ? 'Tabla Plata' : 'Tabla General';
+            if (cantidad === 16) {
+              const octavos = [
+                ['Octavos 1 · Mitad Sup.', 1, `1° ${tablaRef}`, 16, `16° ${tablaRef}`],
+                ['Octavos 2 · Mitad Sup.', 8, `8° ${tablaRef}`, 9, `9° ${tablaRef}`],
+                ['Octavos 3 · Mitad Sup.', 5, `5° ${tablaRef}`, 12, `12° ${tablaRef}`],
+                ['Octavos 4 · Mitad Sup.', 4, `4° ${tablaRef}`, 13, `13° ${tablaRef}`],
+                ['Octavos 5 · Mitad Inf.', 3, `3° ${tablaRef}`, 14, `14° ${tablaRef}`],
+                ['Octavos 6 · Mitad Inf.', 6, `6° ${tablaRef}`, 11, `11° ${tablaRef}`],
+                ['Octavos 7 · Mitad Inf.', 7, `7° ${tablaRef}`, 10, `10° ${tablaRef}`],
+                ['Octavos 8 · Mitad Inf.', 2, `2° ${tablaRef}`, 15, `15° ${tablaRef}`]
+              ];
+              return `
+                <div class="bracket-scroll">
+                  <div class="bracket-grid">
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">Octavos de Final (16)</div>
+                      ${octavos.map(m => crearPartidoRondaInicialHTML(m[0], m[1], m[2], m[3], m[4], listaCopa, esPlata, usarProyeccion, false)).join('')}
+                    </div>
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">Cuartos de Final (8)</div>
+                      ${crearPartidoPosteriorHTML('Cuartos 1', 'G1', 'Ganador Octavos 1', 'G2', 'Ganador Octavos 2', esPlata, false)}
+                      ${crearPartidoPosteriorHTML('Cuartos 2', 'G3', 'Ganador Octavos 3', 'G4', 'Ganador Octavos 4', esPlata, false)}
+                      ${crearPartidoPosteriorHTML('Cuartos 3', 'G5', 'Ganador Octavos 5', 'G6', 'Ganador Octavos 6', esPlata, false)}
+                      ${crearPartidoPosteriorHTML('Cuartos 4', 'G7', 'Ganador Octavos 7', 'G8', 'Ganador Octavos 8', esPlata, false)}
+                    </div>
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">Semifinales (4)</div>
+                      ${crearPartidoPosteriorHTML('Semifinal 1', 'C1', 'Ganador Cuartos 1', 'C2', 'Ganador Cuartos 2', esPlata, false)}
+                      ${crearPartidoPosteriorHTML('Semifinal 2', 'C3', 'Ganador Cuartos 3', 'C4', 'Ganador Cuartos 4', esPlata, false)}
+                    </div>
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">🏆 Final</div>
+                      ${crearPartidoPosteriorHTML(esPlata ? 'Final Copa de Plata' : 'Final Campeonato', 'SF1', 'Ganador Semifinal 1', 'SF2', 'Ganador Semifinal 2', esPlata, true)}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+
+            if (cantidad === 8) {
+              const cuartos = [
+                ['Cuartos 1 · Mitad Sup.', 1, `1° ${tablaRef}`, 8, `8° ${tablaRef}`],
+                ['Cuartos 2 · Mitad Sup.', 4, `4° ${tablaRef}`, 5, `5° ${tablaRef}`],
+                ['Cuartos 3 · Mitad Inf.', 3, `3° ${tablaRef}`, 6, `6° ${tablaRef}`],
+                ['Cuartos 4 · Mitad Inf.', 2, `2° ${tablaRef}`, 7, `7° ${tablaRef}`]
+              ];
+              return `
+                <div class="bracket-scroll">
+                  <div class="bracket-grid">
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">Cuartos de Final (8)</div>
+                      ${cuartos.map(m => crearPartidoRondaInicialHTML(m[0], m[1], m[2], m[3], m[4], listaCopa, esPlata, usarProyeccion, false)).join('')}
+                    </div>
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">Semifinales (4)</div>
+                      ${crearPartidoPosteriorHTML('Semifinal 1', 'C1', 'Ganador Cuartos 1', 'C2', 'Ganador Cuartos 2', esPlata, false)}
+                      ${crearPartidoPosteriorHTML('Semifinal 2', 'C3', 'Ganador Cuartos 3', 'C4', 'Ganador Cuartos 4', esPlata, false)}
+                    </div>
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">🏆 Final</div>
+                      ${crearPartidoPosteriorHTML(esPlata ? 'Final Copa de Plata' : 'Final Campeonato', 'SF1', 'Ganador Semifinal 1', 'SF2', 'Ganador Semifinal 2', esPlata, true)}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+
+            if (cantidad === 4) {
+              return `
+                <div class="bracket-scroll">
+                  <div class="bracket-grid" style="min-width: 520px;">
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">Semifinales (4)</div>
+                      ${crearPartidoRondaInicialHTML('Semifinal 1', 1, `1° ${tablaRef}`, 4, `4° ${tablaRef}`, listaCopa, esPlata, usarProyeccion, false)}
+                      ${crearPartidoRondaInicialHTML('Semifinal 2', 2, `2° ${tablaRef}`, 3, `3° ${tablaRef}`, listaCopa, esPlata, usarProyeccion, false)}
+                    </div>
+                    <div class="bracket-round">
+                      <div class="bracket-round-header">🏆 Final</div>
+                      ${crearPartidoPosteriorHTML('Final Copa de Plata', 'SF1', 'Ganador Semifinal 1', 'SF2', 'Ganador Semifinal 2', esPlata, true)}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }
+            return '';
+          }
+
+          function generarTablaGeneralHTML(cat, clasif) {
+            if (!clasif || !clasif.tablaCompleta.length) {
+              return `<div class="fetch-fallback-notice">Cargando posiciones actualizadas desde <strong>cronograma.html</strong>…</div>`;
+            }
+
+            const rowsHTML = clasif.tablaCompleta.map((p, idx) => {
+              const rowType = p.copa === 'ORO' ? 'row-oro' : (p.copa === 'PLATA' ? 'row-plata' : 'row-fuera');
+              const next = clasif.tablaCompleta[idx + 1];
+              const isCutoff = next && next.copa !== p.copa;
+              const dgStr = p.dg > 0 ? `+${p.dg}` : String(p.dg);
+
+              let badgeHTML = '<span class="status-badge fuera">—</span>';
+              if (p.copa === 'ORO') {
+                badgeHTML = `<span class="status-badge oro">🏆 ORO · ${esc(p.seedLabel)}</span>`;
+              } else if (p.copa === 'PLATA') {
+                badgeHTML = `<span class="status-badge plata">🥈 PLATA · ${esc(p.seedLabel)}</span>`;
+              }
+
+              return `
+                <tr class="${rowType}${isCutoff ? ' cutoff-divider' : ''}">
+                  <td class="col-pos">${idx + 1}°</td>
+                  <td class="col-left col-pareja">${esc(p.pareja)}</td>
+                  <td class="col-zona">${esc(p.zona)} (${p.posZona}°)</td>
+                  <td class="col-pts">${p.pts}</td>
+                  <td>${p.pj}</td>
+                  <td>${p.sf}</td>
+                  <td class="col-gf">${p.gf}</td>
+                  <td>${dgStr}</td>
+                  <td>${badgeHTML}</td>
+                </tr>
+              `;
+            }).join('');
+
+            return `
+              <div class="general-header-bar">
+                <h3>Tabla General Proyectada — ${esc(cat.nombre)}</h3>
+                <div class="general-legend">
+                  <span><strong>Orden de cada copa:</strong> 1° GF · 2° SF · 3° Pts · 4° DG</span>
+                </div>
+              </div>
+              <div class="tabla-general-wrap">
+                <table class="tabla-general">
+                  <thead>
+                    <tr>
+                      <th>Pos</th>
+                      <th class="col-left">Pareja</th>
+                      <th>Zona (Pos.)</th>
+                      <th>Pts</th>
+                      <th>PJ</th>
+                      <th>SF</th>
+                      <th>GF</th>
+                      <th>DG</th>
+                      <th>Clasificación HOY</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    ${rowsHTML}
+                  </tbody>
+                </table>
+              </div>
+            `;
+          }
+
+          function renderModoButtons() {
+            const botones = modoSelectorEl.querySelectorAll('[data-modo]');
+            botones.forEach(btn => {
+              const m = btn.getAttribute('data-modo');
+              const esLive = m !== 'base';
+              btn.disabled = cargaFallida && esLive;
+              const activo = m === modo;
+              btn.classList.toggle('active', activo);
+              btn.setAttribute('aria-selected', String(activo));
+            });
+          }
+
+          function renderNotices() {
+            if (cargaFallida) {
+              noticeEl.innerHTML = `
+                <div class="fetch-fallback-notice">
+                  ℹ️ <strong>Vista sin conexión local:</strong> No se pudo leer <code>cronograma.html</code> automáticamente (por ejemplo, al abrir el archivo con <code>file://</code>). Se muestran los cuadros oficiales con semillas <strong>"A definir"</strong>. Al visualizar el sitio desde servidor web, la proyección en vivo se activa automáticamente.
+                </div>
+              `;
+              return;
+            }
+
+            if (modo === 'cruces-hoy' || modo === 'tabla-hoy') {
+              const otroModo = modo === 'cruces-hoy' ? 'tabla-hoy' : 'cruces-hoy';
+              const otroTexto = modo === 'cruces-hoy' ? '📊 Ver Tabla General HOY →' : '⚡ Ver Cruces Proyectados HOY →';
+              noticeEl.innerHTML = `
+                <div class="sim-warning">
+                  <span>⚠️ Simulación provisoria basada en las tablas actuales. Los cruces definitivos se confirmarán al finalizar la fase de grupos.</span>
+                  <button type="button" class="sim-switch-inline" id="quickSwitchModo" data-target="${otroModo}">${otroTexto}</button>
+                </div>
+              `;
+              const quickBtn = document.getElementById('quickSwitchModo');
+              if (quickBtn) {
+                quickBtn.addEventListener('click', () => {
+                  modo = quickBtn.getAttribute('data-target');
+                  render();
+                });
+              }
+            } else {
+              noticeEl.innerHTML = '';
+            }
+          }
+
+          function render() {
+            renderModoButtons();
+            renderNotices();
+
+            tabsEl.innerHTML = CATEGORIAS_CUADROS.map(c => `
+              <button type="button" class="playoff-tab-btn ${c.id === activa ? 'active' : ''}" data-cat="${c.id}" role="tab" aria-selected="${c.id === activa}">
+                ${esc(c.nombre)}
+              </button>
+            `).join('');
+
+            const cat = CATEGORIAS_CUADROS.find(c => c.id === activa) || CATEGORIAS_CUADROS[0];
+            const clasif = calcularClasificacionCategoria(cat);
+            const usarProyeccion = (modo === 'cruces-hoy') && Boolean(clasif);
+
+            let html = `
+              <div class="playoff-meta">
+                <strong>Estructura:</strong> ${esc(cat.zonas)}<br>
+                <strong>Copa de Oro:</strong> ${esc(cat.reglaOro)}<br>
+                <strong>${cat.plataRondas > 0 ? 'Copa de Plata:' : 'Cruce Adicional:'}</strong> ${esc(cat.reglaPlata)}
+              </div>
+            `;
+
+            if (modo === 'tabla-hoy' && !cargaFallida) {
+              html += generarTablaGeneralHTML(cat, clasif);
+            } else {
+              const subOro = usarProyeccion ? `<small>⚡ Proyección en vivo (${clasif.oro.length} parejas)</small>` : '';
+              html += `
+                <h3 class="playoff-cup-title">
+                  <span>🏆 Copa de Oro — ${esc(cat.nombre)}</span>
+                  ${subOro}
+                </h3>
+                ${generarCuadroHTML(cat.oroRondas, false, clasif ? clasif.oro : null, usarProyeccion)}
+              `;
+
+              if (cat.plataRondas > 0) {
+                const subPlata = usarProyeccion ? `<small>⚡ Proyección en vivo (${clasif.plata.length} parejas)</small>` : '';
+                html += `
+                  <h3 class="playoff-cup-title plata">
+                    <span>🥈 Copa de Plata — ${esc(cat.nombre)}</span>
+                    ${subPlata}
+                  </h3>
+                  ${generarCuadroHTML(cat.plataRondas, true, clasif ? clasif.plata : null, usarProyeccion)}
+                `;
+              }
+            }
+
+            contentEl.innerHTML = html;
+
+            tabsEl.querySelectorAll('button').forEach(btn => {
+              btn.addEventListener('click', () => {
+                activa = btn.getAttribute('data-cat');
+                render();
+              });
+            });
+          }
+
+          modoSelectorEl.addEventListener('click', (e) => {
+            const btn = e.target.closest('[data-modo]');
+            if (!btn || btn.disabled) return;
+            modo = btn.getAttribute('data-modo');
+            render();
+          });
+
+          async function cargarDatosCronograma() {
+            try {
+              const resp = await fetch('cronograma.html', { cache: 'no-store' });
+              if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+              const htmlText = await resp.text();
+              const doc = new DOMParser().parseFromString(htmlText, 'text/html');
+              const bloques = doc.querySelectorAll('.categoria-bloque[data-categoria]');
+              if (!bloques.length) throw new Error('Sin bloques de categorías');
+
+              const mapa = new Map();
+              let totalZonas = 0;
+              let totalParejas = 0;
+
+              bloques.forEach(bloque => {
+                const catName = (bloque.getAttribute('data-categoria') || '').trim();
+                const listaCat = [];
+                const zonasCards = bloque.querySelectorAll('.zona-card');
+
+                zonasCards.forEach(card => {
+                  totalZonas += 1;
+                  const zonaTitulo = (card.querySelector('h4')?.textContent || '').trim();
+                  const zonaCorta = zonaTitulo.replace(/^Zona\s+/i, 'Z.');
+                  const filas = card.querySelectorAll('tbody tr');
+
+                  filas.forEach((tr, idx) => {
+                    const tds = tr.querySelectorAll('td');
+                    if (tds.length < 11) return;
+                    totalParejas += 1;
+                    const pareja = (tds[0].textContent || '').trim();
+                    const num = (i) => parseInt((tds[i].textContent || '0').trim(), 10) || 0;
+
+                    listaCat.push({
+                      uid: `${catName}|||${zonaTitulo}|||${pareja}|||${idx}`,
+                      pareja,
+                      zona: zonaTitulo,
+                      zonaCorta,
+                      posZona: idx + 1,
+                      pts: num(1),
+                      pj: num(2),
+                      pg: num(3),
+                      pp: num(4),
+                      sf: num(5),
+                      sc: num(6),
+                      ds: num(7),
+                      gf: num(8),
+                      gc: num(9),
+                      dg: num(10)
+                    });
+                  });
+                });
+
+                mapa.set(catName, listaCat);
+              });
+
+              datosPorCategoria = mapa;
+              cargaFallida = false;
+
+              if (heroStatsEl) {
+                heroStatsEl.innerHTML = `
+                  <span class="hero-stat"><strong>${CATEGORIAS_CUADROS.length}</strong> categorías</span>
+                  <span class="hero-stat"><strong>${totalZonas}</strong> zonas en juego</span>
+                  <span class="hero-stat"><strong>${totalParejas}</strong> parejas computadas</span>
+                  <span class="hero-stat"><strong>13–14 y 18–19 Dic</strong> definición oficial</span>
+                `;
+              }
+            } catch (err) {
+              cargaFallida = true;
+              datosPorCategoria = null;
+              modo = 'base';
+            }
+            render();
+          }
+
+          render();
+          cargarDatosCronograma();
+        })();
+      </script>
+    </section>
+    <!-- FIN SECCIÓN CUADROS ELIMINATORIOS -->
+
+    <footer class="footer">
+      © 2026 Royal Star’s Club ·
+      <a href="cronograma.html">Ver Posiciones y Cronograma</a> ·
+      <a href="historial.html">Historial de Partidos</a> ·
+      <a href="liga.html">Reglamento de la Liga</a> ·
+      <a href="index.html">Volver al sitio principal</a>
+    </footer>
+  </main>
+</body>
+</html>
