@@ -1,0 +1,401 @@
+<!-- SECCIÓN CUADROS ELIMINATORIOS (PLAYOFFS ORO Y PLATA) -->
+<section id="cuadros-liga" class="panel" style="margin-top: 18px;">
+  <style>
+    .playoff-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 14px 0 20px;
+    }
+    .playoff-tab-btn {
+      border: 1px solid #d9dfe6;
+      background: #fff;
+      padding: 9px 14px;
+      font: inherit;
+      font-size: 0.82rem;
+      font-weight: 900;
+      color: #536174;
+      cursor: pointer;
+      border-radius: 3px;
+      transition: all 0.15s ease;
+    }
+    .playoff-tab-btn:hover {
+      border-color: var(--orange, #f58220);
+      color: var(--navy, #0c1b2d);
+    }
+    .playoff-tab-btn.active {
+      background: var(--orange, #f58220);
+      border-color: var(--orange, #f58220);
+      color: #111c2c;
+    }
+    .playoff-meta {
+      background: #f8fafc;
+      border: 1px solid #e5e0d8;
+      border-left: 4px solid var(--orange, #f58220);
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+      font-size: 0.88rem;
+      color: var(--navy, #0c1b2d);
+      line-height: 1.5;
+    }
+    .playoff-cup-title {
+      background: var(--navy, #0c1b2d);
+      color: #fff;
+      padding: 10px 16px;
+      border-left: 5px solid var(--orange, #f58220);
+      border-radius: 4px;
+      font-size: 1.05rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin: 22px 0 14px;
+    }
+    .playoff-cup-title.plata {
+      background: #2c3e50;
+      border-left-color: #94a3b8;
+    }
+    .bracket-scroll {
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    .bracket-grid {
+      display: flex;
+      gap: 24px;
+      min-width: 760px;
+      align-items: stretch;
+    }
+    .bracket-round {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: 12px;
+      min-width: 210px;
+    }
+    .bracket-round-header {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #a35f1d;
+      background: #fff3e4;
+      border: 1px solid #f0d7b7;
+      padding: 6px 8px;
+      border-radius: 3px;
+      margin-bottom: 4px;
+    }
+    .bracket-match {
+      background: #fff;
+      border: 1px solid #e5e0d8;
+      border-radius: 4px;
+      box-shadow: 0 3px 10px rgba(8, 23, 41, 0.04);
+      overflow: hidden;
+    }
+    .bracket-match-label {
+      background: #f8fafc;
+      font-size: 0.68rem;
+      font-weight: 900;
+      color: #64748b;
+      padding: 4px 10px;
+      border-bottom: 1px solid #eef2f6;
+      display: flex;
+      justify-content: space-between;
+      text-transform: uppercase;
+    }
+    .bracket-slot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      font-size: 0.84rem;
+      font-weight: 800;
+      color: var(--navy, #0c1b2d);
+      border-bottom: 1px solid #f1ede6;
+    }
+    .bracket-slot:last-child {
+      border-bottom: none;
+    }
+    .seed-badge {
+      background: var(--navy, #0c1b2d);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 900;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-right: 7px;
+      min-width: 26px;
+      text-align: center;
+      display: inline-block;
+    }
+    .seed-badge.plata {
+      background: #64748b;
+    }
+    .slot-tbd {
+      color: #64748b;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+    .final-highlight {
+      border: 2px solid var(--orange, #f58220);
+      background: #fdf5eb;
+    }
+  </style>
+
+  <span class="kicker">Fase Final · Eliminación Directa</span>
+  <h2>Cuadros y Cruces por Categoría</h2>
+  <p style="font-size:0.9rem; color:var(--muted, #5e6b7a); margin-bottom: 12px;">
+    Tabla general ordenada por <strong>Games a favor → Sets a favor → Puntos</strong>. Prioridad de cruce: <strong>1° vs. último clasificado</strong>, ubicando a parejas de la misma zona en mitades opuestas siempre que sea posible.
+  </p>
+
+  <div class="playoff-tabs" id="playoffTabs"></div>
+  <div id="playoffContent"></div>
+
+  <script>
+    (function () {
+      const CATEGORIAS_CUADROS = [
+        {
+          id: '8va-masc',
+          nombre: '8va Masculina',
+          zonas: '8 zonas (A a H)',
+          reglaOro: 'Clasifican los 2 primeros de cada zona (16 parejas) a Octavos de Final de Oro.',
+          reglaPlata: 'Clasifican los 3° y 4° de cada zona (16 parejas) a Octavos de Final de Plata.',
+          oroRondas: 16,
+          plataRondas: 16
+        },
+        {
+          id: '7ma-masc',
+          nombre: '7ma Masculina',
+          zonas: '8 zonas (A a H)',
+          reglaOro: 'Clasifican los 2 primeros de cada zona (16 parejas) a Octavos de Final de Oro.',
+          reglaPlata: 'Clasifican los 3° y 4° de cada zona (16 parejas) a Octavos de Final de Plata.',
+          oroRondas: 16,
+          plataRondas: 16
+        },
+        {
+          id: '6ta-masc',
+          nombre: '6ta Masculina',
+          zonas: '6 zonas (A a F)',
+          reglaOro: 'Clasifican los 2 primeros de cada zona (12) + 4 mejores terceros (4) = 16 parejas a Octavos de Oro.',
+          reglaPlata: 'Los 2 terceros restantes + los 6 cuartos = 8 parejas a Cuartos de Final de Plata.',
+          oroRondas: 16,
+          plataRondas: 8
+        },
+        {
+          id: '5ta-masc',
+          nombre: '5ta Masculina',
+          zonas: '5 zonas (A a E)',
+          reglaOro: 'Clasifican los 3 primeros de cada zona (15) + mejor cuarto (1) = 16 parejas a Octavos de Oro.',
+          reglaPlata: 'Los 4 cuartos restantes disputan Semifinales y Final de Copa de Plata.',
+          oroRondas: 16,
+          plataRondas: 4
+        },
+        {
+          id: 'inic-fem',
+          nombre: 'Iniciadas Femenino',
+          zonas: '5 zonas (A a E)',
+          reglaOro: 'Clasifican los 3 primeros de cada zona (15) + mejor cuarto (1) = 16 parejas a Octavos de Oro.',
+          reglaPlata: 'Los 4 cuartos restantes + 4 mejores quintos = 8 parejas a Cuartos de Final de Plata.',
+          oroRondas: 16,
+          plataRondas: 8
+        },
+        {
+          id: 'suma11-fem',
+          nombre: 'Suma 11 Femenina',
+          zonas: '4 zonas (A a D)',
+          reglaOro: 'Clasifican los 2 primeros de cada zona (8 parejas) a Cuartos de Final de Oro.',
+          reglaPlata: 'Clasifican los 3° y 4° de cada zona (8 parejas) a Cuartos de Final de Plata.',
+          oroRondas: 8,
+          plataRondas: 8
+        },
+        {
+          id: '7ma-fem',
+          nombre: '7ma Femenina',
+          zonas: '4 zonas (A a D)',
+          reglaOro: 'Clasifican los 2 primeros de cada zona (8 parejas) a Cuartos de Final de Oro.',
+          reglaPlata: 'Clasifican los 3° y 4° de cada zona (8 parejas) a Cuartos de Final de Plata.',
+          oroRondas: 8,
+          plataRondas: 8
+        },
+        {
+          id: 'inic-masc',
+          nombre: 'Iniciados Masculino',
+          zonas: '3 zonas (A a C)',
+          reglaOro: 'Clasifican los 2 primeros de cada zona (6) + 2 mejores terceros (2) = 8 parejas a Cuartos de Oro.',
+          reglaPlata: 'El 3° restante + los 4° y 5° de cada zona + mejor 6° = 8 parejas a Cuartos de Plata.',
+          oroRondas: 8,
+          plataRondas: 8
+        },
+        {
+          id: '8va-fem',
+          nombre: '8va Femenina',
+          zonas: '3 zonas (A a C)',
+          reglaOro: 'Clasifican los 2 primeros de cada zona (6) + 2 mejores terceros (2) = 8 parejas a Cuartos de Oro.',
+          reglaPlata: 'El 3° restante + 4° de cada zona (4 parejas) disputan Semifinales y Final de Plata.',
+          oroRondas: 8,
+          plataRondas: 4
+        },
+        {
+          id: 'suma6-masc',
+          nombre: 'Suma 6 / Suma 7 Masc.',
+          zonas: '3 zonas (A a C · 12 parejas)',
+          reglaOro: 'Sin Octavos ni Plata. Clasifican los 2 primeros de cada zona (6) + 2 mejores terceros (2) = 8 parejas directo a Cuartos de Final.',
+          reglaPlata: 'Partido Interzonal sugerido (fecha regular): Celis / Mancuello (Zona A) vs. Lopez / Paz (Zona C).',
+          oroRondas: 8,
+          plataRondas: 0
+        }
+      ];
+
+      function crearPartidoHTML(etiqueta, s1, n1, s2, n2, esPlata, esFinal) {
+        const badgeClass = esPlata ? 'seed-badge plata' : 'seed-badge';
+        const finalClass = esFinal ? ' final-highlight' : '';
+        return `
+          <div class="bracket-match${finalClass}">
+            <div class="bracket-match-label">
+              <span>${etiqueta}</span>
+              <span>A definir</span>
+            </div>
+            <div class="bracket-slot">
+              <span class="slot-tbd"><span class="${badgeClass}">${s1}</span>${n1}</span>
+            </div>
+            <div class="bracket-slot">
+              <span class="slot-tbd"><span class="${badgeClass}">${s2}</span>${n2}</span>
+            </div>
+          </div>
+        `;
+      }
+
+      function generarCuadroHTML(cantidad, esPlata) {
+        const prefix = esPlata ? 'P' : '#';
+        if (cantidad === 16) {
+          const octavos = [
+            ['Octavos 1 · Mitad Sup.', `${prefix}1`, '1° Tabla General', `${prefix}16`, '16° Tabla General'],
+            ['Octavos 2 · Mitad Sup.', `${prefix}8`, '8° Tabla General', `${prefix}9`, '9° Tabla General'],
+            ['Octavos 3 · Mitad Sup.', `${prefix}5`, '5° Tabla General', `${prefix}12`, '12° Tabla General'],
+            ['Octavos 4 · Mitad Sup.', `${prefix}4`, '4° Tabla General', `${prefix}13`, '13° Tabla General'],
+            ['Octavos 5 · Mitad Inf.', `${prefix}3`, '3° Tabla General', `${prefix}14`, '14° Tabla General'],
+            ['Octavos 6 · Mitad Inf.', `${prefix}6`, '6° Tabla General', `${prefix}11`, '11° Tabla General'],
+            ['Octavos 7 · Mitad Inf.', `${prefix}7`, '7° Tabla General', `${prefix}10`, '10° Tabla General'],
+            ['Octavos 8 · Mitad Inf.', `${prefix}2`, '2° Tabla General', `${prefix}15`, '15° Tabla General']
+          ];
+          return `
+            <div class="bracket-scroll">
+              <div class="bracket-grid">
+                <div class="bracket-round">
+                  <div class="bracket-round-header">Octavos de Final (16)</div>
+                  ${octavos.map(m => crearPartidoHTML(m[0], m[1], m[2], m[3], m[4], esPlata, false)).join('')}
+                </div>
+                <div class="bracket-round">
+                  <div class="bracket-round-header">Cuartos de Final (8)</div>
+                  ${crearPartidoHTML('Cuartos 1', 'G1', 'Ganador Octavos 1', 'G2', 'Ganador Octavos 2', esPlata, false)}
+                  ${crearPartidoHTML('Cuartos 2', 'G3', 'Ganador Octavos 3', 'G4', 'Ganador Octavos 4', esPlata, false)}
+                  ${crearPartidoHTML('Cuartos 3', 'G5', 'Ganador Octavos 5', 'G6', 'Ganador Octavos 6', esPlata, false)}
+                  ${crearPartidoHTML('Cuartos 4', 'G7', 'Ganador Octavos 7', 'G8', 'Ganador Octavos 8', esPlata, false)}
+                </div>
+                <div class="bracket-round">
+                  <div class="bracket-round-header">Semifinales (4)</div>
+                  ${crearPartidoHTML('Semifinal 1', 'C1', 'Ganador Cuartos 1', 'C2', 'Ganador Cuartos 2', esPlata, false)}
+                  ${crearPartidoHTML('Semifinal 2', 'C3', 'Ganador Cuartos 3', 'C4', 'Ganador Cuartos 4', esPlata, false)}
+                </div>
+                <div class="bracket-round">
+                  <div class="bracket-round-header">🏆 Final</div>
+                  ${crearPartidoHTML('Final Campeonato', 'SF1', 'Ganador Semifinal 1', 'SF2', 'Ganador Semifinal 2', esPlata, true)}
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        if (cantidad === 8) {
+          const cuartos = [
+            ['Cuartos 1 · Mitad Sup.', `${prefix}1`, '1° Tabla General', `${prefix}8`, '8° Tabla General'],
+            ['Cuartos 2 · Mitad Sup.', `${prefix}4`, '4° Tabla General', `${prefix}5`, '5° Tabla General'],
+            ['Cuartos 3 · Mitad Inf.', `${prefix}3`, '3° Tabla General', `${prefix}6`, '6° Tabla General'],
+            ['Cuartos 4 · Mitad Inf.', `${prefix}2`, '2° Tabla General', `${prefix}7`, '7° Tabla General']
+          ];
+          return `
+            <div class="bracket-scroll">
+              <div class="bracket-grid">
+                <div class="bracket-round">
+                  <div class="bracket-round-header">Cuartos de Final (8)</div>
+                  ${cuartos.map(m => crearPartidoHTML(m[0], m[1], m[2], m[3], m[4], esPlata, false)).join('')}
+                </div>
+                <div class="bracket-round">
+                  <div class="bracket-round-header">Semifinales (4)</div>
+                  ${crearPartidoHTML('Semifinal 1', 'C1', 'Ganador Cuartos 1', 'C2', 'Ganador Cuartos 2', esPlata, false)}
+                  ${crearPartidoHTML('Semifinal 2', 'C3', 'Ganador Cuartos 3', 'C4', 'Ganador Cuartos 4', esPlata, false)}
+                </div>
+                <div class="bracket-round">
+                  <div class="bracket-round-header">🏆 Final</div>
+                  ${crearPartidoHTML('Final Campeonato', 'SF1', 'Ganador Semifinal 1', 'SF2', 'Ganador Semifinal 2', esPlata, true)}
+                </div>
+              </div>
+            </div>
+          `;
+        }
+
+        if (cantidad === 4) {
+          return `
+            <div class="bracket-scroll">
+              <div class="bracket-grid" style="min-width: 520px;">
+                <div class="bracket-round">
+                  <div class="bracket-round-header">Semifinales (4)</div>
+                  ${crearPartidoHTML('Semifinal 1', `${prefix}1`, '1° Tabla Plata', `${prefix}4`, '4° Tabla Plata', esPlata, false)}
+                  ${crearPartidoHTML('Semifinal 2', `${prefix}2`, '2° Tabla Plata', `${prefix}3`, '3° Tabla Plata', esPlata, false)}
+                </div>
+                <div class="bracket-round">
+                  <div class="bracket-round-header">🏆 Final</div>
+                  ${crearPartidoHTML('Final Copa de Plata', 'SF1', 'Ganador Semifinal 1', 'SF2', 'Ganador Semifinal 2', esPlata, true)}
+                </div>
+              </div>
+            </div>
+          `;
+        }
+        return '';
+      }
+
+      const tabsEl = document.getElementById('playoffTabs');
+      const contentEl = document.getElementById('playoffContent');
+      let activa = CATEGORIAS_CUADROS[0].id;
+
+      function render() {
+        tabsEl.innerHTML = CATEGORIAS_CUADROS.map(c => `
+          <button type="button" class="playoff-tab-btn ${c.id === activa ? 'active' : ''}" data-cat="${c.id}">
+            ${c.nombre}
+          </button>
+        `).join('');
+
+        const cat = CATEGORIAS_CUADROS.find(c => c.id === activa);
+        let html = `
+          <div class="playoff-meta">
+            <strong>Estructura:</strong> ${cat.zonas}<br>
+            <strong>Copa de Oro:</strong> ${cat.reglaOro}<br>
+            <strong>${cat.plataRondas > 0 ? 'Copa de Plata:' : 'Cruce Adicional:'}</strong> ${cat.reglaPlata}
+          </div>
+          <h3 class="playoff-cup-title">🏆 Copa de Oro — ${cat.nombre}</h3>
+          ${generarCuadroHTML(cat.oroRondas, false)}
+        `;
+
+        if (cat.plataRondas > 0) {
+          html += `
+            <h3 class="playoff-cup-title plata">🥈 Copa de Plata — ${cat.nombre}</h3>
+            ${generarCuadroHTML(cat.plataRondas, true)}
+          `;
+        }
+
+        contentEl.innerHTML = html;
+
+        tabsEl.querySelectorAll('button').forEach(btn => {
+          btn.addEventListener('click', () => {
+            activa = btn.getAttribute('data-cat');
+            render();
+          });
+        });
+      }
+
+      render();
+    })();
+  </script>
+</section>
+<!-- FIN SECCIÓN CUADROS ELIMINATORIOS -->
